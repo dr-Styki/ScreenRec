@@ -38,7 +38,7 @@ namespace ScreenRec {
 
         public SaveDialog (string filepath, Gtk.Window parent, int expected_width, int expected_height) {
             Object (
-                border_width: 6,
+                border_width: 0,
                 deletable: false,
                 modal: true,
                 resizable: false,
@@ -61,9 +61,11 @@ namespace ScreenRec {
             int max_width_height = selection_rect.height*46/100;
             debug ("Max width/height: %d",max_width_height);
             preview = new VideoPlayer (filepath, expected_width, expected_height, max_width_height);
+            //preview.margin_top = 0;
 
             var preview_box = new Gtk.Grid ();
             preview_box.halign = Gtk.Align.CENTER;
+            //preview_box.margin_top = 0;
             preview_box.add (preview);
 
             var preview_box_context = preview_box.get_style_context ();
@@ -104,7 +106,7 @@ namespace ScreenRec {
             location.set_filename (folder_dir);
 
             var grid = new Gtk.Grid ();
-            grid.margin = 6;
+            grid.margin = 12;
             grid.margin_top = 0;
             grid.margin_bottom = 12;
             grid.row_spacing = 12;
@@ -119,14 +121,19 @@ namespace ScreenRec {
             grid.attach (location, 1, 4, 1, 1);
 
             var content = this.get_content_area () as Gtk.Box;
+            content.margin_top = 0;
             content.add (grid);
 
-            add_button (_("Cancel"), 0);
+            var cancel_btn = add_button (_("Cancel"), 0);
+            cancel_btn.margin_bottom = 6;
 
             var save_original_btn = add_button (_("Save Original"), 1);
+            save_original_btn.margin_bottom = 6;
 
             save_btn = add_button (_("Save"), 2) as Gtk.Button;
             save_btn.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+            save_btn.margin_end = 6;
+            save_btn.margin_bottom = 6;
 
             settings.bind ("format", format_cmb, "text_value", GLib.SettingsBindFlags.DEFAULT);
             format_cmb.sensitive = false;
