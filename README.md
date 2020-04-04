@@ -2,9 +2,9 @@
 
 A thin UI layer around FFmpeg for recording your screen.
 
-<p align="left">
+<!-- <p align="left">
   <a href="https://appcenter.elementary.io/com.github.mohelm97.screenrecorder"><img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" /></a>
-</p>
+</p> -->
 
 <p align="center"><img src="data/screenshot_1.png" width="385"> <img src="data/screenshot_2.png" width="470"></p>
 
@@ -33,4 +33,6 @@ To install, use `ninja install`, then execute with `com.github.mohelm97.screenre
     com.github.mohelm97.screenrecorder
 
 ## Credits
+Forked from [Mohelm97/screenrecorder](https://github.com/Mohelm97/screenrecorder)
+
 A lot of this code inspired by the elementary OS screenshot app and Torikul Habib [mindi](https://github.com/torikulhabib/mindi).
