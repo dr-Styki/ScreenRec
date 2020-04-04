@@ -131,6 +131,8 @@ namespace ScreenRecorder {
             record_btn.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl><Shift>R"}, _("Toggle recording"));
             stop_btn.tooltip_markup = record_btn.tooltip_markup;
 
+            var close_btn = new Gtk.Button.with_label ("Close"); // _("Close") by "Close" /!\
+
             this.set_default (record_btn);
 
             actions = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
@@ -141,6 +143,7 @@ namespace ScreenRecorder {
             actions.hexpand_set = true;
             actions.hexpand = true;
             actions.set_layout (Gtk.ButtonBoxStyle.EXPAND);
+            actions.add (close_btn);
             actions.add (record_btn);
 
             grid = new Gtk.Grid ();
@@ -148,7 +151,7 @@ namespace ScreenRecorder {
             grid.margin_top = 0;
             grid.row_spacing = 6;
             grid.column_spacing = 12;
-            grid.attach (radio_grid        , 0, 0, 2, 1);
+            //grid.attach (radio_grid        , 0, 0, 2, 1);
             grid.attach (record_cmp_label  , 0, 1, 1, 1);
             grid.attach (record_cmp_switch , 1, 1, 1, 1);
             grid.attach (record_mic_label  , 0, 2, 1, 1);
@@ -166,20 +169,21 @@ namespace ScreenRecorder {
             grid.attach (format_label      , 0, 8, 1, 1);
             grid.attach (format_cmb        , 1, 8, 1, 1);
 
-            var mode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
-            mode_switch.primary_icon_tooltip_text = _("Light background");
-            mode_switch.secondary_icon_tooltip_text = _("Dark background");
-            mode_switch.valign = Gtk.Align.CENTER;
+            //var mode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
+            //mode_switch.primary_icon_tooltip_text = _("Light background");
+            //mode_switch.secondary_icon_tooltip_text = _("Dark background");
+            //mode_switch.valign = Gtk.Align.CENTER;
 
             var titlebar = new Gtk.HeaderBar ();
-            titlebar.title = _("Screen Recorder");
-            titlebar.show_close_button = true;
+            //titlebar.title = _("Screen Recorder");
+            titlebar.show_close_button = false;
             titlebar.has_subtitle = false;
-            titlebar.pack_end (mode_switch);
+            titlebar.set_custom_title (radio_grid);
+            //titlebar.pack_end (mode_switch);
 
             var titlebar_style_context = titlebar.get_style_context ();
             titlebar_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
-            //titlebar_style_context.add_class ("default-decoration");
+            titlebar_style_context.add_class ("default-decoration");
 
             set_titlebar (titlebar);
 
@@ -190,9 +194,9 @@ namespace ScreenRecorder {
             add (vbox);
 
             var gtk_settings = Gtk.Settings.get_default ();
-            mode_switch.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
+            //mode_switch.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
 
-            settings.bind ("dark-theme", mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            //settings.bind ("dark-theme", mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("record-computer", record_cmp_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("record-microphone", record_mic_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("mouse-pointer", pointer_switch, "active", GLib.SettingsBindFlags.DEFAULT);
@@ -257,6 +261,14 @@ namespace ScreenRecorder {
                 }
             });
             stop_btn.clicked.connect (stop_recording);
+
+            close_btn.clicked.connect (() => {
+                if (recording) {
+                    stop_recording ();
+                }
+                destroy ();
+            });
+
             delete_event.connect (() => {
                 if (recording) {
                     stop_recording ();
