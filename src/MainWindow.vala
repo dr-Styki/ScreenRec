@@ -27,7 +27,9 @@ namespace ScreenRecorder {
         }
         private FFmpegWrapper? ffmpegwrapper;
         private CaptureType capture_mode = CaptureType.SCREEN;
+        private Gtk.Grid radio_grid;
         private Gtk.Grid grid;
+        private Gtk.Grid sub_grid;
         private Gtk.ButtonBox actions;
         private Gtk.Button record_btn;
         private Gtk.Button stop_btn;
@@ -65,11 +67,10 @@ namespace ScreenRecorder {
             selection.image = new Gtk.Image.from_icon_name ("grab-area-symbolic", Gtk.IconSize.DND);
             selection.tooltip_text = _("Select area to grab");
 
-            var radio_grid = new Gtk.Grid ();
+            radio_grid = new Gtk.Grid ();
             radio_grid.halign = Gtk.Align.CENTER;
             radio_grid.column_spacing = 24;
-            radio_grid.margin = 24;
-            radio_grid.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
+            radio_grid.margin_top = radio_grid.margin_bottom = 24;
             radio_grid.add (all);
             radio_grid.add (selection);
 
@@ -78,6 +79,12 @@ namespace ScreenRecorder {
 
             pointer_switch = new Gtk.Switch ();
             pointer_switch.halign = Gtk.Align.START;
+
+            var borders_label = new Gtk.Label (_("Show borders:"));
+            borders_label.halign = Gtk.Align.END;
+
+            borders_switch = new Gtk.Switch ();
+            borders_switch.halign = Gtk.Align.START;
 
             var record_cmp_label = new Gtk.Label (_("Record computer sounds:"));
             record_cmp_label.halign = Gtk.Align.END;
@@ -92,12 +99,6 @@ namespace ScreenRecorder {
             record_mic_switch = new Gtk.Switch ();
             record_mic_switch.halign = Gtk.Align.START;
             record_mic_switch.bind_property ("sensitive", record_mic_label, "sensitive", GLib.BindingFlags.DEFAULT);
-
-            var borders_label = new Gtk.Label (_("Show borders:"));
-            borders_label.halign = Gtk.Align.END;
-
-            borders_switch = new Gtk.Switch ();
-            borders_switch.halign = Gtk.Align.START;
 
             var delay_label = new Gtk.Label (_("Delay in seconds:"));
             delay_label.halign = Gtk.Align.END;
@@ -121,52 +122,51 @@ namespace ScreenRecorder {
 
             record_btn = new Gtk.Button.with_label (_("Record Screen"));
             record_btn.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+            record_btn.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl><Shift>R"}, _("Toggle recording"));
             record_btn.can_default = true;
-            record_btn.hexpand = true;
+            this.set_default (record_btn);
 
             stop_btn = new Gtk.Button.with_label (_("Stop Recording"));
             stop_btn.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-            stop_btn.hexpand = true;
-
-            record_btn.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl><Shift>R"}, _("Toggle recording"));
             stop_btn.tooltip_markup = record_btn.tooltip_markup;
 
             var close_btn = new Gtk.Button.with_label ("Close"); // _("Close") by "Close" /!\
 
-            this.set_default (record_btn);
-
             actions = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
             actions.halign = Gtk.Align.CENTER;
             actions.margin_top = 24;
-            actions.margin_bottom = 12;
             actions.spacing = 6;
-            actions.hexpand_set = true;
-            actions.hexpand = true;
-            actions.set_layout (Gtk.ButtonBoxStyle.EXPAND);
             actions.add (close_btn);
             actions.add (record_btn);
+
+            sub_grid = new Gtk.Grid ();
+            sub_grid.margin = 0;
+            sub_grid.row_spacing = 6;
+            sub_grid.column_spacing = 12;
+            sub_grid.attach (record_cmp_label  , 0, 1, 1, 1);
+            sub_grid.attach (record_cmp_switch , 1, 1, 1, 1);
+            sub_grid.attach (record_mic_label  , 0, 2, 1, 1);
+            sub_grid.attach (record_mic_switch , 1, 2, 1, 1);
+            sub_grid.attach (pointer_label     , 0, 3, 1, 1);
+            sub_grid.attach (pointer_switch    , 1, 3, 1, 1);
+            sub_grid.attach (borders_label     , 0, 4, 1, 1);
+            sub_grid.attach (borders_switch    , 1, 4, 1, 1);
+            sub_grid.attach (delay_label       , 0, 5, 1, 1);
+            sub_grid.attach (delay_spin        , 1, 5, 1, 1);
+            sub_grid.attach (framerate_label   , 0, 6, 1, 1);
+            sub_grid.attach (framerate_spin    , 1, 6, 1, 1);
+            sub_grid.attach (scale_label       , 0, 7, 1, 1);
+            sub_grid.attach (scale_combobox    , 1, 7, 1, 1);
+            sub_grid.attach (format_label      , 0, 8, 1, 1);
+            sub_grid.attach (format_cmb        , 1, 8, 1, 1);
 
             grid = new Gtk.Grid ();
             grid.margin = 6;
             grid.margin_top = 0;
             grid.row_spacing = 6;
-            grid.column_spacing = 12;
-            grid.attach (record_cmp_label  , 0, 1, 1, 1);
-            grid.attach (record_cmp_switch , 1, 1, 1, 1);
-            grid.attach (record_mic_label  , 0, 2, 1, 1);
-            grid.attach (record_mic_switch , 1, 2, 1, 1);
-            grid.attach (pointer_label     , 0, 3, 1, 1);
-            grid.attach (pointer_switch    , 1, 3, 1, 1);
-            grid.attach (borders_label     , 0, 4, 1, 1);
-            grid.attach (borders_switch    , 1, 4, 1, 1);
-            grid.attach (delay_label       , 0, 5, 1, 1);
-            grid.attach (delay_spin        , 1, 5, 1, 1);
-            grid.attach (framerate_label   , 0, 6, 1, 1);
-            grid.attach (framerate_spin    , 1, 6, 1, 1);
-            grid.attach (scale_label       , 0, 7, 1, 1);
-            grid.attach (scale_combobox    , 1, 7, 1, 1);
-            grid.attach (format_label      , 0, 8, 1, 1);
-            grid.attach (format_cmb        , 1, 8, 1, 1);
+            grid.attach (sub_grid   , 0, 1, 2, 8);
+            grid.attach (actions    , 0, 9, 2, 1);
+
 
             var titlebar = new Gtk.HeaderBar ();
             titlebar.has_subtitle = false;
@@ -177,12 +177,8 @@ namespace ScreenRecorder {
             titlebar_style_context.add_class ("default-decoration");
 
             set_titlebar (titlebar);
+            add (grid);
 
-            var vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-            vbox.add (grid);
-            vbox.add (actions);
-
-            add (vbox);
 
             var gtk_settings = Gtk.Settings.get_default ();
 
@@ -335,7 +331,8 @@ namespace ScreenRecorder {
                 record_cmp_switch.get_state (),
                 record_mic_switch.get_state ()
             );
-            grid.set_sensitive (false);
+            sub_grid.set_sensitive (false);
+            radio_grid.set_sensitive (false);
             recording = true;
             actions.remove (record_btn);
             actions.add (stop_btn);
@@ -354,7 +351,8 @@ namespace ScreenRecorder {
             save_dialog.close.connect (() => {
                 save_dialog_present = false;
             });
-            grid.set_sensitive (true);
+            sub_grid.set_sensitive (true);
+            radio_grid.set_sensitive (true);
             recording = false;
             actions.remove (stop_btn);
             actions.add (record_btn);
