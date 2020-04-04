@@ -29,7 +29,7 @@ Run `meson` to configure the build environment and then `ninja` to build and ins
 To install, use `ninja install`, then execute with `com.github.mohelm97.screenrecorder`
 
     sudo ninja install
-    com.github.mohelm97.screenrecorder
+    com.github.dr-Styki.ScreenRec
 
 ## Credits
-Forked from [Mohelm97/screenrecorder](https://github.com/Mohelm97/screenrecorder)
+Forked from [screenrecorder](https://github.com/Mohelm97/screenrecorder) by [Mohelm97](https://github.com/Mohelm97)

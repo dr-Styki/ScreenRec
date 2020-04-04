@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2020 Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng> -->
 <!-- Copyright 2018 Mohammed ALMadhoun <mohelm97@gmail.com> -->
 <component type="desktop">
-  <id>com.github.mohelm97.screenrecorder</id>
+  <id>com.github.dr-Styki.ScreenRec</id>
   <metadata_license>CC0</metadata_license>
   <project_license>GPL-3.0</project_license>
-  <name>Screen Recorder</name>
+  <name>ScreenRec</name>
   <summary>A simple screen recording app for daily use.</summary>
   <description>
     <p>A screen recording app using FFmpeg, with a small set of useful features! </p>
@@ -67,9 +68,9 @@
   </content_rating>
 
   <developer_name>Mohammed ALMadhoun</developer_name>
-  <url type="homepage">https://github.com/mohelm97/screenrecorder</url>
-  <url type="bugtracker">https://github.com/mohelm97/screenrecorder/issues</url>
-  <url type="help">https://github.com/mohelm97/screenrecorder/issues</url>
+  <url type="homepage">https://github.com/dr-Styki/ScreenRec</url>
+  <url type="bugtracker">https://github.com/dr-Styki/ScreenRec/issues</url>
+  <url type="help">https://github.com/dr-Styki/ScreenRec/issues</url>
 
   <custom>
     <value key="x-appcenter-color-primary">#c6262e</value>

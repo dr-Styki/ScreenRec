@@ -1,5 +1,8 @@
 /*
-* Copyright (c) 2018 mohelm97 (https://github.com/mohelm97/screenrecorder)
+* Copyright (c) 2020 Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng>
+*                         (https://github.com/dr-Styki/ScreenRec)
+*
+* Copyright (c) 2018 mohelm97 (https://github.com/mohelm97/ScreenRecorder)
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -19,7 +22,7 @@
 * Authored by: Mohammed ALMadhoun <mohelm97@gmail.com>
 */
 
-namespace ScreenRecorder {
+namespace ScreenRec {
     public class MainWindow : Gtk.ApplicationWindow  {
         private enum CaptureType {
             SCREEN,
@@ -57,7 +60,7 @@ namespace ScreenRecorder {
         }
 
         construct {
-            GLib.Settings settings = ScreenRecorderApp.settings;
+            GLib.Settings settings = ScreenRecApp.settings;
 
             var all = new Gtk.RadioButton (null);
             all.image = new Gtk.Image.from_icon_name ("grab-screen-symbolic", Gtk.IconSize.DND);
@@ -311,7 +314,7 @@ namespace ScreenRecorder {
             if (extension == "gif") {
                 extension = "mp4";
             }
-            tmpfilepath = Path.build_filename (temp_dir, "screenrecorder-%08x.%s".printf (Random.next_int (), extension));
+            tmpfilepath = Path.build_filename (temp_dir, "ScreenRec-%08x.%s".printf (Random.next_int (), extension));
             debug ("Temp file created at: %s", tmpfilepath);
             selection_rect.width  = selection_rect.width  + (selection_rect.width % 2);
             selection_rect.height = selection_rect.height + (selection_rect.height % 2);

@@ -1,7 +1,7 @@
-Source: com.github.mohelm97.screenrecorder
+Source: com.github.dr-Styki.ScreenRec
 Section: x11
 Priority: extra
-Maintainer: Mohammed ALMadhoun <mohelm97@gmail.com>
+Maintainer: Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng>
 Build-Depends: meson,
                debhelper,
                libgranite-dev,
@@ -13,7 +13,7 @@ Build-Depends: meson,
                valac
 Standards-Version: 3.9.3
 
-Package: com.github.mohelm97.screenrecorder
+Package: com.github.dr-Styki.ScreenRec
 Architecture: any
 Depends: ffmpeg, ${misc:Depends}, ${shlibs:Depends}
 Description: Simple screen recorder

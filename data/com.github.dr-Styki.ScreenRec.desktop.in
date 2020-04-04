@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ScreenRec
+Comment=A simple screen recorder app designed for elementary OS
+Exec=com.github.dr-Styki.ScreenRec
+Icon=com.github.dr-Styki.ScreenRec
+Terminal=false
+Type=Application
+Categories=GTK;GNOME;Utility;AudioVideo;Video;Graphics;
+Keywords=Screenshot;Screen;Record;Recording;
+X-GNOME-UsesNotifications=true

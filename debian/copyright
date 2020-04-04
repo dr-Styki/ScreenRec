@@ -1,9 +1,10 @@
 Format: http://dep.debian.net/deps/dep5
-Upstream-Name: com.github.mohelm97.screenrecorder
-Source: https://github.com/Mohelm97/screenrecorder
+Upstream-Name: com.github.dr-Styki.ScreenRec
+Source: https://github.com/dr-Styki/ScreenRec/
 
 Files: *
 Copyright: 2018 Mohammed ALMadhoun <mohelm97@gmail.com>
+Copyright: 2020 Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng>
 License: GPL-3.0+
 
 License: GPL-3.0+

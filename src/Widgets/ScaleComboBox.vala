@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2018 mohelm97 (https://github.com/mohelm97/screenrecorder)
+* Copyright (c) 2018 mohelm97 (https://github.com/mohelm97/ScreenRecorder)
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -19,7 +19,7 @@
 * Authored by: Peter Uithoven <peter@peteruithoven.nl>
 */
 
-namespace ScreenRecorder {
+namespace ScreenRec {
     public class ScaleComboBox : Gtk.ComboBoxText {
         public int scale {
             get {

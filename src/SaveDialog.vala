@@ -21,7 +21,7 @@
  *              Fabio Zaramella <ffabio.96.x@gmail.com>
  */
 
-namespace ScreenRecorder {
+namespace ScreenRec {
 
     public class SaveDialog : Gtk.Dialog {
 
@@ -34,7 +34,7 @@ namespace ScreenRecorder {
         private VideoPlayer preview;
         private FormatComboBox format_cmb;
         private string folder_dir = Environment.get_user_special_dir (UserDirectory.VIDEOS)
-        +  "%c".printf(GLib.Path.DIR_SEPARATOR) + ScreenRecorderApp.SAVE_FOLDER;
+        +  "%c".printf(GLib.Path.DIR_SEPARATOR) + ScreenRecApp.SAVE_FOLDER;
 
         public SaveDialog (string filepath, Gtk.Window parent, int expected_width, int expected_height) {
             Object (
@@ -55,7 +55,7 @@ namespace ScreenRecorder {
         }
 
         construct {
-            GLib.Settings settings = ScreenRecorderApp.settings;
+            GLib.Settings settings = ScreenRecApp.settings;
             Gdk.Rectangle selection_rect;
             Gdk.get_default_root_window ().get_frame_extents (out selection_rect);
             int max_width_height = selection_rect.height*46/100;
@@ -98,7 +98,7 @@ namespace ScreenRecorder {
             if (folder_from_settings != folder_dir && folder_from_settings != "") {
                 folder_dir = folder_from_settings;
             }
-            ScreenRecorderApp.create_dir_if_missing (folder_dir);
+            ScreenRecApp.create_dir_if_missing (folder_dir);
 
             var location = new Gtk.FileChooserButton (_("Select Screen Records Folder…"), Gtk.FileChooserAction.SELECT_FOLDER);
             location.set_filename (folder_dir);

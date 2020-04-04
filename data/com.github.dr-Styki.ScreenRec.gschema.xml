@@ -1,10 +1,10 @@
 <?xml verscomn="1.0" encoding="UTF-8"?>
 <schemalist>
-    <enum id="com.github.mohelm97.screenrecorder.capture-mode">
+    <enum id="com.github.dr-Styki.ScreenRec.capture-mode">
         <value nick="screen" value="0"/>
         <value nick="area" value="1"/>
     </enum>
-    <schema id="com.github.mohelm97.screenrecorder" path="/com/github/mohelm97/screenrecorder/" gettext-domain="com.github.mohelm97.screenrecorder">
+    <schema id="com.github.dr-Styki.ScreenRec" path="/com/github/dr-Styki/ScreenRec/" gettext-domain="com.github.dr-Styki.ScreenRec">
         <key name="record-computer" type="b">
             <default>false</default>
         </key>
@@ -38,7 +38,7 @@
         <key name="folder-dir" type="s">
             <default>""</default>
         </key>
-        <key name='last-capture-mode' enum='com.github.mohelm97.screenrecorder.capture-mode'>
+        <key name='last-capture-mode' enum='com.github.dr-Styki.ScreenRec.capture-mode'>
             <default>"screen"</default>
         </key>
     </schema>

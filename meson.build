@@ -1,5 +1,5 @@
 # project name and programming language
-project('com.github.mohelm97.screenrecorder', 'vala', 'c')
+project('com.github.dr-Styki.ScreenRec', 'vala', 'c')
 # Include the translations module
 i18n = import('i18n')
 gnome = import('gnome')
@@ -73,7 +73,7 @@ icon_sizes = ['32', '48', '64', '128']
 
 foreach i : icon_sizes
     install_data(
-        join_paths('data/icons', i, 'com.github.mohelm97.screenrecorder.svg'),
+        join_paths('data/icons', i, 'com.github.dr-Styki.ScreenRec.svg'),
         install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', i + 'x' + i, 'apps')
     )
 endforeach

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2018 mohelm97 (https://github.com/mohelm97/screenrecorder)
+* Copyright (c) 2018 mohelm97 (https://github.com/mohelm97/ScreenRecorder)
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -19,24 +19,24 @@
 * Authored by: Mohammed ALMadhoun <mohelm97@gmail.com>
 */
 
-namespace ScreenRecorder { 
-    public class ScreenRecorderApp : Gtk.Application {
+namespace ScreenRec { 
+    public class ScreenRecApp : Gtk.Application {
         public static GLib.Settings settings;
         private MainWindow window = null;
 
         public const string SAVE_FOLDER = _("Screen Records");
 
-        public ScreenRecorderApp () {
+        public ScreenRecApp () {
             Object (
-                application_id: "com.github.mohelm97.screenrecorder",
+                application_id: "com.github.dr-Styki.ScreenRec",
                 flags: ApplicationFlags.FLAGS_NONE
             );
         }
         
         construct {
-            settings = new GLib.Settings ("com.github.mohelm97.screenrecorder");
+            settings = new GLib.Settings ("com.github.dr-Styki.ScreenRec");
             weak Gtk.IconTheme default_theme = Gtk.IconTheme.get_default ();
-            default_theme.add_resource_path ("/com/github/mohelm97/screenrecorder");
+            default_theme.add_resource_path ("/com/github/dr-Styki/ScreenRec");
             var quit_action = new SimpleAction ("quit", null);
             quit_action.activate.connect (() => {
                 if (window != null) {
@@ -80,7 +80,7 @@ namespace ScreenRecorder {
             if (err != Clutter.InitError.SUCCESS) {
                 error ("Could not initalize clutter! "+err.to_string ());
             }
-            var app = new ScreenRecorderApp ();
+            var app = new ScreenRecApp ();
             return app.run (args);
         }
 
