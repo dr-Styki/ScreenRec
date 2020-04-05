@@ -23,7 +23,9 @@
 */
 
 namespace ScreenRec {
+
     public class MainWindow : Gtk.ApplicationWindow  {
+
         private enum CaptureType {
             SCREEN,
             AREA
@@ -133,7 +135,7 @@ namespace ScreenRec {
             stop_btn.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
             stop_btn.tooltip_markup = record_btn.tooltip_markup;
 
-            var close_btn = new Gtk.Button.with_label ("Close"); // _("Close") by "Close" /!\
+            var close_btn = new Gtk.Button.with_label (_("Close"));
 
             actions = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
             actions.halign = Gtk.Align.CENTER;
@@ -146,14 +148,14 @@ namespace ScreenRec {
             sub_grid.margin = 0;
             sub_grid.row_spacing = 6;
             sub_grid.column_spacing = 12;
-            sub_grid.attach (record_cmp_label  , 0, 1, 1, 1);
-            sub_grid.attach (record_cmp_switch , 1, 1, 1, 1);
-            sub_grid.attach (record_mic_label  , 0, 2, 1, 1);
-            sub_grid.attach (record_mic_switch , 1, 2, 1, 1);
-            sub_grid.attach (pointer_label     , 0, 3, 1, 1);
-            sub_grid.attach (pointer_switch    , 1, 3, 1, 1);
-            sub_grid.attach (borders_label     , 0, 4, 1, 1);
-            sub_grid.attach (borders_switch    , 1, 4, 1, 1);
+            sub_grid.attach (pointer_label     , 0, 1, 1, 1);
+            sub_grid.attach (pointer_switch    , 1, 1, 1, 1);
+            sub_grid.attach (borders_label     , 0, 2, 1, 1);
+            sub_grid.attach (borders_switch    , 1, 2, 1, 1);
+            sub_grid.attach (record_cmp_label  , 0, 3, 1, 1);
+            sub_grid.attach (record_cmp_switch , 1, 3, 1, 1);
+            sub_grid.attach (record_mic_label  , 0, 4, 1, 1);
+            sub_grid.attach (record_mic_switch , 1, 4, 1, 1);
             sub_grid.attach (delay_label       , 0, 5, 1, 1);
             sub_grid.attach (delay_spin        , 1, 5, 1, 1);
             sub_grid.attach (framerate_label   , 0, 6, 1, 1);
@@ -185,10 +187,10 @@ namespace ScreenRec {
 
             var gtk_settings = Gtk.Settings.get_default ();
 
-            settings.bind ("record-computer", record_cmp_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            settings.bind ("record-microphone", record_mic_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("mouse-pointer", pointer_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("show-borders", borders_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            settings.bind ("record-computer", record_cmp_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            settings.bind ("record-microphone", record_mic_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("delay", delay_spin, "value", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("framerate", framerate_spin, "value", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("scale", scale_combobox, "scale", GLib.SettingsBindFlags.DEFAULT);

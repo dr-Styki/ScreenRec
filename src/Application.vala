@@ -19,8 +19,10 @@
 * Authored by: Mohammed ALMadhoun <mohelm97@gmail.com>
 */
 
-namespace ScreenRec { 
+namespace ScreenRec {
+
     public class ScreenRecApp : Gtk.Application {
+        
         public static GLib.Settings settings;
         private MainWindow window = null;
 
