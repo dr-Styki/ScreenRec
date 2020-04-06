@@ -62,6 +62,8 @@ namespace ScreenRec {
         }
 
         construct {
+            set_keep_above (true);
+            
             GLib.Settings settings = ScreenRecApp.settings;
 
             var all = new Gtk.RadioButton (null);
@@ -253,10 +255,7 @@ namespace ScreenRec {
             stop_btn.clicked.connect (stop_recording);
 
             close_btn.clicked.connect (() => {
-                if (recording) {
-                    stop_recording ();
-                }
-                destroy ();
+                close ();
             });
 
             delete_event.connect (() => {

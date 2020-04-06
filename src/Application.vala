@@ -39,12 +39,16 @@ namespace ScreenRec {
             settings = new GLib.Settings ("com.github.dr-Styki.ScreenRec");
             weak Gtk.IconTheme default_theme = Gtk.IconTheme.get_default ();
             default_theme.add_resource_path ("/com/github/dr-Styki/ScreenRec");
+
             var quit_action = new SimpleAction ("quit", null);
             quit_action.activate.connect (() => {
                 if (window != null) {
-                    window.destroy ();
+                    //window.destroy ();
+                    window.close ();
                 }
             });
+            add_action (quit_action);
+            set_accels_for_action ("app.quit", {"<Control>q", "Escape"});
 
             var open_records_folder_action = new SimpleAction ("open-records-folder", VariantType.STRING);
             open_records_folder_action.activate.connect ((parameter) => {
@@ -59,10 +63,7 @@ namespace ScreenRec {
                     GLib.warning (e.message);
                 }
             });
-
-            add_action (quit_action);
             add_action (open_records_folder_action);
-            set_accels_for_action ("app.quit", {"<Control>q"});
         }
 
         protected override void activate () {
