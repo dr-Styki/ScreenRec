@@ -52,6 +52,10 @@ namespace ScreenRec {
         private int last_recording_width = 0;
         private int last_recording_height = 0;
 
+        public bool is_recording () {
+            return recording;
+        }
+
         public MainWindow (Gtk.Application app){
             Object (
                 application: app,
