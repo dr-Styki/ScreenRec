@@ -2,7 +2,7 @@
 A simple screen recorder app designed for elementary OS
 
 <!-- <p align="left">
-  <a href="https://appcenter.elementary.io/com.github.mohelm97.screenrecorder"><img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" /></a>
+  <a href="https://appcenter.elementary.io/com.github.dr-Styki.ScreenRec"><img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" /></a>
 </p> -->
 
 <p align="center"><img src="data/screenshot_1.png" width="385"></br><img src="data/screenshot_2.png" width="470"></p>
@@ -26,7 +26,7 @@ Run `meson` to configure the build environment and then `ninja` to build and ins
     cd build
     ninja
 
-To install, use `ninja install`, then execute with `com.github.mohelm97.screenrecorder`
+To install, use `ninja install`, then execute with `com.github.dr-Styki.ScreenRec`
 
     sudo ninja install
     com.github.dr-Styki.ScreenRec
