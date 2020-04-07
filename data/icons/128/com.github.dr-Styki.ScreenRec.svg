@@ -12,7 +12,7 @@
    height="128"
    width="128"
    version="1.0"
-   sodipodi:docname="accessories-screenshot.svg"
+   sodipodi:docname="com.github.dr-Styki.ScreenRec.svg"
    inkscape:version="0.92.3 (2405546, 2018-03-11)">
   <sodipodi:namedview
      pagecolor="#ffffff"
@@ -27,11 +27,11 @@
      inkscape:window-height="797"
      id="namedview109"
      showgrid="false"
-     inkscape:zoom="1.84375"
-     inkscape:cx="64"
-     inkscape:cy="59.661017"
-     inkscape:window-x="0"
-     inkscape:window-y="30"
+     inkscape:zoom="5.2149125"
+     inkscape:cx="55.164"
+     inkscape:cy="70.132746"
+     inkscape:window-x="1342"
+     inkscape:window-y="94"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg4569" />
   <metadata
@@ -379,6 +379,15 @@
        xlink:href="#linearGradient10691-1"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1.0395279,0,0,0.29384563,44.941711,116.45212)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#outerBackgroundGradient-5-0"
+       id="linearGradient908"
+       x1="7.0000019"
+       y1="53.500004"
+       x2="121"
+       y2="53.500004"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <path
      style="opacity:0.3;fill:url(#radialGradient3226);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80000001;marker:none;visibility:visible;display:inline;overflow:visible"
@@ -404,7 +413,7 @@
   <path
      id="rect2722-0"
      d="m 7.000002,16.000002 113.999998,0 0,75 -113.999998,0 z"
-     style="display:inline;fill:#c6262e;fill-opacity:1;stroke:none" />
+     style="display:inline;fill:url(#linearGradient908);fill-opacity:1.0;stroke:none" />
   <rect
      style="opacity:0.2;fill:none;stroke:url(#linearGradient3144);stroke-width:0.99999994;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
      id="rect6741"
@@ -454,7 +463,7 @@
        style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;stroke-width:1.97665243;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;filter-blend-mode:normal;filter-gaussianBlur-deviation:0;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
   </g>
   <g
-     style="opacity:1"
+     style="opacity:0.6"
      id="g4587"
      transform="matrix(1.9764018,0,0,1.9769031,1.2930215,2.9033581)">
     <path
@@ -516,9 +525,9 @@
        cy="53.574001"
        cx="64"
        id="path1156"
-       style="display:inline;opacity:0.07000002;fill:#7a0000;fill-opacity:1;fill-rule:nonzero;stroke-width:1.11370718" />
+       style="display:inline;opacity:0.1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke-width:1.11370718" />
     <circle
-       style="display:inline;opacity:0.15;fill:#7a0000;fill-opacity:1;fill-rule:nonzero;stroke-width:1.05350685"
+       style="display:inline;opacity:0.5;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke-width:1.05350685"
        id="circle1158"
        cx="64"
        cy="53.574001"
@@ -528,6 +537,6 @@
        cy="52.574001"
        cx="64"
        id="circle1160"
-       style="display:inline;fill:#fafafa;fill-rule:nonzero;stroke-width:1.05350685" />
+       style="display:inline;fill:#c6262e;fill-rule:nonzero;stroke-width:1.05350685;fill-opacity:1;opacity:0.8" />
   </g>
 </svg>
