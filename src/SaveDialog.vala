@@ -70,7 +70,6 @@ namespace ScreenRec {
 
             var preview_box_context = preview_box.get_style_context ();
             preview_box_context.add_class ("card");
-            //preview_box_context.add_class ("checkerboard-layout");
 
             var dialog_label = new Gtk.Label (_("Save record as…"));
             dialog_label.get_style_context ().add_class ("h4");
@@ -127,10 +126,7 @@ namespace ScreenRec {
             var cancel_btn = add_button (_("Cancel"), 0);
             cancel_btn.margin_bottom = 6;
 
-            var save_original_btn = add_button (_("Save Original"), 1);
-            save_original_btn.margin_bottom = 6;
-
-            save_btn = add_button (_("Save"), 2) as Gtk.Button;
+            save_btn = add_button (_("Save"), 1) as Gtk.Button;
             save_btn.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
             save_btn.margin_end = 6;
             save_btn.margin_bottom = 6;
@@ -143,7 +139,7 @@ namespace ScreenRec {
 
             key_press_event.connect ((e) => {
                 if (e.keyval == Gdk.Key.Return) {
-                    manage_response (2);
+                    manage_response (1);
                 }
 
                 return false;
@@ -151,35 +147,44 @@ namespace ScreenRec {
         }
 
         private void manage_response (int response_id) {
+ 
             if (response_id == 1) {
-                debug ("Oi Oi you got a license for that copy");
-                File tmp_file = File.new_for_path (filepath);
-                string file_name = Path.build_filename (folder_dir, "%s.%s".printf (name_entry.get_text (), format_cmb.get_active_text ()));
-                File save_file = File.new_for_path (file_name);
-                try {
-                    tmp_file.copy (save_file, 0, null, null);
-                } catch (Error e) {
-                    print ("Error: %s\n", e.message);
-                }
-                close ();
-            } else if (response_id == 2) {
-                save_btn.always_show_image = true;
-                var spinner = new Gtk.Spinner ();
-                save_btn.set_image (spinner);
-                spinner.start ();
-                sensitive = false;
-                string save_filepath = Path.build_filename (folder_dir, "%s.%s".printf (name_entry.get_text (), format_cmb.get_active_text ()));
-                FFmpegWrapper.render_file.begin (filepath, save_filepath, format_cmb.get_active_text (), (obj, res) => {
-                    sensitive = true;
-                    save_btn.set_image (null);
-                    debug ("Render done");
-                    var notification = new Notification (_("Rendering went awesome"));
-                    notification.set_body (_("Click here to open the records folder"));
-                    notification.set_default_action ("app.open-records-folder('%s')".printf(folder_dir));
-                    this.application.send_notification (null, notification);
+
+                if (format_cmb.get_active_text () == "raw") {
+
+                    File tmp_file = File.new_for_path (filepath);
+                    string file_name = Path.build_filename (folder_dir, "%s.%s".printf (name_entry.get_text (), "mp4"));
+                    File save_file = File.new_for_path (file_name);
+                    try {
+                        tmp_file.copy (save_file, 0, null, null);
+                    } catch (Error e) {
+                        print ("Error: %s\n", e.message);
+                    }
                     close ();
-                });
-            } else {
+
+                } 
+                else {
+
+                    save_btn.always_show_image = true;
+                    var spinner = new Gtk.Spinner ();
+                    save_btn.set_image (spinner);
+                    spinner.start ();
+                    sensitive = false;
+                    string save_filepath = Path.build_filename (folder_dir, "%s.%s".printf (name_entry.get_text (), format_cmb.get_active_text ()));
+                    FFmpegWrapper.render_file.begin (filepath, save_filepath, format_cmb.get_active_text (), (obj, res) => {
+                        sensitive = true;
+                        save_btn.set_image (null);
+                        debug ("Render done");
+                        var notification = new Notification (_("Rendering went awesome"));
+                        notification.set_body (_("Click here to open the records folder"));
+                        notification.set_default_action ("app.open-records-folder('%s')".printf(folder_dir));
+                        this.application.send_notification (null, notification);
+                        close ();
+                    });
+                }
+
+            } 
+            else {
                 close ();
             }
         }

@@ -1,5 +1,6 @@
 /*
 * Copyright (c) 2018 mohelm97 (https://github.com/mohelm97/ScreenRecorder)
+*               2020 Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng>
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -17,6 +18,7 @@
 * Boston, MA 02110-1301 USA
 *
 * Authored by: Mohammed ALMadhoun <mohelm97@gmail.com>
+               Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng>
 */
 
 namespace ScreenRec {
@@ -27,19 +29,23 @@ namespace ScreenRec {
             set {
                 _text_value = value;
                 switch (value) {
-                    case "mp4":
+                    case "raw":
                         active = 0;
                         break;
-                    case "mov":
+                    case "mp4":
                         active = 1;
                         break;
-                    case "gif":
+                    case "mov":
                         active = 2;
+                        break;
+                    case "gif":
+                        active = 3;
                         break;
                 }
             }
         }
         public FormatComboBox () {
+            append_text ("raw");
             append_text ("mp4");
             append_text ("mov");
             append_text ("gif");
