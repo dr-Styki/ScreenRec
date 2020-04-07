@@ -1,6 +1,7 @@
 /*
  * Copyright (c) 2014–2016 Fabio Zaramella <ffabio.96.x@gmail.com>
  *               2017–2018 elementary LLC. (https://elementary.io)
+ *               2020 Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,6 +20,7 @@
  * Authored by: Mohammed ALMadhoun <mohelm97@gmail.com>
  *              Artem Anufrij <artem.anufrij@live.de>
  *              Fabio Zaramella <ffabio.96.x@gmail.com>
+ *              Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng>
  */
 
 namespace ScreenRec {
@@ -61,11 +63,9 @@ namespace ScreenRec {
             int max_width_height = selection_rect.height*46/100;
             debug ("Max width/height: %d",max_width_height);
             preview = new VideoPlayer (filepath, expected_width, expected_height, max_width_height);
-            //preview.margin_top = 0;
 
             var preview_box = new Gtk.Grid ();
             preview_box.halign = Gtk.Align.CENTER;
-            //preview_box.margin_top = 0;
             preview_box.add (preview);
 
             var preview_box_context = preview_box.get_style_context ();
@@ -136,8 +136,6 @@ namespace ScreenRec {
             save_btn.margin_bottom = 6;
 
             settings.bind ("format", format_cmb, "text_value", GLib.SettingsBindFlags.DEFAULT);
-            format_cmb.sensitive = false;
-            save_original_btn.sensitive = (format_cmb.get_active_text () != "gif");
             location.selection_changed.connect (() => {
                 settings.set_string ("folder-dir", location.get_filename ());
                 folder_dir = settings.get_string ("folder-dir");

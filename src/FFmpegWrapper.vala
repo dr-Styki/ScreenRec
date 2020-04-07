@@ -1,5 +1,6 @@
 /*
-* Copyright (c) 2018 mohelm97 (https://github.com/mohelm97/ScreenRecorder)
+* Copyright (c) 2018 Mohammed ALMadhoun <mohelm97@gmail.com>
+*               2020 Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng>
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -17,6 +18,7 @@
 * Boston, MA 02110-1301 USA
 *
 * Authored by: Mohammed ALMadhoun <mohelm97@gmail.com>
+*              Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng>
 */
 
 namespace ScreenRec { 
@@ -43,7 +45,6 @@ namespace ScreenRec {
                 if (display == null) {
                   display = ":0";
                 }
-                bool is_gif = (ext == "gif");
                 string[] spawn_args = {
                     "ffmpeg",
                     "-y",
@@ -55,13 +56,13 @@ namespace ScreenRec {
                     "-f", "x11grab",
                     "-i", "%s+%i,%i".printf (display, start_x, start_y)
                 };
-                if (record_mic && !is_gif) {
+                if (record_mic) {
                     spawn_args += "-f";
                     spawn_args += "pulse";
                     spawn_args += "-i";
                     spawn_args += "default";
                 }
-                if (record_cmp && !is_gif) {
+                if (record_cmp) {
                     string default_audio_output = get_default_audio_output ();
                     if (default_audio_output != "") {
                         spawn_args += "-f";
@@ -82,11 +83,8 @@ namespace ScreenRec {
                 // scale video
                 spawn_args += "-filter:v";
                 var filter = "scale=iw*%.2f:-1".printf (scale).replace (",", ".");
-                if (!is_gif) {
-                  filter += ", crop=iw-mod(iw\\,2):ih-mod(ih\\,2)";
-                }
+                filter += ", crop=iw-mod(iw\\,2):ih-mod(ih\\,2)";
                 spawn_args += filter;
-
                 spawn_args += filepath;
 
                 debug ("ffmpeg command: %s",string.joinv(" ", spawn_args));

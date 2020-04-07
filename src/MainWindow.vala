@@ -1,8 +1,6 @@
 /*
-* Copyright (c) 2020 Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng>
-*                         (https://github.com/dr-Styki/ScreenRec)
-*
-* Copyright (c) 2018 mohelm97 (https://github.com/mohelm97/ScreenRecorder)
+* Copyright (c) 2018 Mohammed ALMadhoun <mohelm97@gmail.com>
+*               2020 Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng>
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -20,6 +18,7 @@
 * Boston, MA 02110-1301 USA
 *
 * Authored by: Mohammed ALMadhoun <mohelm97@gmail.com>
+*              Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng>
 */
 
 namespace ScreenRec {
@@ -122,9 +121,6 @@ namespace ScreenRec {
 
             var scale_combobox = new ScaleComboBox ();
 
-            var format_label = new Gtk.Label (_("Format:"));
-            format_label.halign = Gtk.Align.END;
-
             format_cmb = new FormatComboBox ();
 
             record_btn = new Gtk.Button.with_label (_("Record Screen"));
@@ -164,15 +160,13 @@ namespace ScreenRec {
             sub_grid.attach (framerate_spin    , 1, 6, 1, 1);
             sub_grid.attach (scale_label       , 0, 7, 1, 1);
             sub_grid.attach (scale_combobox    , 1, 7, 1, 1);
-            sub_grid.attach (format_label      , 0, 8, 1, 1);
-            sub_grid.attach (format_cmb        , 1, 8, 1, 1);
 
             grid = new Gtk.Grid ();
             grid.margin = 6;
             grid.margin_top = 0;
             grid.row_spacing = 6;
-            grid.attach (sub_grid   , 0, 1, 2, 8);
-            grid.attach (actions    , 0, 9, 2, 1);
+            grid.attach (sub_grid   , 0, 1, 2, 7);
+            grid.attach (actions    , 0, 8, 2, 1);
 
 
             var titlebar = new Gtk.HeaderBar ();
@@ -200,20 +194,6 @@ namespace ScreenRec {
             delay = delay_spin.get_value_as_int () * 1000;
             framerate = framerate_spin.get_value_as_int ();
             scale_percentage = scale_combobox.scale;
-
-            format_cmb.changed.connect (() => {
-                if (format_cmb.get_active_text () == "gif") {
-                    record_cmp_switch.set_sensitive (false);
-                    record_mic_switch.set_sensitive (false);
-                } else {
-                    record_cmp_switch.set_sensitive (true);
-                    record_mic_switch.set_sensitive (true);
-                }
-            });
-            if (format_cmb.get_active_text () == "gif"){
-                record_cmp_switch.set_sensitive (false);
-                record_mic_switch.set_sensitive (false);
-            }
 
             if (settings.get_enum ("last-capture-mode") == CaptureType.AREA){
                 capture_mode = CaptureType.AREA;
@@ -311,10 +291,7 @@ namespace ScreenRec {
             Gdk.Rectangle selection_rect;
             win.get_frame_extents (out selection_rect);
             var temp_dir = Environment.get_tmp_dir ();
-            string extension = format_cmb.get_active_text ();
-            if (extension == "gif") {
-                extension = "mp4";
-            }
+            string extension = "mp4";
             tmpfilepath = Path.build_filename (temp_dir, "ScreenRec-%08x.%s".printf (Random.next_int (), extension));
             debug ("Temp file created at: %s", tmpfilepath);
             selection_rect.width  = selection_rect.width  + (selection_rect.width % 2);
