@@ -34,7 +34,7 @@ namespace ScreenRec {
         private Gtk.Grid radio_grid;
         private Gtk.Grid grid;
         private Gtk.Grid sub_grid;
-        private Gtk.ButtonBox actions;
+        private Gtk.Box actions;
         private Gtk.Button record_btn;
         private Gtk.Button stop_btn;
         private Gtk.Switch record_cmp_switch;
@@ -139,10 +139,9 @@ namespace ScreenRec {
 
             var close_btn = new Gtk.Button.with_label (_("Close"));
 
-            actions = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
-            actions.halign = Gtk.Align.CENTER;
+            actions = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
             actions.margin_top = 24;
-            actions.spacing = 6;
+            actions.set_homogeneous(true);
             actions.add (close_btn);
             actions.add (record_btn);
 
