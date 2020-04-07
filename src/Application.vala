@@ -1,4 +1,7 @@
 /*
+* Copyright (c) 2020 Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng>
+*                         (https://github.com/dr-Styki/ScreenRec)
+*
 * Copyright (c) 2018 mohelm97 (https://github.com/mohelm97/ScreenRecorder)
 *
 * This program is free software; you can redistribute it and/or
@@ -43,7 +46,6 @@ namespace ScreenRec {
             var quit_action = new SimpleAction ("quit", null);
             quit_action.activate.connect (() => {
                 if (window != null) {
-                    //window.destroy ();
                     window.close ();
                 }
             });
