@@ -2,7 +2,7 @@
 <!-- Copyright 2020 Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng> -->
 <!-- Copyright 2018 Mohammed ALMadhoun <mohelm97@gmail.com> -->
 <component type="desktop"> 
-  <id>com.github.dr-Styki.ScreenRec</id>
+  <id>com.github.dr-styki.screenrec</id>
   <metadata_license>CC0</metadata_license>
   <project_license>GPL-3.0</project_license>
   <name>Screen Recorder</name>

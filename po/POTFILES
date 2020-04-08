@@ -2,5 +2,5 @@ src/Application.vala
 src/MainWindow.vala
 src/SaveDialog.vala
 src/Widgets/VideoPlayer.vala
-data/com.github.dr-Styki.ScreenRec.desktop.in
-data/com.github.dr-Styki.ScreenRec.appdata.xml.in
+data/com.github.dr-styki.screenrec.desktop.in
+data/com.github.dr-styki.screenrec.appdata.xml.in

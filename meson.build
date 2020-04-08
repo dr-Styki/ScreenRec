@@ -1,5 +1,5 @@
 # project name and programming language
-project('com.github.dr-Styki.ScreenRec', 'vala', 'c')
+project('com.github.dr-styki.screenrec', 'vala', 'c')
 
 # Include the translations module
 i18n = import('i18n')

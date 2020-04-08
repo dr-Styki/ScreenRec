@@ -33,13 +33,13 @@ namespace ScreenRec {
 
         public ScreenRecApp () {
             Object (
-                application_id: "com.github.dr-Styki.ScreenRec",
+                application_id: "com.github.dr-styki.screenrec",
                 flags: ApplicationFlags.FLAGS_NONE
             );
         }
         
         construct {
-            settings = new GLib.Settings ("com.github.dr-Styki.ScreenRec");
+            settings = new GLib.Settings ("com.github.dr-styki.screenrec");
             weak Gtk.IconTheme default_theme = Gtk.IconTheme.get_default ();
             default_theme.add_resource_path ("/com/github/dr-Styki/ScreenRec");
 

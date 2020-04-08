@@ -2,7 +2,7 @@
 A simple screen recording tool which was make to work like the elementary OS Screenshot tool.
 
 <!-- <p align="left">
-  <a href="https://appcenter.elementary.io/com.github.dr-Styki.ScreenRec"><img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" /></a>
+  <a href="https://appcenter.elementary.io/com.github.dr-styki.screenrec"><img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" /></a>
 </p> -->
 
 <p align="center"><img src="data/screenshot_1.png" width="385"></br><img src="data/screenshot_2.png" width="470"></p>
@@ -26,10 +26,10 @@ Run `meson` to configure the build environment and then `ninja` to build and ins
     cd build
     ninja
 
-To install, use `ninja install`, then execute with `com.github.dr-Styki.ScreenRec`
+To install, use `ninja install`, then execute with `com.github.dr-styki.screenrec`
 
     sudo ninja install
-    com.github.dr-Styki.ScreenRec
+    com.github.dr-styki.screenrec
 
 ## Credits
 Forked from [screenrecorder](https://github.com/Mohelm97/screenrecorder) by [Mohelm97](https://github.com/Mohelm97)
