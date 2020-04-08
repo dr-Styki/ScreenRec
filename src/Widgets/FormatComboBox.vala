@@ -35,11 +35,14 @@ namespace ScreenRec {
                     case "mp4":
                         active = 1;
                         break;
-                    case "mov":
+                    case "mkv":
                         active = 2;
                         break;
-                    case "gif":
+                    case "mov":
                         active = 3;
+                        break;
+                    case "gif":
+                        active = 4;
                         break;
                 }
             }
@@ -47,6 +50,7 @@ namespace ScreenRec {
         public FormatComboBox () {
             append_text ("raw");
             append_text ("mp4");
+            append_text ("mkv");
             append_text ("mov");
             append_text ("gif");
             changed.connect (() => {
