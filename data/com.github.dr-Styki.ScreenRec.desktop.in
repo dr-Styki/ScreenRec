@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=ScreenRec
-Comment=A simple screen recorder app designed for elementary OS
+Name=Screen Recorder
+Comment=Record videos of the screen
 Exec=com.github.dr-Styki.ScreenRec
 Icon=com.github.dr-Styki.ScreenRec
 Terminal=false

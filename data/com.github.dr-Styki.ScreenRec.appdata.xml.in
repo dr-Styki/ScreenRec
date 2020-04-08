@@ -1,39 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2020 Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng> -->
 <!-- Copyright 2018 Mohammed ALMadhoun <mohelm97@gmail.com> -->
-<component type="desktop">
+<component type="desktop"> 
   <id>com.github.dr-Styki.ScreenRec</id>
   <metadata_license>CC0</metadata_license>
   <project_license>GPL-3.0</project_license>
-  <name>ScreenRec</name>
-  <summary>A simple screen recording app for daily use.</summary>
+  <name>Screen Recorder</name>
+  <summary>Record videos of the screen</summary>
   <description>
-    <p>A screen recording app using FFmpeg, with a small set of useful features! </p>
+    <p>A simple screen recording tool which was make to work like the elementary OS Screenshot tool.</p>
     <p>Features include:</p>
     <ul>
-      <li>gif recording</li>
       <li>Recording sound from speakers</li>
       <li>Recording sound from microphone</li>
-      <li>Available format: MP4, MOV and GIF</li>
+      <li>Available format: MKV, MP4, MOV and GIF</li>
     </ul>
   </description>
   <releases>
-    <release version="0.2" date="2019-03-13" urgency="medium">
-        <description>
-            <p>Add scaling option</p>
-            <p>Minor bug fixes</p>
-            <p>New translations</p>
-        </description>
+    <release version="0.1" date="2020-04-09">
+      <description>
+        <p>First Release after the fork of the screenrecorder app by Mohammed ALMadhoun</p>
+      </description>
     </release>
-    <release version="0.1" date="2018-12-17" />
   </releases>
 
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/mohelm97/screenrecorder/master/data/screenshot_1.png</image>
+      <image>https://raw.githubusercontent.com/dr-Styki/ScreenRec/master/data/screenshot_1.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/mohelm97/screenrecorder/master/data/screenshot_2.png</image>
+      <image>https://raw.githubusercontent.com/dr-Styki/ScreenRec/master/data/screenshot_2.png</image>
     </screenshot>
   </screenshots>
 
@@ -59,7 +55,7 @@
     <content_attribute id="language-humor">none</content_attribute>
     <content_attribute id="language-discrimination">none</content_attribute>
     <content_attribute id="social-chat">none</content_attribute>
-    <content_attribute id="social-info">mild</content_attribute>
+    <content_attribute id="social-info">none</content_attribute>
     <content_attribute id="social-audio">none</content_attribute>
     <content_attribute id="social-location">none</content_attribute>
     <content_attribute id="social-contacts">none</content_attribute>
@@ -67,13 +63,8 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
 
-  <developer_name>Mohammed ALMadhoun</developer_name>
+  <developer_name>Stevy THOMAS (dr_Styki)</developer_name>
   <url type="homepage">https://github.com/dr-Styki/ScreenRec</url>
   <url type="bugtracker">https://github.com/dr-Styki/ScreenRec/issues</url>
   <url type="help">https://github.com/dr-Styki/ScreenRec/issues</url>
-
-  <custom>
-    <value key="x-appcenter-color-primary">#c6262e</value>
-    <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
-  </custom>
 </component>

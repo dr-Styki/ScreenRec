@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the com.github.mohelm97.screenrecorder package.
+# This file is distributed under the same license as the com.github.dr-Styki.ScreenRec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: com.github.mohelm97.screenrecorder\n"
+"Project-Id-Version: com.github.dr-Styki.ScreenRec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-23 19:13+0100\n"
+"POT-Creation-Date: 2020-04-08 20:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,16 +73,12 @@ msgstr ""
 msgid "Toggle recording"
 msgstr ""
 
-#: src/MainWindow.vala:169
-msgid "Light background"
+#: src/MainWindow.vala:140
+msgid "Close"
 msgstr ""
 
-#: src/MainWindow.vala:170
-msgid "Dark background"
-msgstr ""
-
-#: src/MainWindow.vala:174 data/com.github.mohelm97.screenrecorder.desktop.in:3
-#: data/com.github.mohelm97.screenrecorder.appdata.xml.in:7
+#: src/MainWindow.vala:174 data/com.github.dr-Styki.ScreenRec.desktop.in:3
+#: data/com.github.dr-Styki.ScreenRec.appdata.xml.in:7
 msgid "Screen Recorder"
 msgstr ""
 
@@ -106,10 +102,6 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: src/SaveDialog.vala:126
-msgid "Save Original"
-msgstr ""
-
 #: src/SaveDialog.vala:128
 msgid "Save"
 msgstr ""
@@ -131,59 +123,35 @@ msgstr ""
 msgid "Toggle playing"
 msgstr ""
 
-#: data/com.github.mohelm97.screenrecorder.desktop.in:4
-msgid "Simple tool to record the screen using ffmpeg"
+#: data/com.github.dr-Styki.ScreenRec.desktop.in:4 data/com.github.dr-Styki.ScreenRec.appdata.xml.in:8
+msgid "Record videos of the screen"
 msgstr ""
 
-#: data/com.github.mohelm97.screenrecorder.desktop.in:6
-msgid "com.github.mohelm97.screenrecorder"
+#: data/com.github.dr-Styki.ScreenRec.desktop.in:10
+msgid "Screenshot;Screen;Record;Recording;"
 msgstr ""
 
-#: data/com.github.mohelm97.screenrecorder.desktop.in:10
-msgid "Snapshot;Screenshot;Screen;Record;Recording;"
-msgstr ""
-
-#: data/com.github.mohelm97.screenrecorder.appdata.xml.in:8
-msgid "A simple screen recording app for daily use."
-msgstr ""
-
-#: data/com.github.mohelm97.screenrecorder.appdata.xml.in:10
+#: data/com.github.dr-Styki.ScreenRec.appdata.xml.in:10
 msgid ""
-"A screen recording app using FFmpeg, with a small set of useful features!"
+"A simple screen recording tool which was make to work like the elementary OS Screenshot tool."
 msgstr ""
 
-#: data/com.github.mohelm97.screenrecorder.appdata.xml.in:11
+#: data/com.github.dr-Styki.ScreenRec.appdata.xml.in:11
 msgid "Features include:"
 msgstr ""
 
-#: data/com.github.mohelm97.screenrecorder.appdata.xml.in:13
+#: data/com.github.dr-Styki.ScreenRec.appdata.xml.in:13
 msgid "gif recording"
 msgstr ""
 
-#: data/com.github.mohelm97.screenrecorder.appdata.xml.in:14
+#: data/com.github.dr-Styki.ScreenRec.appdata.xml.in:14
 msgid "Recording sound from speakers"
 msgstr ""
 
-#: data/com.github.mohelm97.screenrecorder.appdata.xml.in:15
+#: data/com.github.dr-Styki.ScreenRec.appdata.xml.in:15
 msgid "Recording sound from microphone"
 msgstr ""
 
-#: data/com.github.mohelm97.screenrecorder.appdata.xml.in:16
-msgid "Available format: MP4, MOV and GIF"
-msgstr ""
-
-#: data/com.github.mohelm97.screenrecorder.appdata.xml.in:22
-msgid "Add scaling option"
-msgstr ""
-
-#: data/com.github.mohelm97.screenrecorder.appdata.xml.in:23
-msgid "Minor bug fixes"
-msgstr ""
-
-#: data/com.github.mohelm97.screenrecorder.appdata.xml.in:24
-msgid "New translations"
-msgstr ""
-
-#: data/com.github.mohelm97.screenrecorder.appdata.xml.in:69
-msgid "Mohammed ALMadhoun"
+#: data/com.github.dr-Styki.ScreenRec.appdata.xml.in:16
+msgid "Available format: MKV, MP4, MOV and GIF"
 msgstr ""
