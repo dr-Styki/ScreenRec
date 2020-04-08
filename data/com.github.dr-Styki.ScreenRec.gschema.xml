@@ -11,9 +11,6 @@
         <key name="record-microphone" type="b">
             <default>false</default>
         </key>
-        <key name="dark-theme" type="b">
-            <default>false</default>
-        </key>
         <key name="format" type="s">
             <default>"mp4"</default>
         </key>
