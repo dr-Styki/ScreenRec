@@ -1,5 +1,5 @@
 # ScreenRec
-A simple screen recorder app designed for elementary OS
+A simple screen recording tool which was make to work like the elementary OS Screenshot tool.
 
 <!-- <p align="left">
   <a href="https://appcenter.elementary.io/com.github.dr-Styki.ScreenRec"><img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" /></a>
