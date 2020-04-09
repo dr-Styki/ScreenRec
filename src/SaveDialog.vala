@@ -150,6 +150,10 @@ namespace ScreenRec {
  
             if (response_id == 1) {
 
+                if (preview.is_playing()) {
+                    preview.play_pause();
+                }
+
                 if (format_cmb.get_active_text () == "raw") {
 
                     File tmp_file = File.new_for_path (filepath);
