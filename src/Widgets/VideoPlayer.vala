@@ -23,6 +23,7 @@ namespace ScreenRec {
     public class VideoPlayer : Gtk.Box  {
         private string fileuri;
         private ClutterGst.Playback playback;
+        private Gtk.Button play_button;
         private GtkClutter.Embed clutter;
         private Clutter.Actor video_actor;
         private Clutter.Stage stage;
@@ -96,15 +97,10 @@ namespace ScreenRec {
                 seek_bar.scale.get_style_context ().add_provider (slider_css, Gtk.STYLE_PROVIDER_PRIORITY_USER+1);
             } catch (Error e) {}
 
-            var play_button = new Gtk.Button.from_icon_name ("media-playback-pause-symbolic", Gtk.IconSize.BUTTON);
+            play_button = new Gtk.Button.from_icon_name ("media-playback-pause-symbolic", Gtk.IconSize.BUTTON);
             play_button.tooltip_text = _("Toggle playing");
             play_button.clicked.connect (() => {
-                playback.playing = !playback.playing;
-                if (playback.playing) {
-                    ((Gtk.Image) play_button.image).icon_name = "media-playback-pause-symbolic";
-                } else {
-                    ((Gtk.Image) play_button.image).icon_name = "media-playback-start-symbolic";
-                }
+                play_pause();
             });
             action_bar.pack_start (play_button);
             action_bar.set_center_widget (seek_bar);
@@ -132,7 +128,20 @@ namespace ScreenRec {
             playback.playing = false;
             playback.uri = null;
         }
-        
+
+        public void play_pause() {
+            playback.playing = !playback.playing;
+            if (playback.playing) {
+                ((Gtk.Image) play_button.image).icon_name = "media-playback-pause-symbolic";
+            } else {
+                ((Gtk.Image) play_button.image).icon_name = "media-playback-start-symbolic";
+            }
+        }
+
+        public bool is_playing() {
+            return playback.playing;
+        }
+
         public override void get_preferred_width (out int minimum_width, out int natural_width) {
             minimum_width = clutter.width_request;
             natural_width = clutter.width_request;
