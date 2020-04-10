@@ -20,6 +20,9 @@
         <key name="show-borders" type="b">
             <default>true</default>
         </key>
+        <key name="close-on-save" type="b">
+            <default>true</default>
+        </key>
         <key name="delay" type="i">
             <range min="0" max="15"/>
             <default>1</default>

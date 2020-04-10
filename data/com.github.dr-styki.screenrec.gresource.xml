@@ -4,5 +4,9 @@
     <file alias="grab-area-symbolic.svg" compressed="true" preprocess="xml-stripblanks">grab-area-symbolic.svg</file>
     <file alias="grab-screen-symbolic.svg" compressed="true" preprocess="xml-stripblanks">grab-screen-symbolic.svg</file>
     <file alias="grab-window-symbolic.svg" compressed="true" preprocess="xml-stripblanks">grab-window-symbolic.svg</file>
+    <file alias="audio-volume-muted-symbolic.svg" compressed="true" preprocess="xml-stripblanks">audio-volume-muted-symbolic.svg</file>
+    <file alias="audio-volume-high-symbolic.svg" compressed="true" preprocess="xml-stripblanks">audio-volume-high-symbolic.svg</file>
+    <file alias="microphone-sensitivity-muted-symbolic.svg" compressed="true" preprocess="xml-stripblanks">microphone-sensitivity-muted-symbolic.svg</file>
+    <file alias="microphone-sensitivity-symbolic.svg" compressed="true" preprocess="xml-stripblanks">microphone-sensitivity-symbolic.svg</file>
   </gresource>
 </gresources>
