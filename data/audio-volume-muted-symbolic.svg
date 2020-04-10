@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="24"
+   width="24"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="audio-volume-muted-symbolic.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata12">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs10" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1148"
+     inkscape:window-height="874"
+     id="namedview8"
+     showgrid="false"
+     inkscape:zoom="19.666667"
+     inkscape:cx="9.2856262"
+     inkscape:cy="11.791969"
+     inkscape:window-x="1708"
+     inkscape:window-y="406"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g4" />
+  <g
+     transform="translate(-713 295)"
+     id="g4">
+    <path
+       color="#bebebe"
+       d="M722-289.5l-4 3.5h-2v6h2l4 3.5zm3 3.5v1l2 2-2 2v1h1l2-2 2 2h1v-1l-2-2 2-2v-1h-1l-2 2-2-2z"
+       fill="#666"
+       opacity=".4"
+       overflow="visible"
+       style="marker:none;fill:#555761;fill-opacity:1;opacity:1"
+       id="path2" />
+  </g>
+</svg>

@@ -43,6 +43,11 @@ namespace ScreenRec {
         private Gtk.Switch borders_switch;
         private Gtk.ComboBoxText format_cmb;
 
+        private Gtk.Image speaker_icon;
+        private Gtk.Image speaker_icon_mute;
+        private Gtk.Image mic_icon;
+        private Gtk.Image mic_icon_mute;
+
         private bool recording = false;
         private bool save_dialog_present = false;
         private int delay;
@@ -51,6 +56,8 @@ namespace ScreenRec {
         private string tmpfilepath;
         private int last_recording_width = 0;
         private int last_recording_height = 0;
+        private bool speakers_record = false;
+        private bool mic_record = false;
 
         public bool is_recording () {
             return recording;
@@ -66,7 +73,6 @@ namespace ScreenRec {
 
         construct {
             set_keep_above (true);
-            
             GLib.Settings settings = ScreenRecApp.settings;
 
             // Select Screen/Area
@@ -110,22 +116,41 @@ namespace ScreenRec {
             var audio_label = new Gtk.Label (_("Record sounds:"));
             audio_label.halign = Gtk.Align.END;
 
-            var record_speakers_btn = new Gtk.CheckButton ();
+                // From Speakers
+            record_speakers_btn = new Gtk.CheckButton ();
             record_speakers_btn.tooltip_text = _("Record sounds from speakers");
-            //record_speakers_btn.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
-            var speaker_icon = new Gtk.Image ();
-            speaker_icon.gicon = new ThemedIcon ("audio-volume-high-symbolic");
-            speaker_icon.pixel_size = 24;
-            record_speakers_btn.image = speaker_icon;
+            record_speakers_btn.toggled.connect(() => {
+                speakers_record = !speakers_record;
+                if (speakers_record) {
+                    record_speakers_btn.image = speaker_icon;
+                    record_speakers_btn.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
+                } else {
+                    record_speakers_btn.image = speaker_icon_mute;
+                    record_speakers_btn.get_style_context ().remove_class (Granite.STYLE_CLASS_ACCENT);
+                }
+            });
+            speaker_icon = new Gtk.Image.from_icon_name ("audio-volume-high-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+            speaker_icon_mute = new Gtk.Image.from_icon_name ("audio-volume-muted-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+            record_speakers_btn.image = speaker_icon_mute;
 
-            var record_mic_btn = new Gtk.CheckButton ();
+                // From Mic
+            record_mic_btn = new Gtk.CheckButton ();
             record_mic_btn.tooltip_text = _("Record sounds from microphone");
-            //record_mic_btn.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
-            var mic_icon = new Gtk.Image ();
-            mic_icon.gicon = new ThemedIcon ("audio-input-microphone-symbolic");
-            mic_icon.pixel_size = 24;
-            record_mic_btn.image = mic_icon;
+            record_mic_btn.toggled.connect(() => {
+                mic_record = !mic_record;
+                if (mic_record) {
+                    record_mic_btn.image = mic_icon;
+                    record_mic_btn.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
+                } else {
+                    record_mic_btn.image = mic_icon_mute;
+                    record_mic_btn.get_style_context ().remove_class (Granite.STYLE_CLASS_ACCENT);
+                }
+            });
+            mic_icon = new Gtk.Image.from_icon_name ("microphone-sensitivity-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+            mic_icon_mute = new Gtk.Image.from_icon_name ("microphone-sensitivity-muted-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+            record_mic_btn.image = mic_icon_mute;
 
+                // Audio Buttons Grid
             var audio_grid = new Gtk.Grid ();
             audio_grid.halign = Gtk.Align.START;
             audio_grid.column_spacing = 12;
@@ -213,9 +238,7 @@ namespace ScreenRec {
             set_titlebar (titlebar);
             add (grid);
 
-
             var gtk_settings = Gtk.Settings.get_default ();
-
             settings.bind ("mouse-pointer", pointer_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("show-borders", borders_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("record-computer", record_speakers_btn, "active", GLib.SettingsBindFlags.DEFAULT);
@@ -342,8 +365,8 @@ namespace ScreenRec {
                 (float) scale_percentage / 100,
                 pointer_switch.get_state (),
                 borders_switch.get_state (),
-                record_speakers_btn.get_active (),
-                record_mic_btn.get_active ()
+                speakers_record,
+                mic_record
             );
             sub_grid.set_sensitive (false);
             radio_grid.set_sensitive (false);
