@@ -41,6 +41,7 @@ namespace ScreenRec {
         private Gtk.CheckButton record_mic_btn;
         private Gtk.Switch pointer_switch;
         private Gtk.Switch borders_switch;
+        private Gtk.Switch close_switch;
         private Gtk.ComboBoxText format_cmb;
 
         private Gtk.Image speaker_icon;
@@ -102,7 +103,7 @@ namespace ScreenRec {
             var close_label = new Gtk.Label (_("Close after saving:"));
             close_label.halign = Gtk.Align.END;
 
-            var close_switch = new Gtk.Switch ();
+            close_switch = new Gtk.Switch ();
             close_switch.halign = Gtk.Align.START;
 
             // Show border Area ?
@@ -241,6 +242,7 @@ namespace ScreenRec {
             var gtk_settings = Gtk.Settings.get_default ();
             settings.bind ("mouse-pointer", pointer_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("show-borders", borders_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            settings.bind ("close-on-save", close_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("record-computer", record_speakers_btn, "active", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("record-microphone", record_mic_btn, "active", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("delay", delay_spin, "value", GLib.SettingsBindFlags.DEFAULT);
@@ -387,6 +389,9 @@ namespace ScreenRec {
             save_dialog.set_keep_above (false);
             save_dialog.close.connect (() => {
                 save_dialog_present = false;
+                if(close_switch.get_state()) {
+                    close();
+                }
             });
             sub_grid.set_sensitive (true);
             radio_grid.set_sensitive (true);
