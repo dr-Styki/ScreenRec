@@ -17,6 +17,11 @@
     </ul>
   </description>
   <releases>
+    <release version="1.2.0" date="2020-04-11">
+      <description>
+        <p>UI Improvements</p>
+      </description>
+    </release>
     <release version="1.1.0" date="2020-04-09">
       <description>
         <p>First Release after the fork of the screenrecorder app by Mohammed ALMadhoun</p>
