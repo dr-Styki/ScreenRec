@@ -34,7 +34,7 @@ msgstr "Saisir une zone à capturer"
 msgid "Grab mouse pointer:"
 msgstr "Capturer le pointeur de la souris :"
 
-msgid ""Close after saving:""
+msgid "Close after saving:"
 msgstr "Fermer après l'enregistrement :"
 
 msgid "Record sounds:"

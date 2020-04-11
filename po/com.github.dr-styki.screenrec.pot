@@ -33,7 +33,7 @@ msgstr ""
 msgid "Grab mouse pointer:"
 msgstr ""
 
-msgid ""Close after saving:""
+msgid "Close after saving:"
 msgstr ""
 
 msgid "Record sounds:"
