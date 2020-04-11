@@ -34,13 +34,19 @@ msgstr "Saisir une zone à capturer"
 msgid "Grab mouse pointer:"
 msgstr "Capturer le pointeur de la souris :"
 
+msgid ""Close after saving:""
+msgstr "Fermer après l'enregistrement :"
+
+msgid "Record sounds:"
+msgstr "Enregistrer le son :"
+
 #: src/MainWindow.vala:81
-msgid "Record computer sounds:"
-msgstr "Enregistrer les sons de l'ordinateur :"
+msgid "Record sounds from speakers"
+msgstr "Enregistrer le son des enceintes"
 
 #: src/MainWindow.vala:88
-msgid "Record from microphone:"
-msgstr "Enregistrer le microphone :"
+msgid "Record sounds from microphone"
+msgstr "Enregistrer le son du micro"
 
 #: src/MainWindow.vala:95
 msgid "Show borders:"

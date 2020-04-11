@@ -33,12 +33,18 @@ msgstr ""
 msgid "Grab mouse pointer:"
 msgstr ""
 
+msgid ""Close after saving:""
+msgstr ""
+
+msgid "Record sounds:"
+msgstr ""
+
 #: src/MainWindow.vala:81
-msgid "Record computer sounds:"
+msgid "Record sounds from speakers"
 msgstr ""
 
 #: src/MainWindow.vala:88
-msgid "Record from microphone:"
+msgid "Record sounds from microphone"
 msgstr ""
 
 #: src/MainWindow.vala:95
