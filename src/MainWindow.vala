@@ -37,11 +37,17 @@ namespace ScreenRec {
         private Gtk.Box actions;
         private Gtk.Button record_btn;
         private Gtk.Button stop_btn;
-        private Gtk.Switch record_cmp_switch;
-        private Gtk.Switch record_mic_switch;
+        private Gtk.CheckButton record_speakers_btn;
+        private Gtk.CheckButton record_mic_btn;
         private Gtk.Switch pointer_switch;
         private Gtk.Switch borders_switch;
+        private Gtk.Switch close_switch;
         private Gtk.ComboBoxText format_cmb;
+
+        private Gtk.Image speaker_icon;
+        private Gtk.Image speaker_icon_mute;
+        private Gtk.Image mic_icon;
+        private Gtk.Image mic_icon_mute;
 
         private bool recording = false;
         private bool save_dialog_present = false;
@@ -51,6 +57,8 @@ namespace ScreenRec {
         private string tmpfilepath;
         private int last_recording_width = 0;
         private int last_recording_height = 0;
+        private bool speakers_record = false;
+        private bool mic_record = false;
 
         public bool is_recording () {
             return recording;
@@ -66,9 +74,9 @@ namespace ScreenRec {
 
         construct {
             set_keep_above (true);
-            
             GLib.Settings settings = ScreenRecApp.settings;
 
+            // Select Screen/Area
             var all = new Gtk.RadioButton (null);
             all.image = new Gtk.Image.from_icon_name ("grab-screen-symbolic", Gtk.IconSize.DND);
             all.tooltip_text = _("Grab the whole screen");
@@ -84,79 +92,126 @@ namespace ScreenRec {
             radio_grid.add (all);
             radio_grid.add (selection);
 
+            // Grab mouse pointer ? 
             var pointer_label = new Gtk.Label (_("Grab mouse pointer:"));
             pointer_label.halign = Gtk.Align.END;
 
             pointer_switch = new Gtk.Switch ();
             pointer_switch.halign = Gtk.Align.START;
 
+            // Close after saving ?
+            var close_label = new Gtk.Label (_("Close after saving:"));
+            close_label.halign = Gtk.Align.END;
+
+            close_switch = new Gtk.Switch ();
+            close_switch.halign = Gtk.Align.START;
+
+            // Show border Area ?
             var borders_label = new Gtk.Label (_("Show borders:"));
             borders_label.halign = Gtk.Align.END;
 
             borders_switch = new Gtk.Switch ();
             borders_switch.halign = Gtk.Align.START;
 
-            var record_cmp_label = new Gtk.Label (_("Record computer sounds:"));
-            record_cmp_label.halign = Gtk.Align.END;
+            // Record Sounds ?
+            var audio_label = new Gtk.Label (_("Record sounds:"));
+            audio_label.halign = Gtk.Align.END;
 
-            record_cmp_switch = new Gtk.Switch ();
-            record_cmp_switch.halign = Gtk.Align.START;
-            record_cmp_switch.bind_property ("sensitive", record_cmp_label, "sensitive", GLib.BindingFlags.DEFAULT);
+                // From Speakers
+            record_speakers_btn = new Gtk.CheckButton ();
+            record_speakers_btn.tooltip_text = _("Record sounds from speakers");
+            record_speakers_btn.toggled.connect(() => {
+                speakers_record = !speakers_record;
+                if (speakers_record) {
+                    record_speakers_btn.image = speaker_icon;
+                    record_speakers_btn.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
+                } else {
+                    record_speakers_btn.image = speaker_icon_mute;
+                    record_speakers_btn.get_style_context ().remove_class (Granite.STYLE_CLASS_ACCENT);
+                }
+            });
+            speaker_icon = new Gtk.Image.from_icon_name ("audio-volume-high-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+            speaker_icon_mute = new Gtk.Image.from_icon_name ("audio-volume-muted-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+            record_speakers_btn.image = speaker_icon_mute;
 
-            var record_mic_label = new Gtk.Label (_("Record from microphone:"));
-            record_mic_label.halign = Gtk.Align.END;
+                // From Mic
+            record_mic_btn = new Gtk.CheckButton ();
+            record_mic_btn.tooltip_text = _("Record sounds from microphone");
+            record_mic_btn.toggled.connect(() => {
+                mic_record = !mic_record;
+                if (mic_record) {
+                    record_mic_btn.image = mic_icon;
+                    record_mic_btn.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
+                } else {
+                    record_mic_btn.image = mic_icon_mute;
+                    record_mic_btn.get_style_context ().remove_class (Granite.STYLE_CLASS_ACCENT);
+                }
+            });
+            mic_icon = new Gtk.Image.from_icon_name ("microphone-sensitivity-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+            mic_icon_mute = new Gtk.Image.from_icon_name ("microphone-sensitivity-muted-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+            record_mic_btn.image = mic_icon_mute;
 
-            record_mic_switch = new Gtk.Switch ();
-            record_mic_switch.halign = Gtk.Align.START;
-            record_mic_switch.bind_property ("sensitive", record_mic_label, "sensitive", GLib.BindingFlags.DEFAULT);
+                // Audio Buttons Grid
+            var audio_grid = new Gtk.Grid ();
+            audio_grid.halign = Gtk.Align.START;
+            audio_grid.column_spacing = 12;
+            audio_grid.add (record_speakers_btn);
+            audio_grid.add (record_mic_btn);
 
+            // Delay before capture ?
             var delay_label = new Gtk.Label (_("Delay in seconds:"));
             delay_label.halign = Gtk.Align.END;
-
             var delay_spin = new Gtk.SpinButton.with_range (0, 15, 1);
 
+            // Frame rate ?
             var framerate_label = new Gtk.Label (_("Frame rate:"));
             framerate_label.halign = Gtk.Align.END;
-
             var framerate_spin = new Gtk.SpinButton.with_range (1, 120, 1);
 
+            // Scale capture ?
             var scale_label = new Gtk.Label (_("Scale:"));
             scale_label.halign = Gtk.Align.END;
-
             var scale_combobox = new ScaleComboBox ();
 
-            format_cmb = new FormatComboBox ();
-
+            // Record Button
             record_btn = new Gtk.Button.with_label (_("Record Screen"));
             record_btn.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
             record_btn.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl><Shift>R"}, _("Toggle recording"));
             record_btn.can_default = true;
             this.set_default (record_btn);
 
+            // Stop Button
             stop_btn = new Gtk.Button.with_label (_("Stop Recording"));
             stop_btn.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
             stop_btn.tooltip_markup = record_btn.tooltip_markup;
 
+            // Close Button
             var close_btn = new Gtk.Button.with_label (_("Close"));
 
+            // Format Combo Box (Visible on Save Dialog)
+            format_cmb = new FormatComboBox ();
+
+            // Actions : [Close][Record]
             actions = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
             actions.margin_top = 24;
             actions.set_homogeneous(true);
             actions.add (close_btn);
             actions.add (record_btn);
 
+            // Sub Grid, all switch/checkbox/combobox/spin
+            // except Actions.
             sub_grid = new Gtk.Grid ();
             sub_grid.margin = 0;
             sub_grid.row_spacing = 6;
             sub_grid.column_spacing = 12;
             sub_grid.attach (pointer_label     , 0, 1, 1, 1);
             sub_grid.attach (pointer_switch    , 1, 1, 1, 1);
-            sub_grid.attach (borders_label     , 0, 2, 1, 1);
-            sub_grid.attach (borders_switch    , 1, 2, 1, 1);
-            sub_grid.attach (record_cmp_label  , 0, 3, 1, 1);
-            sub_grid.attach (record_cmp_switch , 1, 3, 1, 1);
-            sub_grid.attach (record_mic_label  , 0, 4, 1, 1);
-            sub_grid.attach (record_mic_switch , 1, 4, 1, 1);
+            sub_grid.attach (close_label       , 0, 2, 1, 1);
+            sub_grid.attach (close_switch      , 1, 2, 1, 1);
+            sub_grid.attach (borders_label     , 0, 3, 1, 1);
+            sub_grid.attach (borders_switch    , 1, 3, 1, 1);
+            sub_grid.attach (audio_label       , 0, 4, 1, 1);
+            sub_grid.attach (audio_grid        , 1, 4, 1, 1);
             sub_grid.attach (delay_label       , 0, 5, 1, 1);
             sub_grid.attach (delay_spin        , 1, 5, 1, 1);
             sub_grid.attach (framerate_label   , 0, 6, 1, 1);
@@ -164,6 +219,7 @@ namespace ScreenRec {
             sub_grid.attach (scale_label       , 0, 7, 1, 1);
             sub_grid.attach (scale_combobox    , 1, 7, 1, 1);
 
+            // Main Grid
             grid = new Gtk.Grid ();
             grid.margin = 6;
             grid.margin_top = 0;
@@ -171,7 +227,7 @@ namespace ScreenRec {
             grid.attach (sub_grid   , 0, 1, 2, 7);
             grid.attach (actions    , 0, 8, 2, 1);
 
-
+            // TitleBar (HeaderBar) with radio_grid (Screen/Area selection) attach.
             var titlebar = new Gtk.HeaderBar ();
             titlebar.has_subtitle = false;
             titlebar.set_custom_title (radio_grid);
@@ -183,13 +239,12 @@ namespace ScreenRec {
             set_titlebar (titlebar);
             add (grid);
 
-
             var gtk_settings = Gtk.Settings.get_default ();
-
             settings.bind ("mouse-pointer", pointer_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("show-borders", borders_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            settings.bind ("record-computer", record_cmp_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            settings.bind ("record-microphone", record_mic_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            settings.bind ("close-on-save", close_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            settings.bind ("record-computer", record_speakers_btn, "active", GLib.SettingsBindFlags.DEFAULT);
+            settings.bind ("record-microphone", record_mic_btn, "active", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("delay", delay_spin, "value", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("framerate", framerate_spin, "value", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("scale", scale_combobox, "scale", GLib.SettingsBindFlags.DEFAULT);
@@ -312,8 +367,8 @@ namespace ScreenRec {
                 (float) scale_percentage / 100,
                 pointer_switch.get_state (),
                 borders_switch.get_state (),
-                record_cmp_switch.get_state (),
-                record_mic_switch.get_state ()
+                speakers_record,
+                mic_record
             );
             sub_grid.set_sensitive (false);
             radio_grid.set_sensitive (false);
@@ -334,6 +389,9 @@ namespace ScreenRec {
             save_dialog.set_keep_above (false);
             save_dialog.close.connect (() => {
                 save_dialog_present = false;
+                if(close_switch.get_state()) {
+                    close();
+                }
             });
             sub_grid.set_sensitive (true);
             radio_grid.set_sensitive (true);
