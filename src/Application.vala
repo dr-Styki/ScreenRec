@@ -27,7 +27,7 @@ namespace ScreenRec {
     public class ScreenRecApp : Gtk.Application {
         
         public static GLib.Settings settings;
-        private MainWindow window = null;
+        private ScreenrecorderWindow window = null;
 
         public const string SAVE_FOLDER = _("Screen Records");
 
@@ -78,7 +78,7 @@ namespace ScreenRec {
                 window.present ();
                 return;
             }
-            window = new MainWindow (this);
+            window = new ScreenrecorderWindow (this);
             window.get_style_context ().add_class ("rounded");
             window.show_all ();
         }

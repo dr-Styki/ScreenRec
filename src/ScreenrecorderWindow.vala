@@ -23,10 +23,11 @@
 
 namespace ScreenRec {
 
-    public class MainWindow : Gtk.ApplicationWindow  {
+    public class ScreenrecorderWindow : Gtk.ApplicationWindow  {
 
         private enum CaptureType {
             SCREEN,
+            CURRENT_WINDOW,
             AREA
         }
         private FFmpegWrapper? ffmpegwrapper;
@@ -64,7 +65,7 @@ namespace ScreenRec {
             return recording;
         }
 
-        public MainWindow (Gtk.Application app){
+        public ScreenrecorderWindow (Gtk.Application app){
             Object (
                 application: app,
                 border_width: 6,
@@ -81,7 +82,11 @@ namespace ScreenRec {
             all.image = new Gtk.Image.from_icon_name ("grab-screen-symbolic", Gtk.IconSize.DND);
             all.tooltip_text = _("Grab the whole screen");
 
-            var selection = new Gtk.RadioButton.from_widget (all);
+            var curr_window = new Gtk.RadioButton.from_widget (all);
+            curr_window.image = new Gtk.Image.from_icon_name ("grab-window-symbolic", Gtk.IconSize.DND);
+            curr_window.tooltip_text = _("Grab the current window");
+
+            var selection = new Gtk.RadioButton.from_widget (curr_window);
             selection.image = new Gtk.Image.from_icon_name ("grab-area-symbolic", Gtk.IconSize.DND);
             selection.tooltip_text = _("Select area to grab");
 
@@ -89,7 +94,9 @@ namespace ScreenRec {
             radio_grid.halign = Gtk.Align.CENTER;
             radio_grid.column_spacing = 24;
             radio_grid.margin_top = radio_grid.margin_bottom = 24;
+            radio_grid.margin_start = radio_grid.margin_end = 18;
             radio_grid.add (all);
+            radio_grid.add (curr_window);
             radio_grid.add (selection);
 
             // Grab mouse pointer ? 
@@ -194,6 +201,7 @@ namespace ScreenRec {
             // Actions : [Close][Record]
             actions = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
             actions.margin_top = 24;
+            actions.set_hexpand(true);
             actions.set_homogeneous(true);
             actions.add (close_btn);
             actions.add (record_btn);
@@ -201,6 +209,7 @@ namespace ScreenRec {
             // Sub Grid, all switch/checkbox/combobox/spin
             // except Actions.
             sub_grid = new Gtk.Grid ();
+            sub_grid.halign = Gtk.Align.CENTER;
             sub_grid.margin = 0;
             sub_grid.row_spacing = 6;
             sub_grid.column_spacing = 12;
@@ -224,6 +233,7 @@ namespace ScreenRec {
             grid.margin = 6;
             grid.margin_top = 0;
             grid.row_spacing = 6;
+            grid.set_hexpand(true);
             grid.attach (sub_grid   , 0, 1, 2, 7);
             grid.attach (actions    , 0, 8, 2, 1);
 
