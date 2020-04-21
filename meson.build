@@ -36,10 +36,12 @@ executable(
     'src/ScreenrecorderWindow.vala',
     'src/FFmpegWrapper.vala',
     'src/Widgets/SaveDialog.vala',
+    'src/Widgets/Countdown.vala',
     'src/Widgets/SelectionArea.vala',
     'src/Widgets/VideoPlayer.vala',
     'src/Widgets/FormatComboBox.vala',
     'src/Widgets/ScaleComboBox.vala',
+    'src/Tools/Recorder.vala',
     'src/Utils/KeybindingManager.vala',
     dependencies: dependencies,
     install: true
