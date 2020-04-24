@@ -34,7 +34,6 @@ namespace ScreenRec {
         private Gtk.Entry name_entry;
         private Gtk.Button save_btn;
         private VideoPlayer preview;
-        private FormatComboBox format_cmb;
         private string folder_dir = Environment.get_user_special_dir (UserDirectory.VIDEOS)
         +  "%c".printf(GLib.Path.DIR_SEPARATOR) + ScreenRecApp.SAVE_FOLDER;
 
@@ -78,18 +77,13 @@ namespace ScreenRec {
             var name_label = new Gtk.Label (_("Name:"));
             name_label.halign = Gtk.Align.END;
 
-            var recording_scale = (double) settings.get_int ("scale") / 100;
+            var recording_scale = 1;
             var screen_scale = this.scale_factor;
             var file_name = get_file_name (recording_scale, screen_scale);
 
             name_entry = new Gtk.Entry ();
             name_entry.hexpand = true;
             name_entry.text = file_name;
-
-            var format_label = new Gtk.Label (_("Format:"));
-            format_label.halign = Gtk.Align.END;
-
-            format_cmb = new FormatComboBox ();
 
             var location_label = new Gtk.Label (_("Folder:"));
             location_label.halign = Gtk.Align.END;
@@ -114,10 +108,8 @@ namespace ScreenRec {
             grid.attach (dialog_label, 0, 1, 2, 1);
             grid.attach (name_label, 0, 2, 1, 1);
             grid.attach (name_entry, 1, 2, 1, 1);
-            grid.attach (format_label, 0, 3, 1, 1);
-            grid.attach (format_cmb, 1, 3, 1, 1);
-            grid.attach (location_label, 0, 4, 1, 1);
-            grid.attach (location, 1, 4, 1, 1);
+            grid.attach (location_label, 0, 3, 1, 1);
+            grid.attach (location, 1, 3, 1, 1);
 
             var content = this.get_content_area () as Gtk.Box;
             content.margin_top = 0;
@@ -131,7 +123,6 @@ namespace ScreenRec {
             save_btn.margin_end = 6;
             save_btn.margin_bottom = 6;
 
-            settings.bind ("format", format_cmb, "text_value", GLib.SettingsBindFlags.DEFAULT);
             location.selection_changed.connect (() => {
                 settings.set_string ("folder-dir", location.get_filename ());
                 folder_dir = settings.get_string ("folder-dir");
@@ -154,41 +145,18 @@ namespace ScreenRec {
                     preview.play_pause();
                 }
 
-                if (format_cmb.get_active_text () == "raw") {
-
-                    File tmp_file = File.new_for_path (filepath);
-                    string file_name = Path.build_filename (folder_dir, "%s.%s".printf (name_entry.get_text (), "mp4"));
-                    File save_file = File.new_for_path (file_name);
-                    try {
-                        tmp_file.copy (save_file, 0, null, null);
-                    } catch (Error e) {
-                        print ("Error: %s\n", e.message);
-                    }
-                    close ();
-
-                } 
-                else {
-
-                    save_btn.always_show_image = true;
-                    var spinner = new Gtk.Spinner ();
-                    save_btn.set_image (spinner);
-                    spinner.start ();
-                    sensitive = false;
-                    string save_filepath = Path.build_filename (folder_dir, "%s.%s".printf (name_entry.get_text (), format_cmb.get_active_text ()));
-                    FFmpegWrapper.render_file.begin (filepath, save_filepath, format_cmb.get_active_text (), (obj, res) => {
-                        sensitive = true;
-                        save_btn.set_image (null);
-                        debug ("Render done");
-                        var notification = new Notification (_("Rendering went awesome"));
-                        notification.set_body (_("Click here to open the records folder"));
-                        notification.set_default_action ("app.open-records-folder('%s')".printf(folder_dir));
-                        this.application.send_notification (null, notification);
-                        close ();
-                    });
+                File tmp_file = File.new_for_path (filepath);
+                string file_name = Path.build_filename (folder_dir, "%s.%s".printf (name_entry.get_text (), "mp4"));
+                File save_file = File.new_for_path (file_name);
+                try {
+                    tmp_file.copy (save_file, 0, null, null);
+                } catch (Error e) {
+                    print ("Error: %s\n", e.message);
                 }
-
+                close ();
             } 
             else {
+                
                 close ();
             }
         }

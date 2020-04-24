@@ -86,6 +86,7 @@ namespace ScreenRec {
         public static int main (string[] args) {
             Gtk.init (ref args);
             Gst.init (ref args);
+            Gst.Debug.set_active(true);
             var err = GtkClutter.init (ref args);
             if (err != Clutter.InitError.SUCCESS) {
                 error ("Could not initalize clutter! "+err.to_string ());

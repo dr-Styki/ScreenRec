@@ -32,4 +32,4 @@ To install, use `ninja install`, then execute with `com.github.dr-styki.screenre
     com.github.dr-styki.screenrec
 
 ## Credits
-Forked from [screenrecorder](https://github.com/Mohelm97/screenrecorder) by [Mohelm97](https://github.com/Mohelm97)
+Originaly forked from [screenrecorder](https://github.com/Mohelm97/screenrecorder). Now GREATLY inspired by the code of [Screenshot](https://github.com/elementary/screenshot), [Kazam](https://github.com/hzbd/kazam), [Screencast](https://github.com/artemanufrij/screencast) and [screenrecorder](https://github.com/Mohelm97/screenrecorder).
