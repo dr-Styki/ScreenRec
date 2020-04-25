@@ -18,63 +18,50 @@
 //
 
 namespace ScreenRec {
-    public class Countdown : Granite.Widgets.CompositedWindow {
+
+    public class Countdown : Gtk.Dialog {
+        
         public Gtk.Label count;
         public int time;
 
-        public Countdown () {
+        public Countdown (int time) {
 
-            this.set_default_size (300, 200);
+            this.time = time;
+            this.set_default_size (400, 200);
+            this.set_deletable(false);
             this.window_position = Gtk.WindowPosition.CENTER;
             this.set_keep_above (true);
             this.stick ();
-            this.type_hint = Gdk.WindowTypeHint.SPLASHSCREEN;
-            this.skip_pager_hint = true;
-            this.skip_taskbar_hint = true;
+
+            var content_area = this.get_content_area ();
 
             var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-            box.margin = 40;
-            box.margin_start = box.margin_end = 60;
+            box.margin_start = 30;
+            box.margin_end = 40;
+            box.margin_top = box.margin_bottom = 20;
 
-            var title = new Gtk.Label ("<span size='20000' color='#fbfbfb'>" + _("Recording starts in") + "…" + "</span>");
+            var title = new Gtk.Label ("<span size='20000'>" + _("Recording starts in") + "…" + "</span>");
             title.use_markup = true;
-            title.margin_bottom = 20;
+            title.margin_bottom = 10;
 
-            this.count = new Gtk.Label ("<span size='40000' color='#fbfbfb'>" + time.to_string () + "</span>");
+            this.time = time;
+            this.count = new Gtk.Label ("<span size='50000'>" + time.to_string () + "</span>");
             this.count.use_markup = true;
-
-            var tipp = new Gtk.Label("<span size='10000' color='#fbfbfb' font-style='italic'>" + _("Focus Screencast to stop recording") + "</span>");
-            tipp.use_markup = true;
-            tipp.margin_top = 20;
 
             box.pack_start (title);
             box.pack_start (count);
-            box.pack_start (tipp);
 
-            this.add (box);
+            content_area.add (box);
         }
 
-        public override bool draw (Cairo.Context ctx) {
-            int w = this.get_allocated_width ();
-            int h = this.get_allocated_height ();
+        public void start (Recorder recorder) {
 
-            Granite.Drawing.Utilities.cairo_rounded_rectangle (ctx, 4, 4, w - 8, h - 8, 4);
-
-            ctx.set_source_rgba (0.1, 0.1, 0.1, 0.8);
-            ctx.fill ();
-
-            return base.draw (ctx);
-        }
-
-        public void start (int delay, Recorder recorder) {
-            
-            this.time = delay;
             this.show_all ();
 
             Timeout.add (1000, () => {
                 this.time--;
 
-                count.label = "<span size='40000' color='#fbfbfb'>" + time.to_string () + "</span>";
+                count.label = "<span size='50000'>" + time.to_string () + "</span>";
 
                 if (time == -1) {
                     this.destroy ();

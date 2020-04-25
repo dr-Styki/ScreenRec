@@ -46,7 +46,6 @@ namespace ScreenRec {
         private Gtk.CheckButton record_speakers_btn;
         private Gtk.CheckButton record_mic_btn;
         private Gtk.Switch pointer_switch;
-        private Gtk.Switch borders_switch;
         private Gtk.Switch close_switch;
         private Gtk.ComboBox format_cmb;
         private string extension;
@@ -66,9 +65,9 @@ namespace ScreenRec {
         private bool speakers_record = false;
         private bool mic_record = false;
 
-        public const string[] codec_gsk = {null, "vp8enc", "x264enc", "avenc_huffyuv", "avenc_ljpeg"};
-        public const string[] codec_user = {"RAW (AVI)", "VP8 (WEBM)", "H264 (MP4)", "HUFFYUV (AVI)", "Lossless JPEG (AVI)"};
-        public const string[] codec_ext = {".avi", ".webm", ".mp4", ".avi", ".avi"};
+        public const string[] codec_gsk = {"x264enc", "vp8enc", "avenc_huffyuv", "avenc_ljpeg", "raw"};
+        public const string[] codec_user = {"mp4 (h264)", "webm (vp8)", "avi (huffyuv)", "avi (lossless jpeg)", "avi (raw)"};
+        public const string[] codec_ext = {".mp4", ".webm", ".avi", ".avi", ".avi"};
 
         public Gdk.Window win;
 
@@ -124,13 +123,6 @@ namespace ScreenRec {
 
             close_switch = new Gtk.Switch ();
             close_switch.halign = Gtk.Align.START;
-
-            // Show border Area ?
-            var borders_label = new Gtk.Label (_("Show borders:"));
-            borders_label.halign = Gtk.Align.END;
-
-            borders_switch = new Gtk.Switch ();
-            borders_switch.halign = Gtk.Align.START;
 
             // Record Sounds ?
             var audio_label = new Gtk.Label (_("Record sounds:"));
@@ -189,6 +181,7 @@ namespace ScreenRec {
 
             // Format Combo Box
             var format_label = new Gtk.Label (_("Format:"));
+            format_label.halign = Gtk.Align.END;
 
             Gtk.ListStore list_store = new Gtk.ListStore (3, typeof (string),typeof (string),typeof (string));
 
@@ -206,7 +199,7 @@ namespace ScreenRec {
             Gtk.CellRendererText cell = new Gtk.CellRendererText ();
             format_cmb.pack_start (cell, false);
             format_cmb.set_attributes (cell, "text", Column.CODEC_USER);
-            format_cmb.set_active (2);
+            format_cmb.set_active (0);
             this.format = codec_gsk[format_cmb.get_active()];
             this.extension = codec_ext[format_cmb.get_active()];
             format_cmb.changed.connect (() => {
@@ -249,16 +242,14 @@ namespace ScreenRec {
             sub_grid.attach (pointer_switch    , 1, 1, 1, 1);
             sub_grid.attach (close_label       , 0, 2, 1, 1);
             sub_grid.attach (close_switch      , 1, 2, 1, 1);
-            sub_grid.attach (borders_label     , 0, 3, 1, 1);
-            sub_grid.attach (borders_switch    , 1, 3, 1, 1);
-            sub_grid.attach (audio_label       , 0, 4, 1, 1);
-            sub_grid.attach (audio_grid        , 1, 4, 1, 1);
-            sub_grid.attach (delay_label       , 0, 5, 1, 1);
-            sub_grid.attach (delay_spin        , 1, 5, 1, 1);
-            sub_grid.attach (framerate_label   , 0, 6, 1, 1);
-            sub_grid.attach (framerate_spin    , 1, 6, 1, 1);
-            sub_grid.attach (format_label       , 0, 7, 1, 1);
-            sub_grid.attach (format_cmb    , 1, 7, 1, 1);
+            sub_grid.attach (audio_label       , 0, 3, 1, 1);
+            sub_grid.attach (audio_grid        , 1, 3, 1, 1);
+            sub_grid.attach (delay_label       , 0, 4, 1, 1);
+            sub_grid.attach (delay_spin        , 1, 4, 1, 1);
+            sub_grid.attach (framerate_label   , 0, 5, 1, 1);
+            sub_grid.attach (framerate_spin    , 1, 5, 1, 1);
+            sub_grid.attach (format_label       , 0, 6, 1, 1);
+            sub_grid.attach (format_cmb    , 1, 6, 1, 1);
 
             // Main Grid
             grid = new Gtk.Grid ();
@@ -283,7 +274,6 @@ namespace ScreenRec {
 
             var gtk_settings = Gtk.Settings.get_default ();
             settings.bind ("mouse-pointer", pointer_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            settings.bind ("show-borders", borders_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("close-on-save", close_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("record-computer", record_speakers_btn, "active", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("record-microphone", record_mic_btn, "active", GLib.SettingsBindFlags.DEFAULT);
@@ -424,8 +414,8 @@ namespace ScreenRec {
                             format,
                             win);
 
-            countdown = new Countdown ();
-            countdown.start(delay, recorder);
+            countdown = new Countdown (delay);
+            countdown.start(recorder);
 
             sub_grid.set_sensitive (false);
             radio_grid.set_sensitive (false);
@@ -438,7 +428,7 @@ namespace ScreenRec {
 
             recorder.stop();
             present ();
-            var save_dialog = new SaveDialog (tmpfilepath, this, recorder.width, recorder.height);
+            var save_dialog = new SaveDialog (this, tmpfilepath, recorder.width, recorder.height, extension);
             save_dialog_present = true;
             // set keep above to true just to present the window when we stop recording (Don't know why present () didn't work).
             save_dialog.set_keep_above (true);

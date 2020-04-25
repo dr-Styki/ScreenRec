@@ -30,6 +30,7 @@ namespace ScreenRec {
         public string filepath { get; construct; }
         public int expected_width {get; construct;}
         public int expected_height {get; construct;}
+        private string extension;
 
         private Gtk.Entry name_entry;
         private Gtk.Button save_btn;
@@ -37,7 +38,7 @@ namespace ScreenRec {
         private string folder_dir = Environment.get_user_special_dir (UserDirectory.VIDEOS)
         +  "%c".printf(GLib.Path.DIR_SEPARATOR) + ScreenRecApp.SAVE_FOLDER;
 
-        public SaveDialog (string filepath, Gtk.Window parent, int expected_width, int expected_height) {
+        public SaveDialog (Gtk.Window parent, string filepath, int expected_width, int expected_height, string extension) {
             Object (
                 border_width: 0,
                 deletable: false,
@@ -50,6 +51,8 @@ namespace ScreenRec {
                 expected_height: expected_height,
                 application: parent.application
             );
+
+            this.extension = extension;
 
             response.connect (manage_response);
             close.connect (remove_temp);
@@ -146,7 +149,7 @@ namespace ScreenRec {
                 }
 
                 File tmp_file = File.new_for_path (filepath);
-                string file_name = Path.build_filename (folder_dir, "%s.%s".printf (name_entry.get_text (), "mp4"));
+                string file_name = Path.build_filename (folder_dir, "%s%s".printf (name_entry.get_text (), extension));
                 File save_file = File.new_for_path (file_name);
                 try {
                     tmp_file.copy (save_file, 0, null, null);

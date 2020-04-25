@@ -1,10 +1,14 @@
 /*
+* Rewrite of the python kazam gstreamer backend in Vala.
 * Copyright (c) 2020 Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng>
+*
+* Original code avaible at https://github.com/hzbd/kazam/blob/master/kazam/backend/gstreamer.py
+* Copyright 2012 David Klasinc <bigwhale@lubica.net>
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
 * License as published by the Free Software Foundation; either
-* version 2 of the License, or (at your option) any later version.
+* version 3 of the License, or (at your option) any later version.
 *
 * This program is distributed in the hope that it will be useful,
 * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -196,13 +200,15 @@ namespace ScreenRec {
 
 
 
-            if (format != null) {
+            if (format != "raw") {
 
+                debug("Format != raw | Format -> " + format);
                 videnc = Gst.ElementFactory.make(this.format, "video_encoder");
             }
             
-            if (format == null) {
+            if (format == "raw") {
             
+                debug("Format == raw | Format -> " + format);
                 mux = Gst.ElementFactory.make("avimux", "muxer");
             
             } else if (format == "vp8enc") {
@@ -321,7 +327,7 @@ namespace ScreenRec {
             pipeline.add(vid_out_queue);
             pipeline.add(file_queue);
 
-            if (this.format != null) {
+            if (this.format != "raw") {
                 pipeline.add(videnc);
             }
 
@@ -379,7 +385,7 @@ namespace ScreenRec {
 
 
             // RAW or Encoded
-            if (format == null) { //RAW
+            if (format == "raw") { //RAW
                 
                 re = videoconvert.link(vid_out_queue);
                 debug("videoconvert.link(vid_out_queue); -> " + re.to_string());
@@ -487,7 +493,7 @@ namespace ScreenRec {
                     default_output = match_info.fetch (0);
                 }
 
-                //default_output += ".monitor"; usefull ?
+                default_output += ".monitor";
                 debug ("Detected system sound device: %s", default_output);
 
             } catch (Error e) {
@@ -495,6 +501,7 @@ namespace ScreenRec {
                 warning (e.message);
             }
 
+            debug("Default audio output = " + default_output);
             return default_output;
         }
 
@@ -519,6 +526,7 @@ namespace ScreenRec {
                 warning (e.message);
             }
 
+            debug("Default audio input = " + default_input);
             return default_input;
         }
 

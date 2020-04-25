@@ -34,12 +34,12 @@ executable(
     icon_res,
     'src/Application.vala',
     'src/ScreenrecorderWindow.vala',
-    'src/Widgets/SaveDialog.vala',
-    'src/Widgets/Countdown.vala',
-    'src/Widgets/SelectionArea.vala',
-    'src/Widgets/VideoPlayer.vala',
+    'src/Dialogs/Countdown.vala',
+    'src/Dialogs/SaveDialog.vala',
     'src/Tools/Recorder.vala',
     'src/Utils/KeybindingManager.vala',
+    'src/Widgets/SelectionArea.vala',
+    'src/Widgets/VideoPlayer.vala',
     dependencies: dependencies,
     install: true
 )
