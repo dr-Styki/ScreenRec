@@ -41,8 +41,8 @@ namespace ScreenRec {
         private Gtk.Grid grid;
         private Gtk.Grid sub_grid;
         private Gtk.Box actions;
-        private Gtk.Button record_btn;
-        private Gtk.Button stop_btn;
+        public Gtk.Button right_button;
+        public Gtk.Button left_button;
         private Gtk.CheckButton record_speakers_btn;
         private Gtk.CheckButton record_mic_btn;
         private Gtk.Switch pointer_switch;
@@ -209,27 +209,22 @@ namespace ScreenRec {
             });
 
             // Record Button
-            record_btn = new Gtk.Button.with_label (_("Record Screen"));
-            record_btn.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
-            record_btn.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl><Shift>R"}, _("Toggle recording"));
-            record_btn.can_default = true;
-            this.set_default (record_btn);
-
-            // Stop Button
-            stop_btn = new Gtk.Button.with_label (_("Stop Recording"));
-            stop_btn.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-            stop_btn.tooltip_markup = record_btn.tooltip_markup;
+            right_button = new Gtk.Button.with_label (_("Record Screen"));
+            right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+            right_button.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl><Shift>R"}, _("Toggle recording"));
+            right_button.can_default = true;
+            this.set_default (right_button);
 
             // Close Button
-            var close_btn = new Gtk.Button.with_label (_("Close"));
+            left_button = new Gtk.Button.with_label (_("Close"));
 
             // Actions : [Close][Record]
             actions = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
             actions.margin_top = 24;
             actions.set_hexpand(true);
             actions.set_homogeneous(true);
-            actions.add (close_btn);
-            actions.add (record_btn);
+            actions.add (left_button);
+            actions.add (right_button);
 
             // Sub Grid, all switch/checkbox/combobox/spin
             // except Actions.
@@ -311,23 +306,75 @@ namespace ScreenRec {
                 settings.set_enum ("last-capture-mode", capture_mode);
             });
 
-            record_btn.clicked.connect (() => { 
-                switch (capture_mode) {
-                    case CaptureType.SCREEN:
-                        capture_screen ();
-                        break;
-                    case CaptureType.CURRENT_WINDOW:
-                        capture_window ();
-                        break;
-                    case CaptureType.AREA:
-                        capture_area ();
-                        break;
+            right_button.clicked.connect (() => { 
+
+                if (!recorder.is_recording && !countdown.is_active_cd && !recorder.is_recording_in_progress) {
+
+                    switch (capture_mode) {
+                        case CaptureType.SCREEN:
+                            capture_screen ();
+                            break;
+                        case CaptureType.CURRENT_WINDOW:
+                            capture_window ();
+                            break;
+                        case CaptureType.AREA:
+                            capture_area ();
+                            break;
+                    }
+
+                } else if (recorder.is_recording && !countdown.is_active_cd && recorder.is_recording_in_progress) {
+
+                    stop_recording ();
+                    right_button.set_label (_("Record Screen"));
+                    right_button.get_style_context ().remove_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+                    right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+                    left_button.set_label (_("Close"));
+                    sub_grid.set_sensitive (true);
+                    radio_grid.set_sensitive (true);
+
+                } else if (!recorder.is_recording && !countdown.is_active_cd && recorder.is_recording_in_progress) {
+
+                    recorder.resume ();
+                    stop_recording ();
+                    right_button.set_label (_("Record Screen"));
+                    right_button.get_style_context ().remove_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+                    right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+                    left_button.set_label (_("Close"));
+                    sub_grid.set_sensitive (true);
+                    radio_grid.set_sensitive (true);
+
+                } else if (!recorder.is_recording && countdown.is_active_cd && !recorder.is_recording_in_progress) {
+
+                    countdown.cancel ();
+                    right_button.set_label (_("Record Screen"));
+                    right_button.get_style_context ().remove_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+                    right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+                    sub_grid.set_sensitive (true);
+                    radio_grid.set_sensitive (true);
                 }
             });
-            stop_btn.clicked.connect (stop_recording);
 
-            close_btn.clicked.connect (() => {
-                close ();
+            left_button.clicked.connect (() => {
+
+                if (recorder.is_recording && !countdown.is_active_cd && recorder.is_recording_in_progress) {
+
+                    recorder.pause();
+                    left_button.set_label (_("Resume"));
+
+                } else if (!recorder.is_recording && !countdown.is_active_cd && recorder.is_recording_in_progress) {
+
+                    recorder.resume();
+                    left_button.set_label (_("Pause"));
+
+                } else if (!recorder.is_recording && countdown.is_active_cd && !recorder.is_recording_in_progress) {
+
+                    countdown.cancel ();
+                    close ();
+
+                } else if (!recorder.is_recording && !countdown.is_active_cd && !recorder.is_recording_in_progress) {
+
+                    close ();
+                }
             });
 
             delete_event.connect (() => {
@@ -342,7 +389,7 @@ namespace ScreenRec {
                 if (is_recording()) {
                     stop_recording ();
                 } else if (!save_dialog_present) {
-                    record_btn.clicked ();
+                    right_button.clicked ();
                 }
             });
         }
@@ -414,14 +461,20 @@ namespace ScreenRec {
                             format,
                             win);
 
-            countdown = new Countdown (delay);
-            countdown.start(recorder);
+            countdown = new Countdown (this, delay);
+            if (delay > 0) {
+                countdown.start(recorder, this);
+                right_button.set_label (_("Cancel"));
+                right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+            } else {
+                recorder.start();
+                right_button.set_label (_("Stop Recording"));
+                right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+                left_button.set_label (_("Pause"));
+            }
 
             sub_grid.set_sensitive (false);
             radio_grid.set_sensitive (false);
-            actions.remove (record_btn);
-            actions.add (stop_btn);
-            stop_btn.show ();
         }
 
         void stop_recording () {
@@ -442,9 +495,6 @@ namespace ScreenRec {
             });
             sub_grid.set_sensitive (true);
             radio_grid.set_sensitive (true);
-            //recording = false;
-            actions.remove (stop_btn);
-            actions.add (record_btn);
         }
     }
 }

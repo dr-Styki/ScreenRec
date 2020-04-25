@@ -23,8 +23,18 @@ namespace ScreenRec {
         
         public Gtk.Label count;
         public int time;
+        public bool is_active_cd { get; private set; default = false; }
+        private bool is_canceled = false;
 
-        public Countdown (int time) {
+        public Countdown (Gtk.Window parent, int time) {
+
+            Object (
+                title: parent.title,
+                //transient_for: parent,
+                application: parent.application
+            );
+
+            set_resizable (false);
 
             this.time = time;
             this.set_default_size (400, 200);
@@ -54,22 +64,40 @@ namespace ScreenRec {
             content_area.add (box);
         }
 
-        public void start (Recorder recorder) {
+        public void start (Recorder recorder, ScreenrecorderWindow? app) {
 
+            // Show Window Dialog
+            this.is_active_cd = true;
             this.show_all ();
 
+            // Wait 1s
             Timeout.add (1000, () => {
-                this.time--;
 
+                this.time--;
                 count.label = "<span size='50000'>" + time.to_string () + "</span>";
 
                 if (time == -1) {
+
                     this.destroy ();
 
-                    // let the countdown disappear before starting
+                    // Wait 100ms, let the countdown disappear before starting
                     Timeout.add (100, () => {
-                        recorder.start ();
-                        return false;
+
+                        if (!is_canceled) {
+
+                            recorder.start ();
+                            this.is_active_cd = false;
+                            app.right_button.set_label (_("Stop Recording"));
+                            app.right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+                            app.left_button.set_label (_("Pause"));
+                            return false;
+
+                        } else {
+
+                            debug ("Countdown Canceled.");
+                            return false;
+                        }
+
                     });
 
                     return false;
@@ -77,6 +105,13 @@ namespace ScreenRec {
 
                 return true;
             });
+        }
+
+        public void cancel () {
+            
+            this.is_canceled = true;
+            this.is_active_cd = false;
+            this.destroy();
         }
     }
 }

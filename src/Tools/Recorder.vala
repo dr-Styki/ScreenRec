@@ -39,6 +39,7 @@ namespace ScreenRec {
         private int endx;
         private int endy;
 
+        public bool is_recording_in_progress { get; private set; default = false; }
         public bool is_recording { get; private set; default = false; }
         public int width { get; private set; }
         public int height { get; private set; }
@@ -73,7 +74,6 @@ namespace ScreenRec {
 
         public Recorder (){
         }
-
 
         public void config (ScreenrecorderWindow.CaptureType capture_mode,
                             string tmp_file,
@@ -534,7 +534,7 @@ namespace ScreenRec {
 
             pipeline.set_state (Gst.State.PLAYING);
             this.is_recording = true;
-
+            this.is_recording_in_progress = true;
         }
 
         public void pause () {
@@ -556,6 +556,7 @@ namespace ScreenRec {
             }
             pipeline.send_event (new Gst.Event.eos ());
             this.is_recording = false;
+            this.is_recording_in_progress = false;
         }
     }
 }
