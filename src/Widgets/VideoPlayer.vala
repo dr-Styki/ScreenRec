@@ -89,11 +89,9 @@ namespace ScreenRec {
             var action_bar = new Gtk.ActionBar ();
             var seek_bar = new Granite.SeekBar (playback.get_duration ());
             seek_bar.valign = Gtk.Align.CENTER;
-            // Set min-width and height to zero so the player goes where you click.
-            // This should be remove if this PR merged: https://github.com/elementary/stylesheet/pull/457
             try {
                 var slider_css = new Gtk.CssProvider();
-                slider_css.load_from_data ("slider {min-width:0;min-height:0;}");
+                slider_css.load_from_data ("slidert");
                 seek_bar.scale.get_style_context ().add_provider (slider_css, Gtk.STYLE_PROVIDER_PRIORITY_USER+1);
             } catch (Error e) {}
 

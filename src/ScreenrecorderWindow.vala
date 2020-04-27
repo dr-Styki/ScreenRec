@@ -199,13 +199,19 @@ namespace ScreenRec {
             Gtk.CellRendererText cell = new Gtk.CellRendererText ();
             format_cmb.pack_start (cell, false);
             format_cmb.set_attributes (cell, "text", Column.CODEC_USER);
-            format_cmb.set_active (0);
-            this.format = codec_gsk[format_cmb.get_active()];
-            this.extension = codec_ext[format_cmb.get_active()];
+            string saved_format = settings.get_string ("format");
+            for (int i = 0; i < codec_gsk.length; i++) {
+
+                if (saved_format == codec_gsk[i]) {
+
+                    format_cmb.set_active (i);
+                    break;
+                }
+            }
+            this.format = codec_gsk[format_cmb.get_active ()];
+            this.extension = codec_ext[format_cmb.get_active ()];
             format_cmb.changed.connect (() => {
-                int active = format_cmb.get_active();
-                this.format = codec_gsk[active];
-                this.extension = codec_ext[active];
+                settings.set_string ("format", codec_gsk[format_cmb.get_active ()]);
             });
 
             // Record Button
@@ -274,7 +280,6 @@ namespace ScreenRec {
             settings.bind ("record-microphone", record_mic_btn, "active", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("delay", delay_spin, "value", GLib.SettingsBindFlags.DEFAULT);
             settings.bind ("framerate", framerate_spin, "value", GLib.SettingsBindFlags.DEFAULT);
-            settings.bind ("format", format_cmb, "text_value", GLib.SettingsBindFlags.DEFAULT);
             delay = delay_spin.get_value_as_int (); // *1000
             framerate = framerate_spin.get_value_as_int ();
 
@@ -282,7 +287,7 @@ namespace ScreenRec {
                 capture_mode = CaptureType.AREA;
                 selection.active = true;
             }
-
+            
             delay_spin.value_changed.connect (() => {
                 delay = delay_spin.get_value_as_int (); //* 1000
             });
@@ -349,6 +354,7 @@ namespace ScreenRec {
                     right_button.set_label (_("Record Screen"));
                     right_button.get_style_context ().remove_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
                     right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+                    left_button.set_label (_("Close"));
                     sub_grid.set_sensitive (true);
                     radio_grid.set_sensitive (true);
                 }
@@ -368,8 +374,7 @@ namespace ScreenRec {
 
                 } else if (!recorder.is_recording && countdown.is_active_cd && !recorder.is_recording_in_progress) {
 
-                    countdown.cancel ();
-                    close ();
+                    iconify ();
 
                 } else if (!recorder.is_recording && !countdown.is_active_cd && !recorder.is_recording_in_progress) {
 
@@ -466,6 +471,7 @@ namespace ScreenRec {
                 countdown.start(recorder, this);
                 right_button.set_label (_("Cancel"));
                 right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+                left_button.set_label (_("Minimise"));
             } else {
                 recorder.start();
                 right_button.set_label (_("Stop Recording"));

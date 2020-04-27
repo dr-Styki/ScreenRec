@@ -31,6 +31,8 @@ namespace ScreenRec {
         public int expected_width {get; construct;}
         public int expected_height {get; construct;}
         private string extension;
+        public Cancellable cancellable;
+        // public FileProgressCallback progress_callback;
 
         private Gtk.Entry name_entry;
         private Gtk.Button save_btn;
@@ -55,7 +57,6 @@ namespace ScreenRec {
             this.extension = extension;
 
             response.connect (manage_response);
-            close.connect (remove_temp);
         }
 
         construct {
@@ -144,29 +145,48 @@ namespace ScreenRec {
  
             if (response_id == 1) {
 
+                cancellable = new Cancellable ();
+                //progress_callback = new FileProgressCallback ();
+
+                //cancellable.cancelled.connect (() => {
+                //
+                //});
+
+                var progress_dialog = new ScreenRec.ProgressDialog (this, cancellable); //, progress_callback
+
                 if (preview.is_playing()) {
+
                     preview.play_pause();
                 }
 
                 File tmp_file = File.new_for_path (filepath);
                 string file_name = Path.build_filename (folder_dir, "%s%s".printf (name_entry.get_text (), extension));
                 File save_file = File.new_for_path (file_name);
+
                 try {
-                    tmp_file.copy (save_file, 0, null, null);
+
+                    progress_dialog.show_all ();
+                    debug("Progress Dialog RUN!");
+                    tmp_file.move (save_file, 0, cancellable, null); //progress_callback
+                    progress_dialog.destroy();
+
                 } catch (Error e) {
+
                     print ("Error: %s\n", e.message);
                 }
+
                 close ();
-            } 
-            else {
-                
+
+            } else {
+
                 close ();
             }
         }
 
-        private void remove_temp () {
-            GLib.FileUtils.remove (filepath);
-        }
+        // keep for a futur gif function
+        //private void remove_temp () {
+        //    GLib.FileUtils.remove (filepath);
+        //}
 
         /**
          * Generate file name

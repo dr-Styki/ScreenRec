@@ -205,14 +205,14 @@ namespace ScreenRec {
                 debug("Format != raw | Format -> " + format);
                 videnc = Gst.ElementFactory.make(this.format, "video_encoder");
             }
-            
+
             if (format == "raw") {
-            
+
                 debug("Format == raw | Format -> " + format);
                 mux = Gst.ElementFactory.make("avimux", "muxer");
-            
+
             } else if (format == "vp8enc") {
-            
+
                 videnc.set_property("cpu-used", 2);
                 videnc.set_property("end-usage", "vbr");
                 videnc.set_property("target-bitrate", 800000000);
@@ -220,9 +220,9 @@ namespace ScreenRec {
                 videnc.set_property("token-partitions", 2);
                 videnc.set_property("max-quantizer", 30);
                 videnc.set_property("threads", cpu_cores);
-            
+
                 mux = Gst.ElementFactory.make("webmmux", "muxer");
-            
+
             } else if (format == "x264enc") {
 
                 // x264enc supports maximum of four cpu_cores
@@ -230,7 +230,7 @@ namespace ScreenRec {
 
                     cpu_cores = 4;
                 }
-            
+
                 videnc.set_property("speed-preset", "ultrafast");
                 videnc.set_property("pass", 4);
                 videnc.set_property("quantizer", 15);
@@ -239,14 +239,14 @@ namespace ScreenRec {
                 mux.set_property("faststart", 1);
                 mux.set_property("faststart-file", this.tmp_file + ".mux");
                 mux.set_property("streamable", 1);
-            
+
             } else if (format == "avenc_huffyuv") {
-            
+
                 mux = Gst.ElementFactory.make("avimux", "muxer");
                 videnc.set_property("bitrate", 500000);
-            
+
             } else if (format == "avenc_ljpeg") {
-            
+
                 mux = Gst.ElementFactory.make("avimux", "muxer");
             }
 
@@ -557,6 +557,13 @@ namespace ScreenRec {
             pipeline.send_event (new Gst.Event.eos ());
             this.is_recording = false;
             this.is_recording_in_progress = false;
+
+            //if (format == "x264enc") {
+
+                // wait while exist(this.tmp_file + ".mux")
+
+            //}
+            
         }
     }
 }

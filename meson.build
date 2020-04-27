@@ -35,6 +35,7 @@ executable(
     'src/Application.vala',
     'src/ScreenrecorderWindow.vala',
     'src/Dialogs/Countdown.vala',
+    'src/Dialogs/ProgressDialog.vala',
     'src/Dialogs/SaveDialog.vala',
     'src/Tools/Recorder.vala',
     'src/Utils/KeybindingManager.vala',
