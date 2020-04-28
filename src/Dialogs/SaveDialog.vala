@@ -32,7 +32,6 @@ namespace ScreenRec {
         public int expected_height {get; construct;}
         private string extension;
         public Cancellable cancellable;
-        // public FileProgressCallback progress_callback;
 
         private Gtk.Entry name_entry;
         private Gtk.Button save_btn;
@@ -55,7 +54,6 @@ namespace ScreenRec {
             );
 
             this.extension = extension;
-
             response.connect (manage_response);
         }
 
@@ -81,9 +79,8 @@ namespace ScreenRec {
             var name_label = new Gtk.Label (_("Name:"));
             name_label.halign = Gtk.Align.END;
 
-            var recording_scale = 1;
             var screen_scale = this.scale_factor;
-            var file_name = get_file_name (recording_scale, screen_scale);
+            var file_name = get_file_name (screen_scale);
 
             name_entry = new Gtk.Entry ();
             name_entry.hexpand = true;
@@ -136,23 +133,15 @@ namespace ScreenRec {
                 if (e.keyval == Gdk.Key.Return) {
                     manage_response (1);
                 }
-
                 return false;
             });
         }
 
         private void manage_response (int response_id) {
- 
+
             if (response_id == 1) {
 
                 cancellable = new Cancellable ();
-                //progress_callback = new FileProgressCallback ();
-
-                //cancellable.cancelled.connect (() => {
-                //
-                //});
-
-                var progress_dialog = new ScreenRec.ProgressDialog (this, cancellable); //, progress_callback
 
                 if (preview.is_playing()) {
 
@@ -165,10 +154,15 @@ namespace ScreenRec {
 
                 try {
 
-                    progress_dialog.show_all ();
-                    debug("Progress Dialog RUN!");
+                    save_btn.always_show_image = true;
+                    var spinner = new Gtk.Spinner ();
+                    save_btn.set_image (spinner);
+                    spinner.start ();
+                    sensitive = false;
+
+                    // progress_dialog.show_all ();
+                    debug("Progress Dialog MOVE!");
                     tmp_file.move (save_file, 0, cancellable, null); //progress_callback
-                    progress_dialog.destroy();
 
                 } catch (Error e) {
 
@@ -177,40 +171,25 @@ namespace ScreenRec {
 
                 close ();
 
-            } else {
+            } else if (response_id == 0) {
 
+                GLib.FileUtils.remove (filepath);
                 close ();
             }
         }
 
-        // keep for a futur gif function
-        //private void remove_temp () {
-        //    GLib.FileUtils.remove (filepath);
-        //}
+        private string get_file_name (double d_screen_scale) {
 
-        /**
-         * Generate file name
-         * When appropriate include a scale hint that websites can use to 
-         * scale down recordings on higher dpi screens. 
-         */
-        private string get_file_name (double recording_scale, double screen_scale) {
             var date_time = new GLib.DateTime.now_local ().format ("%Y-%m-%d %H.%M.%S");
-
-            /// TRANSLATORS: %s represents a timestamp here
             var file_name = _("Screen record from %s").printf (date_time);
-            var file_scale = get_file_scale (recording_scale, screen_scale);
+
+            var d_file_scale = (d_screen_scale < 1)? 1 : d_screen_scale;
+            var file_scale = (int) d_file_scale;
+
             if (file_scale > 1) {
                 file_name += "@%ix".printf (file_scale);
             }
             return file_name;
-        }
-
-        private int get_file_scale (double recording_scale, double screen_scale) {
-            var file_scale = screen_scale * recording_scale;
-            // never make it seem like images are taken on higher dpi screen
-            file_scale = (file_scale > screen_scale)? screen_scale : file_scale;
-            file_scale = (file_scale < 1)? 1 : file_scale;
-            return (int) file_scale;
         }
     }
 }

@@ -46,11 +46,13 @@ namespace ScreenRec {
             var quit_action = new SimpleAction ("quit", null);
             quit_action.activate.connect (() => {
                 if (window != null) {
-                    if (window.is_recording()) {
-                        window.iconify ();
-                    }
-                    else {
+                    if (window.can_quit()) {
+
                         window.close();
+
+                    } else {
+
+                        window.iconify ();
                     }
                 }
             });

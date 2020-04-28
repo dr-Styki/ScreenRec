@@ -214,7 +214,7 @@ namespace ScreenRec {
             } else if (format == "vp8enc") {
 
                 videnc.set_property("cpu-used", 2);
-                videnc.set_property("end-usage", "vbr");
+                videnc.set_property("end-usage", 0); // vbr
                 videnc.set_property("target-bitrate", 800000000);
                 videnc.set_property("static-threshold", 1000);
                 videnc.set_property("token-partitions", 2);
@@ -231,7 +231,7 @@ namespace ScreenRec {
                     cpu_cores = 4;
                 }
 
-                videnc.set_property("speed-preset", "ultrafast");
+                videnc.set_property("speed-preset", 1); // ultrafast
                 videnc.set_property("pass", 4);
                 videnc.set_property("quantizer", 15);
                 videnc.set_property("threads", cpu_cores);

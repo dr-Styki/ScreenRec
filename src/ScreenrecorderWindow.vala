@@ -25,55 +25,65 @@ namespace ScreenRec {
 
     public class ScreenrecorderWindow : Gtk.ApplicationWindow  {
 
+        // Capture Type Buttons
         public enum CaptureType {
             SCREEN,
             CURRENT_WINDOW,
             AREA
         }
+        public CaptureType capture_mode = CaptureType.SCREEN;
+        private Gtk.Grid capture_type_grid;
+
+        // Settings Buttons/Switch/ComboBox
+
+            // Mouse pointer and close switch
+        private Gtk.Switch pointer_switch;
+        private Gtk.Switch close_switch;
+
+            // Audio
+        private Gtk.CheckButton record_speakers_btn;
+        private Gtk.CheckButton record_mic_btn;
+        private Gtk.Image speaker_icon;
+        private Gtk.Image speaker_icon_mute;
+        private Gtk.Image mic_icon;
+        private Gtk.Image mic_icon_mute;
+        private bool speakers_record = false;
+        private bool mic_record = false;
+
+        private int delay;
+        private int framerate;
+
+            // Format
         private enum Column {
             CODEC_GSK,
             CODEC_USER,
             CODEC_EXT
         }
-        public Countdown countdown;
-        public CaptureType capture_mode = CaptureType.SCREEN;
-        private Gtk.Grid radio_grid;
-        private Gtk.Grid grid;
-        private Gtk.Grid sub_grid;
-        private Gtk.Box actions;
-        public Gtk.Button right_button;
-        public Gtk.Button left_button;
-        private Gtk.CheckButton record_speakers_btn;
-        private Gtk.CheckButton record_mic_btn;
-        private Gtk.Switch pointer_switch;
-        private Gtk.Switch close_switch;
-        private Gtk.ComboBox format_cmb;
-        private string extension;
-
-        private Gtk.Image speaker_icon;
-        private Gtk.Image speaker_icon_mute;
-        private Gtk.Image mic_icon;
-        private Gtk.Image mic_icon_mute;
-
-        private Recorder recorder;
-
-        private bool save_dialog_present = false;
-        private int delay;
-        private int framerate;
-        private string format;
-        private string tmpfilepath;
-        private bool speakers_record = false;
-        private bool mic_record = false;
-
         public const string[] codec_gsk = {"x264enc", "vp8enc", "avenc_huffyuv", "avenc_ljpeg", "raw"};
         public const string[] codec_user = {"mp4 (h264)", "webm (vp8)", "avi (huffyuv)", "avi (lossless jpeg)", "avi (raw)"};
         public const string[] codec_ext = {".mp4", ".webm", ".avi", ".avi", ".avi"};
+        private Gtk.ComboBox format_cmb;
+        private string format;
+        private string extension;
 
+        // Capture Type + Settings Grid
+        private Gtk.Grid sub_grid;
+
+        //Actons Buttons
+        public Gtk.Button right_button;
+        public Gtk.Button left_button;
+        private Gtk.Box actions;
+
+        // Global Grid
+        private Gtk.Grid grid;
+  
+        // Others
         public Gdk.Window win;
-
-        public bool is_recording () {
-            return recorder.is_recording;
-        }
+        private Recorder recorder;
+        public Countdown countdown;
+        private string tmpfilepath;
+        private bool save_dialog_present = false;
+        
 
         public ScreenrecorderWindow (Gtk.Application app){
             Object (
@@ -86,7 +96,12 @@ namespace ScreenRec {
         construct {
 
             set_keep_above (true);
+            // Load Settings
             GLib.Settings settings = ScreenRecApp.settings;
+
+            // Init recorder and countdown objects for boolean test 
+            recorder = new Recorder();
+            countdown = new Countdown (this);
 
             // Select Screen/Area
             var all = new Gtk.RadioButton (null);
@@ -101,14 +116,14 @@ namespace ScreenRec {
             selection.image = new Gtk.Image.from_icon_name ("grab-area-symbolic", Gtk.IconSize.DND);
             selection.tooltip_text = _("Select area to grab");
 
-            radio_grid = new Gtk.Grid ();
-            radio_grid.halign = Gtk.Align.CENTER;
-            radio_grid.column_spacing = 24;
-            radio_grid.margin_top = radio_grid.margin_bottom = 24;
-            radio_grid.margin_start = radio_grid.margin_end = 18;
-            radio_grid.add (all);
-            radio_grid.add (curr_window);
-            radio_grid.add (selection);
+            capture_type_grid = new Gtk.Grid ();
+            capture_type_grid.halign = Gtk.Align.CENTER;
+            capture_type_grid.column_spacing = 24;
+            capture_type_grid.margin_top = capture_type_grid.margin_bottom = 24;
+            capture_type_grid.margin_start = capture_type_grid.margin_end = 18;
+            capture_type_grid.add (all);
+            capture_type_grid.add (curr_window);
+            capture_type_grid.add (selection);
 
             // Grab mouse pointer ? 
             var pointer_label = new Gtk.Label (_("Grab mouse pointer:"));
@@ -179,7 +194,7 @@ namespace ScreenRec {
             framerate_label.halign = Gtk.Align.END;
             var framerate_spin = new Gtk.SpinButton.with_range (1, 120, 1);
 
-            // Format Combo Box
+            // Format Combo Box - Start
             var format_label = new Gtk.Label (_("Format:"));
             format_label.halign = Gtk.Align.END;
 
@@ -204,15 +219,13 @@ namespace ScreenRec {
 
                 if (saved_format == codec_gsk[i]) {
 
-                    format_cmb.set_active (i);
+                    this.format_cmb.set_active (i);
+                    this.format = codec_gsk[i];
+                    this.extension = codec_ext[i];
                     break;
                 }
             }
-            this.format = codec_gsk[format_cmb.get_active ()];
-            this.extension = codec_ext[format_cmb.get_active ()];
-            format_cmb.changed.connect (() => {
-                settings.set_string ("format", codec_gsk[format_cmb.get_active ()]);
-            });
+            // Format Combo Box - End
 
             // Record Button
             right_button = new Gtk.Button.with_label (_("Record Screen"));
@@ -261,10 +274,10 @@ namespace ScreenRec {
             grid.attach (sub_grid   , 0, 1, 2, 7);
             grid.attach (actions    , 0, 8, 2, 1);
 
-            // TitleBar (HeaderBar) with radio_grid (Screen/Area selection) attach.
+            // TitleBar (HeaderBar) with capture_type_grid (Screen/Area selection) attach.
             var titlebar = new Gtk.HeaderBar ();
             titlebar.has_subtitle = false;
-            titlebar.set_custom_title (radio_grid);
+            titlebar.set_custom_title (capture_type_grid);
 
             var titlebar_style_context = titlebar.get_style_context ();
             titlebar_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
@@ -273,28 +286,12 @@ namespace ScreenRec {
             set_titlebar (titlebar);
             add (grid);
 
-            var gtk_settings = Gtk.Settings.get_default ();
-            settings.bind ("mouse-pointer", pointer_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            settings.bind ("close-on-save", close_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            settings.bind ("record-computer", record_speakers_btn, "active", GLib.SettingsBindFlags.DEFAULT);
-            settings.bind ("record-microphone", record_mic_btn, "active", GLib.SettingsBindFlags.DEFAULT);
-            settings.bind ("delay", delay_spin, "value", GLib.SettingsBindFlags.DEFAULT);
-            settings.bind ("framerate", framerate_spin, "value", GLib.SettingsBindFlags.DEFAULT);
-            delay = delay_spin.get_value_as_int (); // *1000
-            framerate = framerate_spin.get_value_as_int ();
 
+            // Bind Settings - Start
             if (settings.get_enum ("last-capture-mode") == CaptureType.AREA){
                 capture_mode = CaptureType.AREA;
                 selection.active = true;
             }
-            
-            delay_spin.value_changed.connect (() => {
-                delay = delay_spin.get_value_as_int (); //* 1000
-            });
-
-            framerate_spin.value_changed.connect (() => {
-                framerate = framerate_spin.get_value_as_int ();
-            });
 
             all.toggled.connect (() => {
                 capture_mode = CaptureType.SCREEN;
@@ -311,6 +308,31 @@ namespace ScreenRec {
                 settings.set_enum ("last-capture-mode", capture_mode);
             });
 
+            settings.bind ("mouse-pointer", pointer_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            settings.bind ("close-on-save", close_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            settings.bind ("record-computer", record_speakers_btn, "active", GLib.SettingsBindFlags.DEFAULT);
+            settings.bind ("record-microphone", record_mic_btn, "active", GLib.SettingsBindFlags.DEFAULT);
+
+            settings.bind ("delay", delay_spin, "value", GLib.SettingsBindFlags.DEFAULT);
+            delay_spin.value_changed.connect (() => {
+                delay = delay_spin.get_value_as_int ();
+            });
+            delay = delay_spin.get_value_as_int ();
+
+            settings.bind ("framerate", framerate_spin, "value", GLib.SettingsBindFlags.DEFAULT);
+            framerate_spin.value_changed.connect (() => {
+                framerate = framerate_spin.get_value_as_int ();
+            });
+            framerate = framerate_spin.get_value_as_int ();
+
+            format_cmb.changed.connect (() => {
+                settings.set_string ("format", codec_gsk[format_cmb.get_active ()]);
+                this.format = codec_gsk[format_cmb.get_active ()];
+                this.extension = codec_ext[format_cmb.get_active ()];
+            });
+            // Bind Settings - End
+
+            // Connect Buttons
             right_button.clicked.connect (() => { 
 
                 if (!recorder.is_recording && !countdown.is_active_cd && !recorder.is_recording_in_progress) {
@@ -330,23 +352,11 @@ namespace ScreenRec {
                 } else if (recorder.is_recording && !countdown.is_active_cd && recorder.is_recording_in_progress) {
 
                     stop_recording ();
-                    right_button.set_label (_("Record Screen"));
-                    right_button.get_style_context ().remove_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-                    right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
-                    left_button.set_label (_("Close"));
-                    sub_grid.set_sensitive (true);
-                    radio_grid.set_sensitive (true);
 
                 } else if (!recorder.is_recording && !countdown.is_active_cd && recorder.is_recording_in_progress) {
 
                     recorder.resume ();
                     stop_recording ();
-                    right_button.set_label (_("Record Screen"));
-                    right_button.get_style_context ().remove_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-                    right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
-                    left_button.set_label (_("Close"));
-                    sub_grid.set_sensitive (true);
-                    radio_grid.set_sensitive (true);
 
                 } else if (!recorder.is_recording && countdown.is_active_cd && !recorder.is_recording_in_progress) {
 
@@ -356,7 +366,7 @@ namespace ScreenRec {
                     right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
                     left_button.set_label (_("Close"));
                     sub_grid.set_sensitive (true);
-                    radio_grid.set_sensitive (true);
+                    capture_type_grid.set_sensitive (true);
                 }
             });
 
@@ -382,47 +392,45 @@ namespace ScreenRec {
                 }
             });
 
+            // Prevent delete event if record 
             delete_event.connect (() => {
-                if (is_recording()) {
-                    stop_recording ();
+                if (can_quit()) {
+
+                    return false;
+
+                } else {
+
+                    iconify ();
                     return true;
-                }
-                return false;
-            });
-            KeybindingManager manager = new KeybindingManager();
-            manager.bind("<Ctrl><Shift>R", () => {
-                if (is_recording()) {
-                    stop_recording ();
-                } else if (!save_dialog_present) {
-                    right_button.clicked ();
                 }
             });
         }
 
         void capture_screen () {
 
-            win = Gdk.get_default_root_window ();
+            this.win = Gdk.get_default_root_window ();
             this.iconify ();
-            start_recording (win);
+            start_recording (this.win);
         }
 
-        private void capture_window () {
+        void capture_window () {
 
             Gdk.Screen screen = null;
             GLib.List<Gdk.Window> list = null;
             screen = Gdk.Screen.get_default ();
             this.iconify ();
 
-            Timeout.add (300, () => {
+            Timeout.add (300, () => { // Wait iconify
+
                 list = screen.get_window_stack ();
 
                 foreach (Gdk.Window item in list) {
                     if (screen.get_active_window () == item) {
-                        win = item;
+                        this.win = item;
                     }
                 }
 
-                if (win != null) {
+                if (this.win != null) {
                     start_recording (win);
                 }
                 return false;
@@ -430,32 +438,33 @@ namespace ScreenRec {
         }
 
         void capture_area () {
+
             var selection_area = new Screenshot.Widgets.SelectionArea ();
             selection_area.show_all ();
 
             selection_area.cancelled.connect (() => {
+
                 selection_area.close ();
             });
 
-            var win = selection_area.get_window ();
+            this.win = selection_area.get_window ();
 
             selection_area.captured.connect (() => {
-                this.iconify ();
+
                 selection_area.close ();
-                start_recording (win);
+                this.iconify ();
+                start_recording (this.win);
             });
         }
 
         void start_recording (Gdk.Window? win) {
 
+            // Temp file
             var temp_dir = Environment.get_tmp_dir ();
             tmpfilepath = Path.build_filename (temp_dir, "ScreenRec-%08x%s".printf (Random.next_int (), extension));
             debug ("Temp file created at: %s", tmpfilepath);
-            print(format + " - " + tmpfilepath);
 
-            Gdk.Rectangle selection_rect;
-            win.get_frame_extents (out selection_rect);
-
+            // Init Recorder
             recorder = new Recorder();
             recorder.config(capture_mode,
                             tmpfilepath, 
@@ -466,13 +475,18 @@ namespace ScreenRec {
                             format,
                             win);
 
-            countdown = new Countdown (this, delay);
+            // Delay before recording ?
             if (delay > 0) {
+
+                countdown = new Countdown (this);
+                countdown.set_delay(delay);
                 countdown.start(recorder, this);
                 right_button.set_label (_("Cancel"));
                 right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
                 left_button.set_label (_("Minimise"));
+
             } else {
+
                 recorder.start();
                 right_button.set_label (_("Stop Recording"));
                 right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
@@ -480,27 +494,59 @@ namespace ScreenRec {
             }
 
             sub_grid.set_sensitive (false);
-            radio_grid.set_sensitive (false);
+            capture_type_grid.set_sensitive (false);
         }
 
         void stop_recording () {
 
+            // Update Buttons
+            right_button.set_label (_("Record Screen"));
+            right_button.get_style_context ().remove_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+            right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+            left_button.set_label (_("Close"));
+
+            // Stop Recording
             recorder.stop();
             present ();
+
+            // Open Sav Dialog
             var save_dialog = new SaveDialog (this, tmpfilepath, recorder.width, recorder.height, extension);
             save_dialog_present = true;
-            // set keep above to true just to present the window when we stop recording (Don't know why present () didn't work).
-            save_dialog.set_keep_above (true);
+            //save_dialog.set_keep_above (true);
+            debug("Sav Dialog Open");
             save_dialog.show_all ();
-            save_dialog.set_keep_above (false);
+            debug("Sav Dialog Close");
+            //save_dialog.set_keep_above (false);
+
             save_dialog.close.connect (() => {
+
+                debug("Sav Dialog Close Connect");
+
                 save_dialog_present = false;
-                if(close_switch.get_state()) {
+
+                //if close after saving
+                if(close_switch.get_state()) { 
+
                     close();
+
+                } else {
+
+                    sub_grid.set_sensitive (true);
+                    capture_type_grid.set_sensitive (true);
                 }
             });
-            sub_grid.set_sensitive (true);
-            radio_grid.set_sensitive (true);
+        }
+
+        public bool can_quit () {
+
+            if (recorder.is_recording_in_progress || countdown.is_active_cd) {
+
+                return false;
+
+            } else {
+
+                return true;
+            }
         }
     }
 }
