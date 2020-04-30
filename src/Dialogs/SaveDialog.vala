@@ -30,15 +30,16 @@ namespace ScreenRec {
         public string filepath { get; construct; }
         public int expected_width {get; construct;}
         public int expected_height {get; construct;}
+        private string extension;
+        public Cancellable cancellable;
 
         private Gtk.Entry name_entry;
         private Gtk.Button save_btn;
         private VideoPlayer preview;
-        private FormatComboBox format_cmb;
         private string folder_dir = Environment.get_user_special_dir (UserDirectory.VIDEOS)
         +  "%c".printf(GLib.Path.DIR_SEPARATOR) + ScreenRecApp.SAVE_FOLDER;
 
-        public SaveDialog (string filepath, Gtk.Window parent, int expected_width, int expected_height) {
+        public SaveDialog (Gtk.Window parent, string filepath, int expected_width, int expected_height, string extension) {
             Object (
                 border_width: 0,
                 deletable: false,
@@ -52,8 +53,8 @@ namespace ScreenRec {
                 application: parent.application
             );
 
+            this.extension = extension;
             response.connect (manage_response);
-            close.connect (remove_temp);
         }
 
         construct {
@@ -78,18 +79,12 @@ namespace ScreenRec {
             var name_label = new Gtk.Label (_("Name:"));
             name_label.halign = Gtk.Align.END;
 
-            var recording_scale = (double) settings.get_int ("scale") / 100;
             var screen_scale = this.scale_factor;
-            var file_name = get_file_name (recording_scale, screen_scale);
+            var file_name = get_file_name (screen_scale);
 
             name_entry = new Gtk.Entry ();
             name_entry.hexpand = true;
             name_entry.text = file_name;
-
-            var format_label = new Gtk.Label (_("Format:"));
-            format_label.halign = Gtk.Align.END;
-
-            format_cmb = new FormatComboBox ();
 
             var location_label = new Gtk.Label (_("Folder:"));
             location_label.halign = Gtk.Align.END;
@@ -114,10 +109,8 @@ namespace ScreenRec {
             grid.attach (dialog_label, 0, 1, 2, 1);
             grid.attach (name_label, 0, 2, 1, 1);
             grid.attach (name_entry, 1, 2, 1, 1);
-            grid.attach (format_label, 0, 3, 1, 1);
-            grid.attach (format_cmb, 1, 3, 1, 1);
-            grid.attach (location_label, 0, 4, 1, 1);
-            grid.attach (location, 1, 4, 1, 1);
+            grid.attach (location_label, 0, 3, 1, 1);
+            grid.attach (location, 1, 3, 1, 1);
 
             var content = this.get_content_area () as Gtk.Box;
             content.margin_top = 0;
@@ -131,7 +124,6 @@ namespace ScreenRec {
             save_btn.margin_end = 6;
             save_btn.margin_bottom = 6;
 
-            settings.bind ("format", format_cmb, "text_value", GLib.SettingsBindFlags.DEFAULT);
             location.selection_changed.connect (() => {
                 settings.set_string ("folder-dir", location.get_filename ());
                 folder_dir = settings.get_string ("folder-dir");
@@ -141,85 +133,63 @@ namespace ScreenRec {
                 if (e.keyval == Gdk.Key.Return) {
                     manage_response (1);
                 }
-
                 return false;
             });
         }
 
         private void manage_response (int response_id) {
- 
+
             if (response_id == 1) {
 
+                cancellable = new Cancellable ();
+
                 if (preview.is_playing()) {
+
                     preview.play_pause();
                 }
 
-                if (format_cmb.get_active_text () == "raw") {
+                File tmp_file = File.new_for_path (filepath);
+                string file_name = Path.build_filename (folder_dir, "%s%s".printf (name_entry.get_text (), extension));
+                File save_file = File.new_for_path (file_name);
 
-                    File tmp_file = File.new_for_path (filepath);
-                    string file_name = Path.build_filename (folder_dir, "%s.%s".printf (name_entry.get_text (), "mp4"));
-                    File save_file = File.new_for_path (file_name);
-                    try {
-                        tmp_file.copy (save_file, 0, null, null);
-                    } catch (Error e) {
-                        print ("Error: %s\n", e.message);
-                    }
-                    close ();
-
-                } 
-                else {
+                try {
 
                     save_btn.always_show_image = true;
                     var spinner = new Gtk.Spinner ();
                     save_btn.set_image (spinner);
                     spinner.start ();
                     sensitive = false;
-                    string save_filepath = Path.build_filename (folder_dir, "%s.%s".printf (name_entry.get_text (), format_cmb.get_active_text ()));
-                    FFmpegWrapper.render_file.begin (filepath, save_filepath, format_cmb.get_active_text (), (obj, res) => {
-                        sensitive = true;
-                        save_btn.set_image (null);
-                        debug ("Render done");
-                        var notification = new Notification (_("Rendering went awesome"));
-                        notification.set_body (_("Click here to open the records folder"));
-                        notification.set_default_action ("app.open-records-folder('%s')".printf(folder_dir));
-                        this.application.send_notification (null, notification);
-                        close ();
-                    });
+
+                    // progress_dialog.show_all ();
+                    debug("Progress Dialog MOVE!");
+                    tmp_file.move (save_file, 0, cancellable, null); //progress_callback
+
+                } catch (Error e) {
+
+                    print ("Error: %s\n", e.message);
                 }
 
-            } 
-            else {
+                close ();
+
+            } else if (response_id == 0) {
+
+                GLib.FileUtils.remove (filepath);
                 close ();
             }
         }
 
-        private void remove_temp () {
-            GLib.FileUtils.remove (filepath);
-        }
+        private string get_file_name (double d_screen_scale) {
 
-        /**
-         * Generate file name
-         * When appropriate include a scale hint that websites can use to 
-         * scale down recordings on higher dpi screens. 
-         */
-        private string get_file_name (double recording_scale, double screen_scale) {
             var date_time = new GLib.DateTime.now_local ().format ("%Y-%m-%d %H.%M.%S");
-
-            /// TRANSLATORS: %s represents a timestamp here
             var file_name = _("Screen record from %s").printf (date_time);
-            var file_scale = get_file_scale (recording_scale, screen_scale);
+
+            var d_file_scale = (d_screen_scale < 1)? 1 : d_screen_scale;
+            var file_scale = (int) d_file_scale;
+
             if (file_scale > 1) {
                 file_name += "@%ix".printf (file_scale);
             }
             return file_name;
-        }
-
-        private int get_file_scale (double recording_scale, double screen_scale) {
-            var file_scale = screen_scale * recording_scale;
-            // never make it seem like images are taken on higher dpi screen
-            file_scale = (file_scale > screen_scale)? screen_scale : file_scale;
-            file_scale = (file_scale < 1)? 1 : file_scale;
-            return (int) file_scale;
         }
     }
 }

@@ -27,7 +27,7 @@ namespace ScreenRec {
     public class ScreenRecApp : Gtk.Application {
         
         public static GLib.Settings settings;
-        private MainWindow window = null;
+        private ScreenrecorderWindow window = null;
 
         public const string SAVE_FOLDER = _("Screen Records");
 
@@ -46,11 +46,13 @@ namespace ScreenRec {
             var quit_action = new SimpleAction ("quit", null);
             quit_action.activate.connect (() => {
                 if (window != null) {
-                    if (window.is_recording()) {
-                        window.iconify ();
-                    }
-                    else {
+                    if (window.can_quit()) {
+
                         window.close();
+
+                    } else {
+
+                        window.iconify ();
                     }
                 }
             });
@@ -78,7 +80,7 @@ namespace ScreenRec {
                 window.present ();
                 return;
             }
-            window = new MainWindow (this);
+            window = new ScreenrecorderWindow (this);
             window.get_style_context ().add_class ("rounded");
             window.show_all ();
         }
@@ -86,6 +88,7 @@ namespace ScreenRec {
         public static int main (string[] args) {
             Gtk.init (ref args);
             Gst.init (ref args);
+            Gst.Debug.set_active(true);
             var err = GtkClutter.init (ref args);
             if (err != Clutter.InitError.SUCCESS) {
                 error ("Could not initalize clutter! "+err.to_string ());

@@ -2,7 +2,8 @@
 <schemalist>
     <enum id="com.github.dr-styki.screenrec.capture-mode">
         <value nick="screen" value="0"/>
-        <value nick="area" value="1"/>
+        <value nick="window" value="1"/>
+        <value nick="area" value="2"/>
     </enum>
     <schema id="com.github.dr-styki.screenrec" path="/com/github/dr-Styki/ScreenRec/" gettext-domain="com.github.dr-styki.screenrec">
         <key name="record-computer" type="b">
@@ -12,12 +13,9 @@
             <default>false</default>
         </key>
         <key name="format" type="s">
-            <default>"mp4"</default>
+            <default>"x264enc"</default>
         </key>
         <key name="mouse-pointer" type="b">
-            <default>true</default>
-        </key>
-        <key name="show-borders" type="b">
             <default>true</default>
         </key>
         <key name="close-on-save" type="b">
@@ -30,10 +28,6 @@
         <key name="framerate" type="i">
             <range min="1" max="120"/>
             <default>30</default>
-        </key>
-        <key name="scale" type="i">
-            <range min="1" max="200"/>
-            <default>100</default>
         </key>
         <key name="folder-dir" type="s">
             <default>""</default>
