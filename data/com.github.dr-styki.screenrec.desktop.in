@@ -5,6 +5,6 @@ Exec=com.github.dr-styki.screenrec
 Icon=com.github.dr-styki.screenrec
 Terminal=false
 Type=Application
-Categories=GTK;GNOME;Utility;AudioVideo;Video;Graphics;
+Categories=GTK;GNOME;Utility;AudioVideo;Video;
 Keywords=Screenshot;Screen;Record;Recording;
 X-GNOME-UsesNotifications=true

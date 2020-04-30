@@ -262,8 +262,17 @@ namespace ScreenRec {
 
                 aud_out_queue = Gst.ElementFactory.make("queue", "queue_a_out");
                 audioconv = Gst.ElementFactory.make("audioconvert", "audio_conv");
-                audioenc = Gst.ElementFactory.make("lamemp3enc", "audio_encoder");
-                audioenc.set_property("quality", 0);
+
+                if (format == "vp8enc") {
+
+                    audioenc = Gst.ElementFactory.make("vorbisenc", "audio_encoder");
+                    audioenc.set_property("quality", 1);
+
+                } else {
+
+                    audioenc = Gst.ElementFactory.make("lamemp3enc", "audio_encoder");
+                    audioenc.set_property("quality", 0);
+                }
             }
 
             if (are_speakers_recorded) {

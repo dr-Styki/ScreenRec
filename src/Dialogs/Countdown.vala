@@ -25,13 +25,16 @@ namespace ScreenRec {
         public int time = 0;
         public bool is_active_cd { get; private set; default = false; }
         private bool is_canceled = false;
+        private SendNotification send_notification;
 
-        public Countdown (Gtk.Window parent) {
+        public Countdown (Gtk.Window parent, SendNotification? send_notification) {
 
             Object (
                 title: parent.title,
                 application: parent.application
             );
+
+            this.send_notification = send_notification;
 
             window_position = Gtk.WindowPosition.CENTER;
             set_default_size (400, 200);
@@ -64,7 +67,7 @@ namespace ScreenRec {
             });
         }
 
-        public void start (Recorder recorder, ScreenrecorderWindow? app) {
+        public void start (Recorder? recorder, ScreenrecorderWindow? app, Gtk.Stack? stack, RecordView? record_view) {
 
             this.is_active_cd = true;
             this.show_all ();
@@ -82,6 +85,9 @@ namespace ScreenRec {
                         if (!is_canceled) {
 
                             recorder.start ();
+                            stack.visible_child_name = "record";
+                            record_view.init_count ();
+                            send_notification.start();
                             this.is_active_cd = false;
                             app.right_button.set_label (_("Stop Recording"));
                             app.right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);

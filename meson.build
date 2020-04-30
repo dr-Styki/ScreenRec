@@ -25,7 +25,8 @@ dependencies = [
     dependency('gdk-x11-3.0'),
     dependency('gstreamer-1.0'),
     dependency('clutter-gst-3.0'),
-    dependency('clutter-gtk-1.0')
+    dependency('clutter-gtk-1.0'),
+    dependency('unity')
 ]
 
 # Create a new executable, list the files we want to compile, list the dependencies we need, and install
@@ -37,9 +38,12 @@ executable(
     'src/Dialogs/Countdown.vala',
     'src/Dialogs/ProgressDialog.vala',
     'src/Dialogs/SaveDialog.vala',
+    'src/Tools/SendNotification.vala',
     'src/Tools/Recorder.vala',
     'src/Widgets/SelectionArea.vala',
     'src/Widgets/VideoPlayer.vala',
+    'src/Views/RecordView.vala',
+    'src/Views/SettingsView.vala',
     dependencies: dependencies,
     install: true
 )
