@@ -49,13 +49,14 @@ namespace ScreenRec {
                 CODEC_USER,
                 CODEC_EXT
             }
-            public const string[] codec_gsk = {"x264enc", "vp8enc"};
-            public const string[] codec_user = {"mp4 (h264)", "webm (vp8)"};
-            public const string[] codec_ext = {".mp4", ".webm"};
+            public const string[] codec_gsk = {"x264enc", "x264enc-mkv", "vp8enc"};
+            public const string[] codec_user = {"mp4", "mkv", "webm"};
+            public const string[] codec_ext = {".mp4", ".mkv", ".webm"};
             // Disable the use of lossless/Raw codec for now.
             // public const string[] codec_gsk = {"x264enc", "vp8enc", "avenc_huffyuv", "avenc_ljpeg", "raw"};
             // public const string[] codec_user = {"mp4 (h264)", "webm (vp8)", "avi (huffyuv)", "avi (lossless jpeg)", "avi (raw)"};
             // public const string[] codec_ext = {".mp4", ".webm", ".avi", ".avi", ".avi"};
+
             private Gtk.ComboBox format_cmb;
             public string format;
             public string extension;

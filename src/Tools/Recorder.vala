@@ -134,12 +134,12 @@ namespace ScreenRec {
 
                 // H264 requirement is that video dimensions are divisible by 2.
                 // If they are not, we have to get rid of that extra pixel.
-                if  ( (this.endx - this.startx) % 2 != 0 && this.format == "H264 (MP4)") {
+                if  ( (this.endx - this.startx) % 2 != 0 && (this.format == "x264enc" || this.format == "x264enc-mkv")) {
                     this.endx -= 1;
                     this.width -= 1;
                 }
 
-                if  ( (this.endy - this.starty) % 2 != 0 && this.format == "H264 (MP4)") {
+                if  ( (this.endy - this.starty) % 2 != 0 && (this.format == "x264enc" || this.format == "x264enc-mkv")) {
                     this.endy -= 1;
                     this.height -= 1;
                 }
@@ -157,7 +157,7 @@ namespace ScreenRec {
                 this.startx = 0;
                 this.starty = 0;
 
-                if (this.format == "H264 (MP4)") {
+                if (this.format == "x264enc" || this.format == "x264enc-mkv") {
 
                     this.videocrop = Gst.ElementFactory.make("videocrop", "cropper");
 
@@ -203,7 +203,16 @@ namespace ScreenRec {
             if (format != "raw") {
 
                 debug("Format != raw | Format -> " + format);
-                videnc = Gst.ElementFactory.make(this.format, "video_encoder");
+
+                if (this.format == "x264enc" || this.format == "x264enc-mkv") {
+
+                    videnc = Gst.ElementFactory.make("x264enc", "video_encoder");
+
+                } else {
+
+                    videnc = Gst.ElementFactory.make(this.format, "video_encoder");
+                }
+                
             }
 
             if (format == "raw") {
@@ -238,6 +247,21 @@ namespace ScreenRec {
                 mux = Gst.ElementFactory.make("mp4mux", "muxer");
                 mux.set_property("faststart", 1);
                 mux.set_property("faststart-file", this.tmp_file + ".mux");
+                mux.set_property("streamable", 1);
+
+            } else if (format == "x264enc-mkv") {
+
+                // x264enc supports maximum of four cpu_cores
+                if (cpu_cores > 4) {
+
+                    cpu_cores = 4;
+                }
+
+                videnc.set_property("speed-preset", 1); // ultrafast
+                videnc.set_property("pass", 4);
+                videnc.set_property("quantizer", 15);
+                videnc.set_property("threads", cpu_cores);
+                mux = Gst.ElementFactory.make("matroskamux", "muxer");
                 mux.set_property("streamable", 1);
 
             } else if (format == "avenc_huffyuv") {
@@ -565,14 +589,7 @@ namespace ScreenRec {
             }
             pipeline.send_event (new Gst.Event.eos ());
             this.is_recording = false;
-            this.is_recording_in_progress = false;
-
-            //if (format == "x264enc") {
-
-                // wait while exist(this.tmp_file + ".mux")
-
-            //}
-            
+            this.is_recording_in_progress = false;           
         }
     }
 }

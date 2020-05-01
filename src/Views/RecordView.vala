@@ -72,7 +72,7 @@ namespace ScreenRec {
 
         private void show_timer_label (Gtk.Label label, int minutes_10, int minutes_1, int seconds_10, int seconds_1) {
 
-            label.label = "<span size='64000' color='#333333' weight='normal'>%i%i</span><span size='24000' color='#333333' weight='normal'>:%i%i</span>".printf (minutes_10, minutes_1, seconds_10, seconds_1);
+            label.label = "<span size='64000' weight='normal'>%i%i</span><span size='24000' weight='normal'>:%i%i</span>".printf (minutes_10, minutes_1, seconds_10, seconds_1);
             label.use_markup = true;
             label.margin_top = 20;
         }
