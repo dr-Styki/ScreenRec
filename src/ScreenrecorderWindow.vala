@@ -105,7 +105,6 @@ namespace ScreenRec {
             // Right Button
             right_button = new Gtk.Button.with_label (_("Record Screen"));
             right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
-            right_button.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl><Shift>R"}, _("Toggle recording"));
             right_button.can_default = true;
             this.set_default (right_button);
 

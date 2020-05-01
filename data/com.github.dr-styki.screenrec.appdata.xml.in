@@ -13,10 +13,15 @@
     <ul>
       <li>Recording sound from speakers</li>
       <li>Recording sound from microphone</li>
-      <li>Available format: MP4 and WEBM</li>
+      <li>Available format: MP4, MKV and WEBM</li>
     </ul>
   </description>
   <releases>
+    <release version="2.0.0" date="2020-05-01">
+      <description>
+        <p>Application rewite. Use Gstreamer backend instead of FFmpeg. Etc ...</p>
+      </description>
+    </release>
     <release version="1.2.0" date="2020-04-11">
       <description>
         <p>UI Improvements</p>

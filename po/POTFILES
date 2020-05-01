@@ -1,6 +1,13 @@
 src/Application.vala
-src/MainWindow.vala
-src/SaveDialog.vala
+src/ScreenrecorderWindow.vala
+src/Dialogs/Countdown.vala
+src/Dialogs/ProgressDialog.vala
+src/Dialogs/SaveDialog.vala
+src/Tools/SendNotification.vala
+src/Tools/Recorder.vala
+src/Widgets/SelectionArea.vala
 src/Widgets/VideoPlayer.vala
+src/Views/RecordView.vala
+src/Views/SettingsView.vala
 data/com.github.dr-styki.screenrec.desktop.in
 data/com.github.dr-styki.screenrec.appdata.xml.in

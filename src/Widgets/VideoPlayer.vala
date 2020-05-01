@@ -96,7 +96,6 @@ namespace ScreenRec {
             } catch (Error e) {}
 
             play_button = new Gtk.Button.from_icon_name ("media-playback-pause-symbolic", Gtk.IconSize.BUTTON);
-            play_button.tooltip_text = _("Toggle playing");
             play_button.clicked.connect (() => {
                 play_pause();
             });
