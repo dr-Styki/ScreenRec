@@ -26,22 +26,22 @@ namespace ScreenRec {
         private Gtk.ApplicationWindow app;
         private string app_id = "com.github.dr-styki.ScreenRec";
 
-        private Notification start_notification = new Notification (_("Start Recording"));
-        private Notification stop_notification = new Notification (_("Stop Recording"));
-        private Notification pause_notification = new Notification (_("Pause Recording"));
-        private Notification resume_notification = new Notification (_("Resume Recording"));
-        private Notification cancel_cd_notification = new Notification (_("Countdown Canceled"));
+        private Notification start_notification = new Notification (_(" Start Recording"));
+        private Notification stop_notification = new Notification (_(" Stop Recording"));
+        private Notification pause_notification = new Notification (_(" Pause Recording"));
+        private Notification resume_notification = new Notification (_(" Resume Recording"));
+        private Notification cancel_cd_notification = new Notification (_(" Countdown Canceled"));
         
 
         public SendNotification (Gtk.ApplicationWindow? app) {
 
             this.app = app;
 
-            //start_notification.set_body (_("Petit MSG"));
-            //stop_notification.set_body (_("Petit MSG"));
-            //pause_notification.set_body (_("Petit MSG"));
-            //resume_notification.set_body (_("Petit MSG"));
-            //cancel_cd_notification.set_body (_("Petit MSG"));
+            start_notification.set_body (_(" The recording has been started"));
+            stop_notification.set_body (_(" The recording is done"));
+            pause_notification.set_body (_(" The recording is paused"));
+            resume_notification.set_body (_(" The recording is resumed"));
+            cancel_cd_notification.set_body (_(" The countdown has been canceled"));
 
         }
         
