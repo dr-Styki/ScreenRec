@@ -145,6 +145,9 @@ namespace ScreenRec {
             if (settings.get_enum ("last-capture-mode") == CaptureType.AREA){
                 capture_mode = CaptureType.AREA;
                 selection.active = true;
+            } else if (settings.get_enum ("last-capture-mode") == CaptureType.CURRENT_WINDOW){
+                capture_mode = CaptureType.CURRENT_WINDOW;
+                curr_window.active = true;
             }
 
             all.toggled.connect (() => {
