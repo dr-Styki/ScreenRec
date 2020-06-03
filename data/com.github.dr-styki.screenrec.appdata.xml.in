@@ -5,7 +5,7 @@
   <id>com.github.dr-styki.screenrec</id>
   <metadata_license>CC0</metadata_license>
   <project_license>GPL-3.0</project_license>
-  <name>Screen Recorder</name>
+  <name>ScreenRec</name>
   <summary>Record videos of the screen</summary>
   <description>
     <p>A simple screen recording tool which was make to work like the elementary OS Screenshot tool.</p>

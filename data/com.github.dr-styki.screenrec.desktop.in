@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Screen Recorder
+Name=ScreenRec
 Comment=Record videos of the screen
 Exec=com.github.dr-styki.screenrec
 Icon=com.github.dr-styki.screenrec
