@@ -17,6 +17,11 @@
     </ul>
   </description>
   <releases>
+    <release version="2.1.0" date="2020-06-04">
+      <description>
+        <p>Fix unsensitive window if record are canceled. Name change back to ScreenRec.</p>
+      </description>
+    </release>
     <release version="2.0.0" date="2020-05-01">
       <description>
         <p>Application rewite. Use Gstreamer backend instead of FFmpeg. Etc ...</p>
