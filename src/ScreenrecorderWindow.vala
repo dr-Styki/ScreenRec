@@ -370,16 +370,13 @@ namespace ScreenRec {
                 debug("Sav Dialog Close Connect");
 
                 save_dialog_present = false;
+                settings_views.set_sensitive (true);
+                capture_type_grid.set_sensitive (true);
 
                 //if close after saving
                 if(settings_views.close_switch.get_state()) { 
 
                     close();
-
-                } else {
-
-                    settings_views.set_sensitive (true);
-                    capture_type_grid.set_sensitive (true);
                 }
             });
         }
