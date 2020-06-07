@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.dr-styki.screenrec\n"
 "POT-Creation-Date: 2020-05-01 17:30+0200\n"
-"PO-Revision-Date: 2020-06-06 18:09-0300\n"
+"PO-Revision-Date: 2020-06-07 16:37-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -27,200 +27,204 @@ msgstr "Gravador de Tela"
 #: build/data/com.github.dr-styki.screenrec.appdata.xml:9
 #: build/data/com.github.dr-styki.screenrec.desktop:6
 msgid "Record videos of the screen"
-msgstr ""
+msgstr "Gravar vídeos da tela"
 
 #: build/data/com.github.dr-styki.screenrec.appdata.xml:11
 msgid ""
 "A simple screen recording tool which was make to work like the elementary OS "
 "Screenshot tool."
 msgstr ""
+"Ferramenta simples para gravação de tela feita para funcionar de forma "
+"semelhante à ferramenta Captura de Tela do elementary OS."
 
 #: build/data/com.github.dr-styki.screenrec.appdata.xml:12
 msgid "Features include:"
-msgstr ""
+msgstr "Os recursos incluem:"
 
 #: build/data/com.github.dr-styki.screenrec.appdata.xml:14
 msgid "Recording sound from speakers"
-msgstr ""
+msgstr "Gravando sons das caixas de som"
 
 #: build/data/com.github.dr-styki.screenrec.appdata.xml:15
 msgid "Recording sound from microphone"
-msgstr ""
+msgstr "Gravando sons do microfone"
 
 #: build/data/com.github.dr-styki.screenrec.appdata.xml:16
 msgid "Available format: MP4 and WEBM"
-msgstr ""
+msgstr "Formatos disponíveis: MP4 e WEBVM"
 
 #: build/data/com.github.dr-styki.screenrec.appdata.xml:22
 msgid "UI Improvements"
-msgstr ""
+msgstr "Melhorias na interface do usuário"
 
 #: build/data/com.github.dr-styki.screenrec.appdata.xml:27
 msgid ""
 "First Release after the fork of the screenrecorder app by Mohammed ALMadhoun"
 msgstr ""
+"Primeiro lançamento após o fork do aplicativo screenrecorder de Mohammed "
+"ALMadhoun"
 
 #: build/data/com.github.dr-styki.screenrec.appdata.xml:68
 msgid "Stevy THOMAS (dr_Styki)"
-msgstr ""
+msgstr "Stevy THOMAS (dr_Styki)"
 
 #: build/data/com.github.dr-styki.screenrec.desktop:8
 msgid "com.github.dr-styki.screenrec"
-msgstr ""
+msgstr "com.github.dr-styki.screenrec"
 
 #: build/data/com.github.dr-styki.screenrec.desktop:13
 msgid "Screenshot;Screen;Record;Recording;"
-msgstr ""
+msgstr "Captura de tela;Tela;Registro;Gravação;"
 
 #: src/Application.vala:32
 msgid "Screen Records"
-msgstr ""
+msgstr "Gravações de tela"
 
 #: src/Dialogs/Countdown.vala:51
 msgid "Recording starts in"
-msgstr ""
+msgstr "A gravação começa em"
 
 #: src/Dialogs/Countdown.vala:92 src/ScreenrecorderWindow.vala:333
 msgid "Stop Recording"
-msgstr ""
+msgstr "Parar gravação"
 
 #: src/Dialogs/Countdown.vala:94 src/ScreenrecorderWindow.vala:221
 #: src/ScreenrecorderWindow.vala:335
 msgid "Pause"
-msgstr ""
+msgstr "Pausar"
 
 #: src/Dialogs/ProgressDialog.vala:51
 msgid "Video recording in progress"
-msgstr ""
+msgstr "Gravação de vídeo em progesso"
 
 #: src/Dialogs/ProgressDialog.vala:60 src/Dialogs/SaveDialog.vala:119
 #: src/ScreenrecorderWindow.vala:323
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: src/Dialogs/SaveDialog.vala:75
 msgid "Save record as…"
-msgstr ""
+msgstr "Salvar gravação como…"
 
 #: src/Dialogs/SaveDialog.vala:79
 msgid "Name:"
-msgstr ""
+msgstr "Nome:"
 
 #: src/Dialogs/SaveDialog.vala:89
 msgid "Folder:"
-msgstr ""
+msgstr "Pasta:"
 
 #: src/Dialogs/SaveDialog.vala:99
 msgid "Select Screen Records Folder…"
-msgstr ""
+msgstr "Selecione a pasta para gravações de tela..."
 
 #: src/Dialogs/SaveDialog.vala:122
 msgid "Save"
-msgstr ""
+msgstr "Salvar"
 
 #: src/Dialogs/SaveDialog.vala:184
 #, c-format
 msgid "Screen record from %s"
-msgstr ""
+msgstr "Gravação de tela de %s"
 
 #: src/ScreenrecorderWindow.vala:78
 msgid "Grab the whole screen"
-msgstr ""
+msgstr "Capturar a tela inteira"
 
 #: src/ScreenrecorderWindow.vala:82
 msgid "Grab the current window"
-msgstr ""
+msgstr "Capturar a janela corrente"
 
 #: src/ScreenrecorderWindow.vala:86
 msgid "Select area to grab"
-msgstr ""
+msgstr "Selecionar a área a ser capturada"
 
 #: src/ScreenrecorderWindow.vala:106 src/ScreenrecorderWindow.vala:198
 #: src/ScreenrecorderWindow.vala:345
 msgid "Record Screen"
-msgstr ""
+msgstr "Gravar tela"
 
 #: src/ScreenrecorderWindow.vala:112 src/ScreenrecorderWindow.vala:201
 #: src/ScreenrecorderWindow.vala:348
 msgid "Close"
-msgstr ""
+msgstr "Fechar"
 
 #: src/ScreenrecorderWindow.vala:214
 msgid "Resume"
-msgstr ""
+msgstr "Retomar"
 
 #: src/ScreenrecorderWindow.vala:325
 msgid "Minimise"
-msgstr ""
+msgstr "Minimizar"
 
 #: src/Tools/SendNotification.vala:29
 msgid " Start Recording"
-msgstr ""
+msgstr " Iniciar gravação"
 
 #: src/Tools/SendNotification.vala:30
 msgid " Stop Recording"
-msgstr ""
+msgstr " Parar gravação"
 
 #: src/Tools/SendNotification.vala:31
 msgid " Pause Recording"
-msgstr ""
+msgstr " Pausar gravação"
 
 #: src/Tools/SendNotification.vala:32
 msgid " Resume Recording"
-msgstr ""
+msgstr " Retomar gravação"
 
 #: src/Tools/SendNotification.vala:33
 msgid " Countdown Canceled"
-msgstr ""
+msgstr " Contagem regressiva cancelada"
 
 #: src/Tools/SendNotification.vala:40
 msgid " The recording has been started"
-msgstr ""
+msgstr " Gravação iniciada"
 
 #: src/Tools/SendNotification.vala:41
 msgid " The recording is done"
-msgstr ""
+msgstr " Gravação concluída"
 
 #: src/Tools/SendNotification.vala:42
 msgid " The recording is paused"
-msgstr ""
+msgstr " Gravação pausada"
 
 #: src/Tools/SendNotification.vala:43
 msgid " The recording is resumed"
-msgstr ""
+msgstr " Gravação retomada"
 
 #: src/Tools/SendNotification.vala:44
 msgid " The countdown has been canceled"
-msgstr ""
+msgstr "  A contagem regressiva foi cancelada"
 
 #: src/Views/SettingsView.vala:84
 msgid "Grab mouse pointer:"
-msgstr ""
+msgstr "Capturar ponteiro do mouse:"
 
 #: src/Views/SettingsView.vala:91
 msgid "Close after saving:"
-msgstr ""
+msgstr "Fechar após salvar:"
 
 #: src/Views/SettingsView.vala:98
 msgid "Record sounds:"
-msgstr ""
+msgstr "Gravar sons:"
 
 #: src/Views/SettingsView.vala:103
 msgid "Record sounds from speakers"
-msgstr ""
+msgstr "Gravar sons do computador"
 
 #: src/Views/SettingsView.vala:120
 msgid "Record sounds from microphone"
-msgstr ""
+msgstr "Gravar sons do microfone"
 
 #: src/Views/SettingsView.vala:143
 msgid "Delay in seconds:"
-msgstr ""
+msgstr "Atraso em segundos:"
 
 #: src/Views/SettingsView.vala:148
 msgid "Frame rate:"
-msgstr ""
+msgstr "Taxa de quadros (FPS):"
 
 #: src/Views/SettingsView.vala:153
 msgid "Format:"
-msgstr ""
+msgstr "Formato:"
