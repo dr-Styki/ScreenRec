@@ -1,0 +1,226 @@
+# Brazilian Portuguese translations of the com.github.dr-styki.screenrec package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.dr-styki.screenrec package.
+# Henrique Andrade <henrique.coelho@gmail.com>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.dr-styki.screenrec\n"
+"POT-Creation-Date: 2020-05-01 17:30+0200\n"
+"PO-Revision-Date: 2020-06-06 18:09-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: build/data/com.github.dr-styki.screenrec.appdata.xml:8
+#: build/data/com.github.dr-styki.screenrec.desktop:4
+msgid "Screen Recorder"
+msgstr "Gravador de Tela"
+
+#: build/data/com.github.dr-styki.screenrec.appdata.xml:9
+#: build/data/com.github.dr-styki.screenrec.desktop:6
+msgid "Record videos of the screen"
+msgstr ""
+
+#: build/data/com.github.dr-styki.screenrec.appdata.xml:11
+msgid ""
+"A simple screen recording tool which was make to work like the elementary OS "
+"Screenshot tool."
+msgstr ""
+
+#: build/data/com.github.dr-styki.screenrec.appdata.xml:12
+msgid "Features include:"
+msgstr ""
+
+#: build/data/com.github.dr-styki.screenrec.appdata.xml:14
+msgid "Recording sound from speakers"
+msgstr ""
+
+#: build/data/com.github.dr-styki.screenrec.appdata.xml:15
+msgid "Recording sound from microphone"
+msgstr ""
+
+#: build/data/com.github.dr-styki.screenrec.appdata.xml:16
+msgid "Available format: MP4 and WEBM"
+msgstr ""
+
+#: build/data/com.github.dr-styki.screenrec.appdata.xml:22
+msgid "UI Improvements"
+msgstr ""
+
+#: build/data/com.github.dr-styki.screenrec.appdata.xml:27
+msgid ""
+"First Release after the fork of the screenrecorder app by Mohammed ALMadhoun"
+msgstr ""
+
+#: build/data/com.github.dr-styki.screenrec.appdata.xml:68
+msgid "Stevy THOMAS (dr_Styki)"
+msgstr ""
+
+#: build/data/com.github.dr-styki.screenrec.desktop:8
+msgid "com.github.dr-styki.screenrec"
+msgstr ""
+
+#: build/data/com.github.dr-styki.screenrec.desktop:13
+msgid "Screenshot;Screen;Record;Recording;"
+msgstr ""
+
+#: src/Application.vala:32
+msgid "Screen Records"
+msgstr ""
+
+#: src/Dialogs/Countdown.vala:51
+msgid "Recording starts in"
+msgstr ""
+
+#: src/Dialogs/Countdown.vala:92 src/ScreenrecorderWindow.vala:333
+msgid "Stop Recording"
+msgstr ""
+
+#: src/Dialogs/Countdown.vala:94 src/ScreenrecorderWindow.vala:221
+#: src/ScreenrecorderWindow.vala:335
+msgid "Pause"
+msgstr ""
+
+#: src/Dialogs/ProgressDialog.vala:51
+msgid "Video recording in progress"
+msgstr ""
+
+#: src/Dialogs/ProgressDialog.vala:60 src/Dialogs/SaveDialog.vala:119
+#: src/ScreenrecorderWindow.vala:323
+msgid "Cancel"
+msgstr ""
+
+#: src/Dialogs/SaveDialog.vala:75
+msgid "Save record as…"
+msgstr ""
+
+#: src/Dialogs/SaveDialog.vala:79
+msgid "Name:"
+msgstr ""
+
+#: src/Dialogs/SaveDialog.vala:89
+msgid "Folder:"
+msgstr ""
+
+#: src/Dialogs/SaveDialog.vala:99
+msgid "Select Screen Records Folder…"
+msgstr ""
+
+#: src/Dialogs/SaveDialog.vala:122
+msgid "Save"
+msgstr ""
+
+#: src/Dialogs/SaveDialog.vala:184
+#, c-format
+msgid "Screen record from %s"
+msgstr ""
+
+#: src/ScreenrecorderWindow.vala:78
+msgid "Grab the whole screen"
+msgstr ""
+
+#: src/ScreenrecorderWindow.vala:82
+msgid "Grab the current window"
+msgstr ""
+
+#: src/ScreenrecorderWindow.vala:86
+msgid "Select area to grab"
+msgstr ""
+
+#: src/ScreenrecorderWindow.vala:106 src/ScreenrecorderWindow.vala:198
+#: src/ScreenrecorderWindow.vala:345
+msgid "Record Screen"
+msgstr ""
+
+#: src/ScreenrecorderWindow.vala:112 src/ScreenrecorderWindow.vala:201
+#: src/ScreenrecorderWindow.vala:348
+msgid "Close"
+msgstr ""
+
+#: src/ScreenrecorderWindow.vala:214
+msgid "Resume"
+msgstr ""
+
+#: src/ScreenrecorderWindow.vala:325
+msgid "Minimise"
+msgstr ""
+
+#: src/Tools/SendNotification.vala:29
+msgid " Start Recording"
+msgstr ""
+
+#: src/Tools/SendNotification.vala:30
+msgid " Stop Recording"
+msgstr ""
+
+#: src/Tools/SendNotification.vala:31
+msgid " Pause Recording"
+msgstr ""
+
+#: src/Tools/SendNotification.vala:32
+msgid " Resume Recording"
+msgstr ""
+
+#: src/Tools/SendNotification.vala:33
+msgid " Countdown Canceled"
+msgstr ""
+
+#: src/Tools/SendNotification.vala:40
+msgid " The recording has been started"
+msgstr ""
+
+#: src/Tools/SendNotification.vala:41
+msgid " The recording is done"
+msgstr ""
+
+#: src/Tools/SendNotification.vala:42
+msgid " The recording is paused"
+msgstr ""
+
+#: src/Tools/SendNotification.vala:43
+msgid " The recording is resumed"
+msgstr ""
+
+#: src/Tools/SendNotification.vala:44
+msgid " The countdown has been canceled"
+msgstr ""
+
+#: src/Views/SettingsView.vala:84
+msgid "Grab mouse pointer:"
+msgstr ""
+
+#: src/Views/SettingsView.vala:91
+msgid "Close after saving:"
+msgstr ""
+
+#: src/Views/SettingsView.vala:98
+msgid "Record sounds:"
+msgstr ""
+
+#: src/Views/SettingsView.vala:103
+msgid "Record sounds from speakers"
+msgstr ""
+
+#: src/Views/SettingsView.vala:120
+msgid "Record sounds from microphone"
+msgstr ""
+
+#: src/Views/SettingsView.vala:143
+msgid "Delay in seconds:"
+msgstr ""
+
+#: src/Views/SettingsView.vala:148
+msgid "Frame rate:"
+msgstr ""
+
+#: src/Views/SettingsView.vala:153
+msgid "Format:"
+msgstr ""
