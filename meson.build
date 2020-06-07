@@ -19,7 +19,7 @@ message ('Listing dependencies')
 
 dependencies = [
     dependency('gee-0.8'),
-    dependency('granite'),
+    dependency('granite', version: '>=5.4.0'),
     dependency('gtk+-3.0'),
     dependency('x11'),
     dependency('gdk-x11-3.0'),
