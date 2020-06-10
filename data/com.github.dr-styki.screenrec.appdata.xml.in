@@ -9,9 +9,9 @@
   <summary>Record videos of the screen</summary>
   <description>
     <p>A simple screen recording tool which was make to work like the elementary OS Screenshot tool.</p>
-    <p>Features include:</p>
+    <p>Included features:</p>
     <ul>
-      <li>Recording sound from speakers</li>
+      <li>Recording sound from computer</li>
       <li>Recording sound from microphone</li>
       <li>Available format: MP4, MKV and WEBM</li>
     </ul>
@@ -19,22 +19,22 @@
   <releases>
     <release version="2.1.0" date="2020-06-04">
       <description>
-        <p>Fix unsensitive window if record are canceled. Name change back to ScreenRec.</p>
+        <p>Fix unsensitive window if a record is cancelled. Name changed back to ScreenRec.</p>
       </description>
     </release>
     <release version="2.0.0" date="2020-05-01">
       <description>
-        <p>Application rewite. Use Gstreamer backend instead of FFmpeg. Etc ...</p>
+        <p>Application rewrite. Use GStreamer backend instead of FFmpeg etc.</p>
       </description>
     </release>
     <release version="1.2.0" date="2020-04-11">
       <description>
-        <p>UI Improvements</p>
+        <p>UI improvements</p>
       </description>
     </release>
     <release version="1.1.0" date="2020-04-09">
       <description>
-        <p>First Release after the fork of the screenrecorder app by Mohammed ALMadhoun</p>
+        <p>First release after the fork of the screenrecorder app by Mohammed ALMadhoun</p>
       </description>
     </release>
   </releases>

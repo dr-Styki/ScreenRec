@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-09 19:55+0200\n"
+"POT-Creation-Date: 2020-06-10 10:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,11 +42,11 @@ msgid ""
 msgstr ""
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:12
-msgid "Features include:"
+msgid "Included features:"
 msgstr ""
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:14
-msgid "Recording sound from speakers"
+msgid "Recording sound from computer"
 msgstr ""
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:15
@@ -59,20 +59,21 @@ msgstr ""
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:22
 msgid ""
-"Fix unsensitive window if record are canceled. Name change back to ScreenRec."
+"Fix unsensitive window if a record is cancelled. Name changed back to "
+"ScreenRec."
 msgstr ""
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:27
-msgid "Application rewite. Use Gstreamer backend instead of FFmpeg. Etc ..."
+msgid "Application rewrite. Use GStreamer backend instead of FFmpeg etc."
 msgstr ""
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:32
-msgid "UI Improvements"
+msgid "UI improvements"
 msgstr ""
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:37
 msgid ""
-"First Release after the fork of the screenrecorder app by Mohammed ALMadhoun"
+"First release after the fork of the screenrecorder app by Mohammed ALMadhoun"
 msgstr ""
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:87
