@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.dr-styki.screenrec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-10 10:11+0200\n"
+"POT-Creation-Date: 2020-06-10 10:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,7 +115,7 @@ msgid "Recording resumed"
 msgstr ""
 
 #: src/Tools/SendNotification.vala:33
-msgid "Countdown Cancelled"
+msgid "Countdown cancelled"
 msgstr ""
 
 #: src/Tools/SendNotification.vala:40

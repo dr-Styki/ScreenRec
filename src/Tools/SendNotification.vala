@@ -30,7 +30,7 @@ namespace ScreenRec {
         private Notification stop_notification = new Notification (_("Recording stopped"));
         private Notification pause_notification = new Notification (_("Recording paused"));
         private Notification resume_notification = new Notification (_("Recording resumed"));
-        private Notification cancel_cd_notification = new Notification (_("Countdown Cancelled"));
+        private Notification cancel_cd_notification = new Notification (_("Countdown cancelled"));
         
 
         public SendNotification (Gtk.ApplicationWindow? app) {
