@@ -1,15 +1,15 @@
 # French translations for com.github.dr-styki.screenrec package.
 # Copyright (C) 2020 THE com.github.dr-styki.screenrec'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the com.github.dr-styki.screenrec package.
-# Automatically generated, 2020.
+# Nathan Bonnemains (@NathanBnm), 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.dr-styki.screenrec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-09 19:52+0200\n"
+"POT-Creation-Date: 2020-06-10 10:11+0200\n"
 "PO-Revision-Date: 2020-06-09 19:52+0200\n"
-"Last-Translator: Automatically generated\n"
+"Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
 "Language-Team: none\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -23,20 +23,20 @@ msgstr "Enregistrements d'écran"
 
 #: src/ScreenrecorderWindow.vala:78
 msgid "Grab the whole screen"
-msgstr "Sélectionner tout l'écran"
+msgstr "Capturer tout l'écran"
 
 #: src/ScreenrecorderWindow.vala:82
 msgid "Grab the current window"
-msgstr "Sélectionner la fenêtre courante"
+msgstr "Capturer la fenêtre courante"
 
 #: src/ScreenrecorderWindow.vala:86
 msgid "Select area to grab"
-msgstr "Sélectionner une zone"
+msgstr "Capturer une zone"
 
 #: src/ScreenrecorderWindow.vala:106 src/ScreenrecorderWindow.vala:201
 #: src/ScreenrecorderWindow.vala:348
 msgid "Record Screen"
-msgstr "Enregistrer"
+msgstr "Enregistrer l'écran"
 
 #: src/ScreenrecorderWindow.vala:112 src/ScreenrecorderWindow.vala:204
 #: src/ScreenrecorderWindow.vala:351
@@ -50,7 +50,7 @@ msgstr "Reprendre"
 #: src/ScreenrecorderWindow.vala:224 src/ScreenrecorderWindow.vala:338
 #: src/Dialogs/Countdown.vala:94
 msgid "Pause"
-msgstr "Pause"
+msgstr "Mettre en pause"
 
 #: src/ScreenrecorderWindow.vala:326 src/Dialogs/ProgressDialog.vala:60
 #: src/Dialogs/SaveDialog.vala:119
@@ -63,31 +63,31 @@ msgstr "Réduire"
 
 #: src/ScreenrecorderWindow.vala:336 src/Dialogs/Countdown.vala:92
 msgid "Stop Recording"
-msgstr "Stop"
+msgstr "Arrêter l'enregistrement"
 
 #: src/Dialogs/Countdown.vala:51
-msgid "Recording starts in"
-msgstr "L'enregistrement débute dans"
+msgid "Recording starts in…"
+msgstr "L'enregistrement va démarrer dans…"
 
 #: src/Dialogs/ProgressDialog.vala:51
 msgid "Video recording in progress"
-msgstr "Enregistrement de la vidéo en cours"
+msgstr "Capture vidéo en cours"
 
 #: src/Dialogs/SaveDialog.vala:75
 msgid "Save record as…"
-msgstr "Enregistrer comme…"
+msgstr "Enregistrer la capture sous…"
 
 #: src/Dialogs/SaveDialog.vala:79
 msgid "Name:"
-msgstr "Nom:"
+msgstr "Nom :"
 
 #: src/Dialogs/SaveDialog.vala:89
 msgid "Folder:"
-msgstr "Dossier:"
+msgstr "Dossier :"
 
 #: src/Dialogs/SaveDialog.vala:99
 msgid "Select Screen Records Folder…"
-msgstr "Selectionner le dossier d'enregistrement…"
+msgstr "Sélectionner le dossier de destination…"
 
 #: src/Dialogs/SaveDialog.vala:122
 msgid "Save"
@@ -96,120 +96,76 @@ msgstr "Enregistrer"
 #: src/Dialogs/SaveDialog.vala:184
 #, c-format
 msgid "Screen record from %s"
-msgstr "Écran enregistré le %s"
+msgstr "Enregistrement d'écran du %s"
 
 #: src/Tools/SendNotification.vala:29
-msgid " Start Recording"
-msgstr " Enregistrement débuté"
+msgid "Recording started"
+msgstr "Enregistrement démarré"
 
 #: src/Tools/SendNotification.vala:30
-msgid " Stop Recording"
-msgstr " Enregistrement terminé"
+msgid "Recording stopped"
+msgstr "Enregistrement arrêté"
 
 #: src/Tools/SendNotification.vala:31
-msgid " Pause Recording"
-msgstr " Enregistrement interrompu"
+msgid "Recording paused"
+msgstr "Enregistrement mis en pause"
 
 #: src/Tools/SendNotification.vala:32
-msgid " Resume Recording"
-msgstr " Enregistrement reprit"
+msgid "Recording resumed"
+msgstr "Enregistrement repris"
 
 #: src/Tools/SendNotification.vala:33
-msgid " Countdown Canceled"
-msgstr " Compte à rebours annulé"
+msgid "Countdown Cancelled"
+msgstr "Compte à rebours annulé"
 
 #: src/Tools/SendNotification.vala:40
-msgid " The recording has been started"
-msgstr " L'enregistrement a commencé"
+msgid "The recording has been started"
+msgstr "L'enregistrement a démarré"
 
 #: src/Tools/SendNotification.vala:41
-msgid " The recording is done"
-msgstr " L'enregistrement est terminé"
+msgid "The recording is complete"
+msgstr "L'enregistrement est terminé"
 
 #: src/Tools/SendNotification.vala:42
-msgid " The recording is paused"
-msgstr " L'enregistrement est en pause"
+msgid "The recording has been paused"
+msgstr "L'enregistrement a été mis en pause"
 
 #: src/Tools/SendNotification.vala:43
-msgid " The recording is resumed"
-msgstr " L'enregistrement reprend"
+msgid "The recording has been resumed"
+msgstr "L'enregistrement a repris"
 
 #: src/Tools/SendNotification.vala:44
-msgid " The countdown has been canceled"
-msgstr " Le compte à rebours a été annulé"
+msgid "The countdown has been cancelled"
+msgstr "Le compte à rebours a été annulé"
 
 #: src/Views/SettingsView.vala:84
 msgid "Grab mouse pointer:"
-msgstr "Capturer le pointeur:"
+msgstr "Capturer le pointeur de la souris :"
 
 #: src/Views/SettingsView.vala:91
 msgid "Close after saving:"
-msgstr "Fermer après l'enregistrement:"
+msgstr "Fermer après l'enregistrement :"
 
 #: src/Views/SettingsView.vala:98
 msgid "Record sounds:"
-msgstr "Enregistrer le son:"
+msgstr "Enregistrer le son :"
 
 #: src/Views/SettingsView.vala:103
-msgid "Record sounds from speakers"
-msgstr "Enregistrer le son depuis les enceintes"
+msgid "Record sound from computer"
+msgstr "Enregistrer le son de l'ordinateur"
 
 #: src/Views/SettingsView.vala:120
-msgid "Record sounds from microphone"
-msgstr "Enregistrer le son depuis le micro"
+msgid "Record sound from microphone"
+msgstr "Enregistrer le son du microphone"
 
 #: src/Views/SettingsView.vala:143
 msgid "Delay in seconds:"
-msgstr "Délai en secondes:"
+msgstr "Délai en secondes :"
 
 #: src/Views/SettingsView.vala:148
 msgid "Frame rate:"
-msgstr "Images / seconde:"
+msgstr "Images par seconde :"
 
 #: src/Views/SettingsView.vala:153
 msgid "Format:"
-msgstr "Format:"
-
-#~ msgid "Screen Recorder"
-#~ msgstr "Enregistreur d'écran"
-
-#~ msgid "Record videos of the screen"
-#~ msgstr "Enregistrer des vidéos de l'écran"
-
-#~ msgid ""
-#~ "A simple screen recording tool which was make to work like the elementary "
-#~ "OS Screenshot tool."
-#~ msgstr ""
-#~ "Un outil d'enregistrement d'écran conçu pour fonctionner comme l'outil de "
-#~ "capture d'écran d'elementary OS."
-
-#~ msgid "Features include:"
-#~ msgstr "Les fonctionnalités inclues:"
-
-#~ msgid "Recording sound from speakers"
-#~ msgstr "Enregistrer le son depuis les enceintes"
-
-#~ msgid "Recording sound from microphone"
-#~ msgstr "Enregistrer le son depuis le micro"
-
-#~ msgid "Available format: MP4 and WEBM"
-#~ msgstr "Formats disponibles: MP4, MKV et WEBM"
-
-#~ msgid "UI Improvements"
-#~ msgstr "Amélioration de l'interface utilisateur"
-
-#~ msgid ""
-#~ "First Release after the fork of the screenrecorder app by Mohammed "
-#~ "ALMadhoun"
-#~ msgstr ""
-#~ "Première publication après le fork de l'application screenrecorder de "
-#~ "Mohammed ALMadhoun"
-
-#~ msgid "Stevy THOMAS (dr_Styki)"
-#~ msgstr "Stevy THOMAS (dr_Styki)"
-
-#~ msgid "com.github.dr-styki.screenrec"
-#~ msgstr "com.github.dr-styki.screenrec"
-
-#~ msgid "Screenshot;Screen;Record;Recording;"
-#~ msgstr "Screenshot;Screen;Record;Recording;"
+msgstr "Format :"

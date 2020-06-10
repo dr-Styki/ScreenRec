@@ -1,15 +1,15 @@
 # French translations for extra package.
 # Copyright (C) 2020 THE extra'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the extra package.
-# Automatically generated, 2020.
+# Nathan Bonnemains (@NathanBnm), 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-09 19:55+0200\n"
+"POT-Creation-Date: 2020-06-10 10:11+0200\n"
 "PO-Revision-Date: 2020-06-09 19:51+0200\n"
-"Last-Translator: Automatically generated\n"
+"Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
 "Language-Team: none\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -44,16 +44,16 @@ msgstr ""
 "capture d'écran d'elementary OS."
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:12
-msgid "Features include:"
-msgstr "Les fonctionnalités incluent :"
+msgid "Included features:"
+msgstr "Fonctionnalités incluses :"
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:14
-msgid "Recording sound from speakers"
-msgstr "Enregistrer le son depuis les enceintes"
+msgid "Recording sound from computer"
+msgstr "Enregistrement du son de l'ordinateur"
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:15
 msgid "Recording sound from microphone"
-msgstr "Enregistrer le son depuis le micro"
+msgstr "Enregistrement du son du microphone"
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:16
 msgid "Available format: MP4, MKV and WEBM"
@@ -61,20 +61,25 @@ msgstr "Formats disponibles : MP4, MKV et WEBM"
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:22
 msgid ""
-"Fix unsensitive window if record are canceled. Name change back to ScreenRec."
+"Fix unsensitive window if a record is cancelled. Name changed back to "
+"ScreenRec."
 msgstr ""
+"Correction de la sensibilité de la fenêtre si l'enregistrement est annulé. "
+"Changement de nom pour revenir à ScreenRec."
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:27
-msgid "Application rewite. Use Gstreamer backend instead of FFmpeg. Etc ..."
+msgid "Application rewrite. Use GStreamer backend instead of FFmpeg etc."
 msgstr ""
+"Réécriture de l'application. Utilisation du service GStreamer au lieu de "
+"FFmpeg etc."
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:32
-msgid "UI Improvements"
-msgstr "Amélioration de l'interface utilisateur"
+msgid "UI improvements"
+msgstr "Améliorations de l'interface"
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:37
 msgid ""
-"First Release after the fork of the screenrecorder app by Mohammed ALMadhoun"
+"First release after the fork of the screenrecorder app by Mohammed ALMadhoun"
 msgstr ""
 "Première publication après le fork de l'application screenrecorder de "
 "Mohammed ALMadhoun"
