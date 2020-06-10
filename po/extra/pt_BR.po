@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-09 19:55+0200\n"
+"POT-Creation-Date: 2020-06-10 10:11+0200\n"
 "PO-Revision-Date: 2020-06-09 19:51+0200\n"
 "Last-Translator: Henrique Andrade <henrique.coelho@gmail.com>\n"
 "Language-Team: none\n"
@@ -44,12 +44,13 @@ msgstr ""
 "semelhante à ferramenta Captura de Tela do elementary OS."
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:12
-msgid "Features include:"
-msgstr "Os recursos incluem:"
+msgid "Included features:"
+msgstr ""
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:14
-msgid "Recording sound from speakers"
-msgstr "Gravação de sons das caixas de som"
+#, fuzzy
+msgid "Recording sound from computer"
+msgstr "Gravação de sons do microfone"
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:15
 msgid "Recording sound from microphone"
@@ -61,20 +62,23 @@ msgstr "Formatos disponíveis: MP4, MKV e WEBVM"
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:22
 msgid ""
-"Fix unsensitive window if record are canceled. Name change back to ScreenRec."
+"Fix unsensitive window if a record is cancelled. Name changed back to "
+"ScreenRec."
 msgstr ""
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:27
-msgid "Application rewite. Use Gstreamer backend instead of FFmpeg. Etc ..."
+msgid "Application rewrite. Use GStreamer backend instead of FFmpeg etc."
 msgstr ""
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:32
-msgid "UI Improvements"
+#, fuzzy
+msgid "UI improvements"
 msgstr "Melhorias na interface do usuário"
 
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:37
+#, fuzzy
 msgid ""
-"First Release after the fork of the screenrecorder app by Mohammed ALMadhoun"
+"First release after the fork of the screenrecorder app by Mohammed ALMadhoun"
 msgstr ""
 "Primeiro lançamento após o fork do aplicativo screenrecorder de Mohammed "
 "ALMadhoun"
@@ -82,3 +86,9 @@ msgstr ""
 #: data/com.github.dr-styki.screenrec.appdata.xml.in:87
 msgid "Stevy THOMAS (dr_Styki)"
 msgstr "Stevy THOMAS (dr_Styki)"
+
+#~ msgid "Features include:"
+#~ msgstr "Os recursos incluem:"
+
+#~ msgid "Recording sound from speakers"
+#~ msgstr "Gravação de sons das caixas de som"
