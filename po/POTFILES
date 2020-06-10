@@ -9,5 +9,3 @@ src/Widgets/SelectionArea.vala
 src/Widgets/VideoPlayer.vala
 src/Views/RecordView.vala
 src/Views/SettingsView.vala
-data/com.github.dr-styki.screenrec.desktop.in
-data/com.github.dr-styki.screenrec.appdata.xml.in
