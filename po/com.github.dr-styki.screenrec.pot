@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.dr-styki.screenrec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-09 19:52+0200\n"
+"POT-Creation-Date: 2020-06-10 10:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,7 +66,7 @@ msgid "Stop Recording"
 msgstr ""
 
 #: src/Dialogs/Countdown.vala:51
-msgid "Recording starts in"
+msgid "Recording starts in…"
 msgstr ""
 
 #: src/Dialogs/ProgressDialog.vala:51
@@ -99,43 +99,43 @@ msgid "Screen record from %s"
 msgstr ""
 
 #: src/Tools/SendNotification.vala:29
-msgid " Start Recording"
+msgid "Recording started"
 msgstr ""
 
 #: src/Tools/SendNotification.vala:30
-msgid " Stop Recording"
+msgid "Recording stopped"
 msgstr ""
 
 #: src/Tools/SendNotification.vala:31
-msgid " Pause Recording"
+msgid "Recording paused"
 msgstr ""
 
 #: src/Tools/SendNotification.vala:32
-msgid " Resume Recording"
+msgid "Recording resumed"
 msgstr ""
 
 #: src/Tools/SendNotification.vala:33
-msgid " Countdown Canceled"
+msgid "Countdown cancelled"
 msgstr ""
 
 #: src/Tools/SendNotification.vala:40
-msgid " The recording has been started"
+msgid "The recording has been started"
 msgstr ""
 
 #: src/Tools/SendNotification.vala:41
-msgid " The recording is done"
+msgid "The recording is complete"
 msgstr ""
 
 #: src/Tools/SendNotification.vala:42
-msgid " The recording is paused"
+msgid "The recording has been paused"
 msgstr ""
 
 #: src/Tools/SendNotification.vala:43
-msgid " The recording is resumed"
+msgid "The recording has been resumed"
 msgstr ""
 
 #: src/Tools/SendNotification.vala:44
-msgid " The countdown has been canceled"
+msgid "The countdown has been cancelled"
 msgstr ""
 
 #: src/Views/SettingsView.vala:84
@@ -151,11 +151,11 @@ msgid "Record sounds:"
 msgstr ""
 
 #: src/Views/SettingsView.vala:103
-msgid "Record sounds from speakers"
+msgid "Record sound from computer"
 msgstr ""
 
 #: src/Views/SettingsView.vala:120
-msgid "Record sounds from microphone"
+msgid "Record sound from microphone"
 msgstr ""
 
 #: src/Views/SettingsView.vala:143

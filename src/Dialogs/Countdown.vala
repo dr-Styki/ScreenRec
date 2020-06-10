@@ -48,7 +48,7 @@ namespace ScreenRec {
             box.margin_end = 40;
             box.margin_top = box.margin_bottom = 20;
 
-            var title = new Gtk.Label ("<span size='20000'>" + _("Recording starts in") + "…" + "</span>");
+            var title = new Gtk.Label ("<span size='20000'>" + _("Recording starts in…") + "</span>");
             title.use_markup = true;
             title.margin_bottom = 10;
 

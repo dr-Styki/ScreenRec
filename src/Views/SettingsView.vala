@@ -100,7 +100,7 @@ namespace ScreenRec {
 
                 // From Speakers
             record_speakers_btn = new Gtk.CheckButton ();
-            record_speakers_btn.tooltip_text = _("Record sounds from speakers");
+            record_speakers_btn.tooltip_text = _("Record sound from computer");
             record_speakers_btn.toggled.connect(() => {
                 speakers_record = !speakers_record;
                 if (speakers_record) {
@@ -117,7 +117,7 @@ namespace ScreenRec {
 
                 // From Mic
             record_mic_btn = new Gtk.CheckButton ();
-            record_mic_btn.tooltip_text = _("Record sounds from microphone");
+            record_mic_btn.tooltip_text = _("Record sound from microphone");
             record_mic_btn.toggled.connect(() => {
                 mic_record = !mic_record;
                 if (mic_record) {

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.dr-styki.screenrec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-09 19:52+0200\n"
+"POT-Creation-Date: 2020-06-10 10:20+0200\n"
 "PO-Revision-Date: 2020-06-09 19:52+0200\n"
 "Last-Translator: Henrique Andrade <henrique.coelho@gmail.com>\n"
 "Language-Team: none\n"
@@ -66,7 +66,8 @@ msgid "Stop Recording"
 msgstr "Parar gravação"
 
 #: src/Dialogs/Countdown.vala:51
-msgid "Recording starts in"
+#, fuzzy
+msgid "Recording starts in…"
 msgstr "A gravação começa em"
 
 #: src/Dialogs/ProgressDialog.vala:51
@@ -99,43 +100,53 @@ msgid "Screen record from %s"
 msgstr "Gravação de tela de %s"
 
 #: src/Tools/SendNotification.vala:29
-msgid " Start Recording"
-msgstr " Iniciar gravação"
+#, fuzzy
+msgid "Recording started"
+msgstr "A gravação começa em"
 
 #: src/Tools/SendNotification.vala:30
-msgid " Stop Recording"
-msgstr " Parar gravação"
+#, fuzzy
+msgid "Recording stopped"
+msgstr " Gravação pausada"
 
 #: src/Tools/SendNotification.vala:31
-msgid " Pause Recording"
-msgstr " Pausar gravação"
+#, fuzzy
+msgid "Recording paused"
+msgstr " Gravação pausada"
 
 #: src/Tools/SendNotification.vala:32
-msgid " Resume Recording"
-msgstr " Retomar gravação"
+#, fuzzy
+msgid "Recording resumed"
+msgstr " Gravação retomada"
 
 #: src/Tools/SendNotification.vala:33
-msgid " Countdown Canceled"
+#, fuzzy
+msgid "Countdown cancelled"
 msgstr " Contagem regressiva cancelada"
 
 #: src/Tools/SendNotification.vala:40
-msgid " The recording has been started"
+#, fuzzy
+msgid "The recording has been started"
 msgstr " Gravação iniciada"
 
 #: src/Tools/SendNotification.vala:41
-msgid " The recording is done"
+#, fuzzy
+msgid "The recording is complete"
 msgstr " Gravação concluída"
 
 #: src/Tools/SendNotification.vala:42
-msgid " The recording is paused"
+#, fuzzy
+msgid "The recording has been paused"
 msgstr " Gravação pausada"
 
 #: src/Tools/SendNotification.vala:43
-msgid " The recording is resumed"
+#, fuzzy
+msgid "The recording has been resumed"
 msgstr " Gravação retomada"
 
 #: src/Tools/SendNotification.vala:44
-msgid " The countdown has been canceled"
+#, fuzzy
+msgid "The countdown has been cancelled"
 msgstr "  A contagem regressiva foi cancelada"
 
 #: src/Views/SettingsView.vala:84
@@ -151,11 +162,13 @@ msgid "Record sounds:"
 msgstr "Gravar sons:"
 
 #: src/Views/SettingsView.vala:103
-msgid "Record sounds from speakers"
-msgstr "Gravar sons do computador"
+#, fuzzy
+msgid "Record sound from computer"
+msgstr "Gravar sons do microfone"
 
 #: src/Views/SettingsView.vala:120
-msgid "Record sounds from microphone"
+#, fuzzy
+msgid "Record sound from microphone"
 msgstr "Gravar sons do microfone"
 
 #: src/Views/SettingsView.vala:143
@@ -169,6 +182,24 @@ msgstr "Taxa de quadros (FPS):"
 #: src/Views/SettingsView.vala:153
 msgid "Format:"
 msgstr "Formato:"
+
+#, fuzzy
+#~ msgid "Start Recording"
+#~ msgstr " Iniciar gravação"
+
+#, fuzzy
+#~ msgid "Pause Recording"
+#~ msgstr " Pausar gravação"
+
+#, fuzzy
+#~ msgid "Resume Recording"
+#~ msgstr " Retomar gravação"
+
+#~ msgid " Stop Recording"
+#~ msgstr " Parar gravação"
+
+#~ msgid "Record sounds from speakers"
+#~ msgstr "Gravar sons do computador"
 
 #~ msgid "Screen Recorder"
 #~ msgstr "Gravador de Tela"
