@@ -7,4 +7,17 @@ Terminal=false
 Type=Application
 Categories=GTK;GNOME;Utility;AudioVideo;Video;
 Keywords=Screenshot;Screen;Record;Recording;
+Actions=ScreenRecord;WindowRecord;AreaRecord;
 X-GNOME-UsesNotifications=true
+
+[Desktop Action ScreenRecord]
+Name=Record the Whole Screen
+Exec=com.github.dr-styki.screenrec --screen
+
+[Desktop Action WindowRecord]
+Name=Record the Current Window
+Exec=com.github.dr-styki.screenrec --window
+
+[Desktop Action AreaRecord]
+Name=Record a Selected Area
+Exec=com.github.dr-styki.screenrec --area

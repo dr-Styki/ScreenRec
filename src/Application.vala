@@ -29,6 +29,12 @@ namespace ScreenRec {
         public static GLib.Settings settings;
         private ScreenrecorderWindow window = null;
 
+        private new OptionEntry[] options;
+
+        private bool screen = false;
+        private bool win = false;
+        private bool area = false;
+
         public const string SAVE_FOLDER = _("Screen Records");
 
         public ScreenRecApp () {
@@ -39,6 +45,16 @@ namespace ScreenRec {
         }
         
         construct {
+
+            flags |= ApplicationFlags.HANDLES_COMMAND_LINE;
+
+            options = new OptionEntry[3];
+            options[0] = { "window", 'w', 0, OptionArg.NONE, ref win, _("Capture active window"), null };
+            options[1] = { "area", 'r', 0, OptionArg.NONE, ref area, _("Capture area"), null };
+            options[2] = { "screen", 's', 0, OptionArg.NONE, ref screen, _("Capture the whole screen"), null };
+
+            add_main_option_entries (options);
+
             settings = new GLib.Settings ("com.github.dr-styki.screenrec");
             weak Gtk.IconTheme default_theme = Gtk.IconTheme.get_default ();
             default_theme.add_resource_path ("/com/github/dr-Styki/ScreenRec");
@@ -56,6 +72,7 @@ namespace ScreenRec {
                     }
                 }
             });
+
             add_action (quit_action);
             set_accels_for_action ("app.quit", {"<Control>q", "Escape"});
 
@@ -85,23 +102,36 @@ namespace ScreenRec {
         }
 
         protected override void activate () {
+
             if (window != null) {
+
                 window.present ();
                 return;
+
+            } else {
+
+                window = new ScreenrecorderWindow (this);
+                window.get_style_context ().add_class ("rounded");
+                window.show_all ();
+                if (screen || area || win) {
+                    
+                    window.iconify ();
+                    set_capture_type(window);
+                    window.autostart();
+                }
             }
-            window = new ScreenrecorderWindow (this);
-            window.get_style_context ().add_class ("rounded");
-            window.show_all ();
         }
 
         public static int main (string[] args) {
+
             Gtk.init (ref args);
             Gst.init (ref args);
             Gst.Debug.set_active(true);
             var err = GtkClutter.init (ref args);
             if (err != Clutter.InitError.SUCCESS) {
-                error ("Could not initalize clutter! "+err.to_string ());
+                error ("Could not initalize clutter! " + err.to_string ());
             }
+
             var app = new ScreenRecApp ();
             return app.run (args);
         }
@@ -115,6 +145,26 @@ namespace ScreenRec {
                     debug (e.message);
                 }
             }
+        }
+
+        private void reset_cmd_line_options () {
+            screen = false;
+            win = false;
+            area = false;
+        }
+
+        private void set_capture_type(ScreenrecorderWindow winapp) {
+
+            if (screen){
+                window.set_capture_type(1);
+            }
+            else if (win) {
+                window.set_capture_type(2);
+            }
+            else if (area) {
+                window.set_capture_type(3);
+            }
+            reset_cmd_line_options ();
         }
     }
 }

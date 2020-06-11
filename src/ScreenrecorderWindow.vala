@@ -34,6 +34,10 @@ namespace ScreenRec {
         public CaptureType capture_mode = CaptureType.SCREEN;
         private Gtk.Grid capture_type_grid;
 
+        private Gtk.RadioButton all;
+        private Gtk.RadioButton curr_window;
+        private Gtk.RadioButton selection;
+
         //Actons Buttons
         public Gtk.Button right_button;
         public Gtk.Button left_button;
@@ -73,15 +77,15 @@ namespace ScreenRec {
             countdown = new Countdown (this, this.send_notification);
 
             // Select Screen/Area
-            var all = new Gtk.RadioButton (null);
+            all = new Gtk.RadioButton (null);
             all.image = new Gtk.Image.from_icon_name ("grab-screen-symbolic", Gtk.IconSize.DND);
             all.tooltip_text = _("Grab the whole screen");
 
-            var curr_window = new Gtk.RadioButton.from_widget (all);
+            curr_window = new Gtk.RadioButton.from_widget (all);
             curr_window.image = new Gtk.Image.from_icon_name ("grab-window-symbolic", Gtk.IconSize.DND);
             curr_window.tooltip_text = _("Grab the current window");
 
-            var selection = new Gtk.RadioButton.from_widget (curr_window);
+            selection = new Gtk.RadioButton.from_widget (curr_window);
             selection.image = new Gtk.Image.from_icon_name ("grab-area-symbolic", Gtk.IconSize.DND);
             selection.tooltip_text = _("Select area to grab");
 
@@ -379,6 +383,27 @@ namespace ScreenRec {
                     close();
                 }
             });
+        }
+
+        public void set_capture_type(int capture_type) {
+
+            switch (capture_type) {
+                case 1:
+                    all.activate();
+                    break;
+                case 2:
+                    curr_window.activate();
+                    break;
+                case 3:
+                    selection.activate();
+                    break;
+            }
+
+        }
+
+        public void autostart () {
+
+            right_button.activate();
         }
 
         public bool can_quit () {
