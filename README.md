@@ -1,9 +1,9 @@
 # ScreenRec
 A simple screen recording tool which was make to work like the elementary OS Screenshot tool.
 
-<!-- <p align="left">
+<p align="left">
   <a href="https://appcenter.elementary.io/com.github.dr-styki.screenrec"><img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" /></a>
-</p> -->
+</p>
 
 <p align="center"><img src="data/screenshots/screenshot_1.png"><img src="data/screenshots/screenshot_2.png"></p>
 <p align="center"><img src="data/screenshots/screenshot_3.png"></p>
@@ -34,4 +34,4 @@ To install, use `ninja install`, then execute with `com.github.dr-styki.screenre
     com.github.dr-styki.screenrec
 
 ## Credits
-Originaly forked from [screenrecorder](https://github.com/Mohelm97/screenrecorder). Now GREATLY inspired by the code of [Screenshot](https://github.com/elementary/screenshot), [Kazam](https://github.com/hzbd/kazam), [Screencast](https://github.com/artemanufrij/screencast) and [screenrecorder](https://github.com/Mohelm97/screenrecorder).
+Originaly forked from [screenrecorder](https://github.com/Mohelm97/screenrecorder). Now greatly inspired by the code of [Screenshot](https://github.com/elementary/screenshot) and [Kazam](https://github.com/hzbd/kazam), [Screencast](https://github.com/artemanufrij/screencast).
