@@ -1,0 +1,172 @@
+# Portuguese (Portugal) translations for com.github.dr-styki.screenrec package.
+# Copyright (C) 2020 THE com.github.dr-styki.screenrec'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.dr-styki.screenrec package.
+# André Barata <andretiagob@protonmail.com>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.dr-styki.screenrec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-10 10:20+0200\n"
+"PO-Revision-Date: 2020-09-03 12:41+0100\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"Last-Translator: André Barata <andretiagob@protonmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: pt\n"
+
+#: src/Application.vala:32
+msgid "Screen Records"
+msgstr "Gravador de Ecrã"
+
+#: src/ScreenrecorderWindow.vala:78
+msgid "Grab the whole screen"
+msgstr "Capturar o ecrã inteiro"
+
+#: src/ScreenrecorderWindow.vala:82
+msgid "Grab the current window"
+msgstr "Capturar a janela atual"
+
+#: src/ScreenrecorderWindow.vala:86
+msgid "Select area to grab"
+msgstr "Selecionar área para capturar"
+
+#: src/ScreenrecorderWindow.vala:106 src/ScreenrecorderWindow.vala:201
+#: src/ScreenrecorderWindow.vala:348
+msgid "Record Screen"
+msgstr "Gravar Ecrã"
+
+#: src/ScreenrecorderWindow.vala:112 src/ScreenrecorderWindow.vala:204
+#: src/ScreenrecorderWindow.vala:351
+msgid "Close"
+msgstr "Fechar"
+
+#: src/ScreenrecorderWindow.vala:217
+msgid "Resume"
+msgstr "Resumir"
+
+#: src/ScreenrecorderWindow.vala:224 src/ScreenrecorderWindow.vala:338
+#: src/Dialogs/Countdown.vala:94
+msgid "Pause"
+msgstr "Pausar"
+
+#: src/ScreenrecorderWindow.vala:326 src/Dialogs/ProgressDialog.vala:60
+#: src/Dialogs/SaveDialog.vala:119
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/ScreenrecorderWindow.vala:328
+msgid "Minimise"
+msgstr "Minimizar"
+
+#: src/ScreenrecorderWindow.vala:336 src/Dialogs/Countdown.vala:92
+msgid "Stop Recording"
+msgstr "Parar Gravação"
+
+#: src/Dialogs/Countdown.vala:51
+msgid "Recording starts in…"
+msgstr "Gravação começa em…"
+
+#: src/Dialogs/ProgressDialog.vala:51
+msgid "Video recording in progress"
+msgstr "Gravação do vídeo em progresso"
+
+#: src/Dialogs/SaveDialog.vala:75
+msgid "Save record as…"
+msgstr "Guardar gravação em…"
+
+#: src/Dialogs/SaveDialog.vala:79
+msgid "Name:"
+msgstr "Nome:"
+
+#: src/Dialogs/SaveDialog.vala:89
+msgid "Folder:"
+msgstr "Pasta:"
+
+#: src/Dialogs/SaveDialog.vala:99
+msgid "Select Screen Records Folder…"
+msgstr "Selecionar a Pasta de Gravações de Ecrã…"
+
+#: src/Dialogs/SaveDialog.vala:122
+msgid "Save"
+msgstr "Guardar"
+
+#: src/Dialogs/SaveDialog.vala:184
+#, c-format
+msgid "Screen record from %s"
+msgstr "Gravação de ecrã de %s"
+
+#: src/Tools/SendNotification.vala:29
+msgid "Recording started"
+msgstr "Gravação iniciada"
+
+#: src/Tools/SendNotification.vala:30
+msgid "Recording stopped"
+msgstr "Gravação parou"
+
+#: src/Tools/SendNotification.vala:31
+msgid "Recording paused"
+msgstr "Gravação pausada"
+
+#: src/Tools/SendNotification.vala:32
+msgid "Recording resumed"
+msgstr "Gravação resumida"
+
+#: src/Tools/SendNotification.vala:33
+msgid "Countdown cancelled"
+msgstr "Contagem decrescente cancelada"
+
+#: src/Tools/SendNotification.vala:40
+msgid "The recording has been started"
+msgstr "A gravação foi iniciada"
+
+#: src/Tools/SendNotification.vala:41
+msgid "The recording is complete"
+msgstr "A gravação está completada"
+
+#: src/Tools/SendNotification.vala:42
+msgid "The recording has been paused"
+msgstr "A gravação foi pausada"
+
+#: src/Tools/SendNotification.vala:43
+msgid "The recording has been resumed"
+msgstr "A gravação foi resumida"
+
+#: src/Tools/SendNotification.vala:44
+msgid "The countdown has been cancelled"
+msgstr "A contagem decrescente foi cancelada"
+
+#: src/Views/SettingsView.vala:84
+msgid "Grab mouse pointer:"
+msgstr "Capturar o cursor do rato:"
+
+#: src/Views/SettingsView.vala:91
+msgid "Close after saving:"
+msgstr "Fechar após guardar:"
+
+#: src/Views/SettingsView.vala:98
+msgid "Record sounds:"
+msgstr "Gravar sons:"
+
+#: src/Views/SettingsView.vala:103
+msgid "Record sound from computer"
+msgstr "Gravar som do computador"
+
+#: src/Views/SettingsView.vala:120
+msgid "Record sound from microphone"
+msgstr "Gravar som do microfone"
+
+#: src/Views/SettingsView.vala:143
+msgid "Delay in seconds:"
+msgstr "Atraso em segundos:"
+
+#: src/Views/SettingsView.vala:148
+msgid "Frame rate:"
+msgstr "Taxa de fotogramas:"
+
+#: src/Views/SettingsView.vala:153
+msgid "Format:"
+msgstr "Formato:"
