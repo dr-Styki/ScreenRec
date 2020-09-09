@@ -17,6 +17,18 @@
     </ul>
   </description>
   <releases>
+    <release version="2.2.0" date="2020-09-09">
+      <description>
+        <ul>
+          <li>Add Portuguese (Portugal) translation thanks to André Barata</li>
+          <li>Add Portuguese (Brazilian) translation thanks to Henrique Andrade</li>
+          <li>Add Spanish translation thanks to CCaroV</li>
+          <li>New beautiful icon thanks to Nararyans R.I. (Fatih20)</li>
+          <li>Add static quicklist</li>
+          <li>Respect the OS-wide dark preference</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.1.0" date="2020-06-04">
       <description>
         <p>Fix unsensitive window if a record is cancelled. Name changed back to ScreenRec.</p>

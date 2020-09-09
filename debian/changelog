@@ -1,3 +1,19 @@
+com.github.dr-styki.screenrec (2.2.0) bionic; urgency=medium
+
+ * Add Portuguese (Portugal) translation thanks to André Barata <andretiagob@protonmail.com>
+
+ * Add Portuguese (Brazilian) translation thanks to Henrique Andrade
+
+ * Add Spanish translation thanks to CCaroV
+
+ * A new beautiful icon thanks to Nararyans R.I. (Fatih20)
+
+ * Add static quicklist
+
+ * Respect the OS-wide dark preference
+
+ -- dr_Styki <dr_styki@hack.i.ng>  Wed, 09 Sep 2020 21:00:00 +0200
+
 com.github.dr-styki.screenrec (2.1.0) bionic; urgency=medium
 
  * Fix unsensitive window if record are canceled. Name change back to ScreenRec.
