@@ -53,6 +53,8 @@ namespace ScreenRec {
         private Gst.Element vid_in_queue;
         private Gst.Element vid_out_queue;
         private Gst.Element vid_caps_filter;
+        private Gst.Element videoconvert2;
+        private Gst.Element vid_caps_filter2;
         private Gst.Element videoconvert;
         private Gst.Element videorate;
         private Gst.Element aud_out_queue;
@@ -134,12 +136,12 @@ namespace ScreenRec {
 
                 // H264 requirement is that video dimensions are divisible by 2.
                 // If they are not, we have to get rid of that extra pixel.
-                if  ( (this.endx - this.startx) % 2 != 0 && (this.format == "x264enc" || this.format == "x264enc-mkv")) {
+                if  ( this.width % 2 != 0 && (this.format == "x264enc" || this.format == "x264enc-mkv")) {
                     this.endx -= 1;
                     this.width -= 1;
                 }
 
-                if  ( (this.endy - this.starty) % 2 != 0 && (this.format == "x264enc" || this.format == "x264enc-mkv")) {
+                if  ( this.height % 2 != 0 && (this.format == "x264enc" || this.format == "x264enc-mkv")) {
                     this.endy -= 1;
                     this.height -= 1;
                 }
@@ -191,14 +193,18 @@ namespace ScreenRec {
             videosrc.set_property ("use-damage", false);
             videosrc.set_property ("show-pointer", is_cursor_captured);
 
-            Gst.Caps vid_caps = Gst.Caps.from_string("video/x-raw, framerate=" + framerate.to_string () + "/1");
+            Gst.Caps vid_caps = Gst.Caps.from_string("video/x-raw,framerate=" + framerate.to_string () + "/1");
             vid_caps_filter = Gst.ElementFactory.make("capsfilter", "vid_filter");
             vid_caps_filter.set_property("caps", vid_caps);
 
             videoconvert = Gst.ElementFactory.make("videoconvert", "videoconvert");
             videorate = Gst.ElementFactory.make("videorate", "video_rate");
 
+            Gst.Caps vid_caps2 = Gst.Caps.from_string("video/x-raw,format=I420");
+            vid_caps_filter2 = Gst.ElementFactory.make("capsfilter", "vid_filter2");
+            vid_caps_filter2.set_property("caps", vid_caps2);
 
+            videoconvert2 = Gst.ElementFactory.make("videoconvert", "videoconvert2");
 
             if (format != "raw") {
 
@@ -357,6 +363,8 @@ namespace ScreenRec {
             pipeline.add(videorate);
             pipeline.add(vid_caps_filter);
             pipeline.add(videoconvert);
+            pipeline.add(vid_caps_filter2);
+            pipeline.add(videoconvert2);
             pipeline.add(vid_out_queue);
             pipeline.add(file_queue);
 
@@ -416,17 +424,22 @@ namespace ScreenRec {
             re = vid_caps_filter.link(videoconvert);
             debug("vid_caps_filter.link(videoconvert); -> " + re.to_string());
 
+            re = videoconvert.link(vid_caps_filter2);
+            debug("videoconvert.link(vid_caps_filter2); -> " + re.to_string());
+            
+            re = vid_caps_filter2.link(videoconvert2);
+            debug("vid_caps_filter2.link(videoconvert2); -> " + re.to_string());
 
             // RAW or Encoded
             if (format == "raw") { //RAW
                 
-                re = videoconvert.link(vid_out_queue);
-                debug("videoconvert.link(vid_out_queue); -> " + re.to_string());
+                re = videoconvert2.link(vid_out_queue);
+                debug("videoconvert2.link(vid_out_queue); -> " + re.to_string());
 
             } else {
                 
-                re = videoconvert.link(videnc);
-                debug("videoconvert.link(videnc); -> " + re.to_string());
+                re = videoconvert2.link(videnc);
+                debug("videoconvert2.link(videnc); -> " + re.to_string());
                 re = videnc.link(vid_out_queue);
                 debug("videnc.link(vid_out_queue); -> " + re.to_string());
             }
