@@ -261,7 +261,7 @@ namespace ScreenRec {
                 }
 
                 videnc.set_property("speed-preset", 1); // ultrafast
-                videnc.set_property("pass", 5);
+                videnc.set_property("pass", 4);
                 videnc.set_property("quantizer", 15);
                 videnc.set_property("threads", cpu_cores);
                 mux = Gst.ElementFactory.make("mp4mux", "muxer");
@@ -278,7 +278,7 @@ namespace ScreenRec {
                 }
 
                 videnc.set_property("speed-preset", 1); // ultrafast
-                videnc.set_property("pass", 5);
+                videnc.set_property("pass", 4);
                 videnc.set_property("quantizer", 15);
                 videnc.set_property("threads", cpu_cores);
                 mux = Gst.ElementFactory.make("matroskamux", "muxer");
