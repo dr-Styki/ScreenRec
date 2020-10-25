@@ -138,7 +138,7 @@ namespace ScreenRec {
                 // If they are not, we have to get rid of that extra pixel.
                 if  ( this.width % 2 != 0 && (this.format == "x264enc" ||
                                               this.format == "x264enc-mkv" ||
-                                              this.format == "twitter" ||
+                                              this.format == "x264enc-yuv420" ||
                                               this.format == "gif")) {
                     this.endx -= 1;
                     this.width -= 1;
@@ -146,7 +146,7 @@ namespace ScreenRec {
 
                 if  ( this.height % 2 != 0 && (this.format == "x264enc" ||
                                                this.format == "x264enc-mkv" ||
-                                               this.format == "twitter" ||
+                                               this.format == "x264enc-yuv420" ||
                                                this.format == "gif")) {
                     this.endy -= 1;
                     this.height -= 1;
@@ -167,7 +167,7 @@ namespace ScreenRec {
 
                 if (this.format == "x264enc" ||
                     this.format == "x264enc-mkv" ||
-                    this.format == "twitter" ||
+                    this.format == "x264enc-yuv420" ||
                     this.format == "gif") {
 
                     this.videocrop = Gst.ElementFactory.make("videocrop", "cropper");
@@ -209,7 +209,7 @@ namespace ScreenRec {
             videoconvert = Gst.ElementFactory.make("videoconvert", "videoconvert");
             videorate = Gst.ElementFactory.make("videorate", "video_rate");
 
-            if (this.format == "twitter") {
+            if (this.format == "x264enc-yuv420") {
 
                 Gst.Caps vid_caps2 = Gst.Caps.from_string("video/x-raw,format=I420");
                 vid_caps_filter2 = Gst.ElementFactory.make("capsfilter", "vid_filter2");
@@ -224,7 +224,7 @@ namespace ScreenRec {
 
                 if (this.format == "x264enc" || 
                     this.format == "x264enc-mkv" || 
-                    this.format == "twitter" || 
+                    this.format == "x264enc-yuv420" || 
                     this.format == "gif") {
 
                     videnc = Gst.ElementFactory.make("x264enc", "video_encoder");
@@ -252,7 +252,7 @@ namespace ScreenRec {
 
                 mux = Gst.ElementFactory.make("webmmux", "muxer");
 
-            } else if (format == "x264enc" || format == "twitter" || this.format == "gif") {
+            } else if (format == "x264enc" || format == "x264enc-yuv420" || this.format == "gif") {
 
                 // x264enc supports maximum of four cpu_cores
                 if (cpu_cores > 4) {
@@ -378,7 +378,7 @@ namespace ScreenRec {
             pipeline.add(vid_caps_filter);
             pipeline.add(videoconvert);
 
-            if (this.format == "twitter") {
+            if (this.format == "x264enc-yuv420") {
 
                 pipeline.add(vid_caps_filter2);
                 pipeline.add(videoconvert2);
@@ -443,7 +443,7 @@ namespace ScreenRec {
             re = vid_caps_filter.link(videoconvert);
             debug("vid_caps_filter.link(videoconvert); -> " + re.to_string());
 
-            if (this.format == "twitter") {
+            if (this.format == "x264enc-yuv420") {
 
                 re = videoconvert.link(vid_caps_filter2);
                 debug("videoconvert.link(vid_caps_filter2); -> " + re.to_string());
@@ -458,7 +458,7 @@ namespace ScreenRec {
                 re = videoconvert.link(vid_out_queue);
                 debug("videoconvert.link(vid_out_queue); -> " + re.to_string());
 
-            } else if (format == "twitter") {
+            } else if (format == "x264enc-yuv420") {
                 
                 re = videoconvert2.link(videnc);
                 debug("videoconvert2.link(videnc); -> " + re.to_string());
