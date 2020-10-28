@@ -1,3 +1,13 @@
+com.github.dr-styki.screenrec (2.2.1) bionic; urgency=medium
+
+ * Twitter now accept videos recorded by ScreenRec
+
+ * Add Dutch translation thanks to Heimen Stoffels (Vistaus)
+
+ * Add Russian translation thanks to nick87720z
+
+ -- dr_Styki <dr_styki@hack.i.ng>  Wed, 28 Oct 2020 09:00:00 +0200
+
 com.github.dr-styki.screenrec (2.2.0) bionic; urgency=medium
 
  * Add Portuguese (Portugal) translation thanks to André Barata <andretiagob@protonmail.com>

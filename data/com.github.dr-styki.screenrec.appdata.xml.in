@@ -17,6 +17,15 @@
     </ul>
   </description>
   <releases>
+    <release version="2.2.1" date="2020-09-09">
+      <description>
+        <ul>
+          <li>Twitter now accept videos recorded by ScreenRec</li>
+          <li>Add Dutch translation thanks to Heimen Stoffels (Vistaus)</li>
+          <li>Add Russian translation thanks to nick87720z</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.2.0" date="2020-09-09">
       <description>
         <ul>
