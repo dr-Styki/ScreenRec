@@ -662,7 +662,7 @@ namespace ScreenRec {
                     "ffmpeg",
                     "-f", "mp4",
                     "-i", input_file.get_path (),
-                    "-pix_fmt", "yuv420p",
+                    //"-pix_fmt", "yuv420p",
                     tmp_gif_path
                 };
 
