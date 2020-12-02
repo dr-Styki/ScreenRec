@@ -1,6 +1,5 @@
 sources = files (
     'Dialogs/Countdown.vala',
-    'Dialogs/ProgressDialog.vala',
     'Dialogs/SaveDialog.vala',
 
     'Tools/SendNotification.vala',

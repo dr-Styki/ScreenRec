@@ -136,18 +136,14 @@ namespace ScreenRec {
 
                 // H264 requirement is that video dimensions are divisible by 2.
                 // If they are not, we have to get rid of that extra pixel.
-                if  ( this.width % 2 != 0 && (this.format == "x264enc" ||
-                                              this.format == "x264enc-mkv" ||
-                                              this.format == "x264enc-yuv420" ||
-                                              this.format == "gif")) {
+                if  ( this.width % 2 != 0 && (this.format == "x264enc-mkv" ||
+                                              this.format == "x264enc-mp4")) {
                     this.endx -= 1;
                     this.width -= 1;
                 }
 
-                if  ( this.height % 2 != 0 && (this.format == "x264enc" ||
-                                               this.format == "x264enc-mkv" ||
-                                               this.format == "x264enc-yuv420" ||
-                                               this.format == "gif")) {
+                if  ( this.height % 2 != 0 && (this.format == "x264enc-mkv" ||
+                                               this.format == "x264enc-mp4")) {
                     this.endy -= 1;
                     this.height -= 1;
                 }
@@ -165,10 +161,8 @@ namespace ScreenRec {
                 this.startx = 0;
                 this.starty = 0;
 
-                if (this.format == "x264enc" ||
-                    this.format == "x264enc-mkv" ||
-                    this.format == "x264enc-yuv420" ||
-                    this.format == "gif") {
+                if (this.format == "x264enc-mkv" ||
+                    this.format == "x264enc-mp4") {
 
                     this.videocrop = Gst.ElementFactory.make("videocrop", "cropper");
 
@@ -209,7 +203,7 @@ namespace ScreenRec {
             videoconvert = Gst.ElementFactory.make("videoconvert", "videoconvert");
             videorate = Gst.ElementFactory.make("videorate", "video_rate");
 
-            if (this.format == "x264enc-yuv420") {
+            if (this.format == "x264enc-mp4") {
 
                 Gst.Caps vid_caps2 = Gst.Caps.from_string("video/x-raw,format=I420");
                 vid_caps_filter2 = Gst.ElementFactory.make("capsfilter", "vid_filter2");
@@ -222,10 +216,8 @@ namespace ScreenRec {
 
                 debug("Format != raw | Format -> " + format);
 
-                if (this.format == "x264enc" || 
-                    this.format == "x264enc-mkv" || 
-                    this.format == "x264enc-yuv420" || 
-                    this.format == "gif") {
+                if (this.format == "x264enc-mkv" || 
+                    this.format == "x264enc-mp4") {
 
                     videnc = Gst.ElementFactory.make("x264enc", "video_encoder");
 
@@ -252,7 +244,7 @@ namespace ScreenRec {
 
                 mux = Gst.ElementFactory.make("webmmux", "muxer");
 
-            } else if (format == "x264enc" || format == "x264enc-yuv420" || this.format == "gif") {
+            } else if (format == "x264enc-mp4") {
 
                 // x264enc supports maximum of four cpu_cores
                 if (cpu_cores > 4) {
@@ -378,7 +370,7 @@ namespace ScreenRec {
             pipeline.add(vid_caps_filter);
             pipeline.add(videoconvert);
 
-            if (this.format == "x264enc-yuv420") {
+            if (this.format == "x264enc-mp4") {
 
                 pipeline.add(vid_caps_filter2);
                 pipeline.add(videoconvert2);
@@ -443,7 +435,7 @@ namespace ScreenRec {
             re = vid_caps_filter.link(videoconvert);
             debug("vid_caps_filter.link(videoconvert); -> " + re.to_string());
 
-            if (this.format == "x264enc-yuv420") {
+            if (this.format == "x264enc-mp4") {
 
                 re = videoconvert.link(vid_caps_filter2);
                 debug("videoconvert.link(vid_caps_filter2); -> " + re.to_string());
@@ -458,7 +450,7 @@ namespace ScreenRec {
                 re = videoconvert.link(vid_out_queue);
                 debug("videoconvert.link(vid_out_queue); -> " + re.to_string());
 
-            } else if (format == "x264enc-yuv420") {
+            } else if (format == "x264enc-mp4") {
                 
                 re = videoconvert2.link(videnc);
                 debug("videoconvert2.link(videnc); -> " + re.to_string());
@@ -631,54 +623,6 @@ namespace ScreenRec {
             pipeline.send_event (new Gst.Event.eos ());
             this.is_recording = false;
             this.is_recording_in_progress = false;
-            
-            if (this.format == "gif") {
-
-                try {
-                    var recorded_file = File.new_for_path (this.tmp_file);
-
-                    convert_async (recorded_file);
-
-                } catch (Error e) {
-                    print("An error occured: %s\n", e.message);
-                }
-            } else {
-                print("Not gif\n");
-            }
-        }
-
-        // Convers the video file to gif
-        public File? convert_async (File input_file) throws Error {
-            try {
-                // Setup save path
-                // convert to gif
-                // return the file
-
-                var tmp_gif_path = input_file.get_path () + ".gif";
-
-                print ("Gif path: %s\n", tmp_gif_path);
-
-                string[] args = {
-                    "ffmpeg",
-                    "-f", "mp4",
-                    "-i", input_file.get_path (),
-                    //"-pix_fmt", "yuv420p",
-                    tmp_gif_path
-                };
-
-                var proc = new Subprocess.newv(args, SubprocessFlags.NONE);
-
-                proc.wait_check ();
-
-                var tmp_gif_file = File.new_for_path (tmp_gif_path);
-                tmp_gif_file.move (input_file, FileCopyFlags.OVERWRITE);
-
-                return input_file;
-            } catch (Error e) {
-                print ("Error: %s\n", e.message);
-
-                throw e;
-            }
         }
     }
 }
