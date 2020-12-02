@@ -159,10 +159,7 @@ namespace ScreenRec {
                     save_btn.set_image (spinner);
                     spinner.start ();
                     sensitive = false;
-
-                    // progress_dialog.show_all ();
-                    debug("Progress Dialog MOVE!");
-                    tmp_file.move (save_file, 0, cancellable, null); //progress_callback
+                    tmp_file.move (save_file, 0, cancellable, null);
 
                 } catch (Error e) {
 
