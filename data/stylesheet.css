@@ -1,0 +1,4 @@
+checkbutton.image-button:checked {
+    background: transparent;
+    border-color: transparent;
+}

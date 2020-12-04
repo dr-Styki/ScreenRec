@@ -8,5 +8,6 @@
     <file alias="audio-volume-high-symbolic.svg" compressed="true" preprocess="xml-stripblanks">icons/symbolic/audio-volume-high-symbolic.svg</file>
     <file alias="microphone-sensitivity-muted-symbolic.svg" compressed="true" preprocess="xml-stripblanks">icons/symbolic/microphone-sensitivity-muted-symbolic.svg</file>
     <file alias="microphone-sensitivity-symbolic.svg" compressed="true" preprocess="xml-stripblanks">icons/symbolic/microphone-sensitivity-symbolic.svg</file>
+    <file alias="stylesheet.css" compressed="true">stylesheet.css</file>
   </gresource>
 </gresources>

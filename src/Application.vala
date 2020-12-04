@@ -110,6 +110,13 @@ namespace ScreenRec {
 
             } else {
 
+                var provider = new Gtk.CssProvider ();
+                provider.load_from_resource ("/com/github/dr-Styki/ScreenRec/stylesheet.css");
+                Gtk.StyleContext.add_provider_for_screen (
+                Gdk.Screen.get_default (),
+                provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+                );
+
                 window = new ScreenrecorderWindow (this);
                 window.get_style_context ().add_class ("rounded");
                 window.show_all ();
