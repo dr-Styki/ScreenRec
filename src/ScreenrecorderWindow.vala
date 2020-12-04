@@ -354,6 +354,8 @@ namespace ScreenRec {
                 right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
                 left_button.set_label (_("Pause"));
             }
+            right_button.get_style_context ().remove_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+            right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
             settings_views.set_sensitive (false);
             capture_type_grid.set_sensitive (false);
