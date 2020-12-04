@@ -250,6 +250,19 @@ namespace ScreenRec {
                     return true;
                 }
             });
+
+            var gtk_settings = Gtk.Settings.get_default ();
+            gtk_settings.notify["gtk-application-prefer-dark-theme"].connect (() => {
+                update_icons (gtk_settings.gtk_application_prefer_dark_theme);
+            });
+        }
+
+        private void update_icons (bool prefers_dark) {
+            if (prefers_dark) {
+                all.image = new Gtk.Image.from_icon_name ("grab-screen-symbolic-dark", Gtk.IconSize.DND);
+            } else {
+                all.image = new Gtk.Image.from_icon_name ("grab-screen-symbolic", Gtk.IconSize.DND);
+            }
         }
 
         void capture_screen () {
