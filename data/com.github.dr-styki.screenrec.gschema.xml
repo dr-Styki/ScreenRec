@@ -13,7 +13,7 @@
             <default>false</default>
         </key>
         <key name="format" type="s">
-            <default>"x264enc"</default>
+            <default>"x264enc-mp4"</default>
         </key>
         <key name="mouse-pointer" type="b">
             <default>true</default>
