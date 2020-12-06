@@ -92,6 +92,7 @@ namespace ScreenRec {
                             app.right_button.set_label (_("Stop Recording"));
                             app.right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
                             app.left_button.set_label (_("Pause"));
+                            app.set_button_tooltip (app.ButtonsTooltipMode.RECORDING);
 
                         } else {
 

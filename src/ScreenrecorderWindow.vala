@@ -31,6 +31,13 @@ namespace ScreenRec {
             CURRENT_WINDOW,
             AREA
         }
+
+        public enum ButtonsTooltipMode {
+            EMPTY,
+            COUNTDOWN,
+            RECORDING
+        }
+
         public CaptureType capture_mode = CaptureType.SCREEN;
         private Gtk.Grid capture_type_grid;
 
@@ -251,6 +258,28 @@ namespace ScreenRec {
                 }
             });
 
+            KeybindingManager manager = new KeybindingManager();
+            manager.bind("<Alt>P", () => {
+
+                if (recorder.is_recording && !countdown.is_active_cd && recorder.is_recording_in_progress) {
+
+                    left_button.clicked ();
+
+                } else if (!recorder.is_recording && !countdown.is_active_cd && recorder.is_recording_in_progress) {
+
+                    left_button.clicked ();
+
+                }
+            });
+
+            manager.bind("<Alt>S", () => {
+
+                if (recorder.is_recording && !countdown.is_active_cd && recorder.is_recording_in_progress) {
+
+                    right_button.clicked ();
+                }
+            });
+
             var gtk_settings = Gtk.Settings.get_default ();
             gtk_settings.notify["gtk-application-prefer-dark-theme"].connect (() => {
                 update_icons (gtk_settings.gtk_application_prefer_dark_theme);
@@ -262,6 +291,27 @@ namespace ScreenRec {
                 all.image = new Gtk.Image.from_icon_name ("grab-screen-symbolic-dark", Gtk.IconSize.DND);
             } else {
                 all.image = new Gtk.Image.from_icon_name ("grab-screen-symbolic", Gtk.IconSize.DND);
+            }
+        }
+
+        public void set_button_tooltip (int mode) {
+
+            switch (mode) {
+
+                        case 0: //Empty
+                            right_button.tooltip_text = "";
+                            left_button.tooltip_text = "";
+                            break;
+
+                        case 1: //Countdown
+                            right_button.tooltip_text = "Alt + S to cancel the recording";
+                            left_button.tooltip_text = "";
+                            break;
+
+                        case 2: //Recording
+                            right_button.tooltip_text = "Alt + S to stop the recording";
+                            left_button.tooltip_text = "Alt + P to pause or resume the recording";
+                            break;
             }
         }
 
@@ -343,16 +393,18 @@ namespace ScreenRec {
                 right_button.set_label (_("Cancel"));
                 right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
                 left_button.set_label (_("Minimise"));
+                set_button_tooltip(ButtonsTooltipMode.COUNTDOWN);
 
             } else {
 
-                recorder.start();
+                recorder.start ();
                 record_view.init_count ();
                 stack.visible_child_name = "record";
                 send_notification.start();
                 right_button.set_label (_("Stop Recording"));
                 right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
                 left_button.set_label (_("Pause"));
+                set_button_tooltip (ButtonsTooltipMode.RECORDING);
             }
             right_button.get_style_context ().remove_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
             right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
@@ -368,6 +420,7 @@ namespace ScreenRec {
             right_button.get_style_context ().remove_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
             right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
             left_button.set_label (_("Close"));
+            set_button_tooltip(ButtonsTooltipMode.EMPTY);
 
             // Stop Recording
             recorder.stop ();
