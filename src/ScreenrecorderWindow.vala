@@ -38,6 +38,13 @@ namespace ScreenRec {
             RECORDING
         }
 
+        public enum ButtonsLabelMode {
+            COUNTDOWN,
+            RECORDING,
+            RECORDING_PAUSED,
+            SETTINGS
+        }
+
         public CaptureType capture_mode = CaptureType.SCREEN;
         private Gtk.Grid capture_type_grid;
 
@@ -209,10 +216,8 @@ namespace ScreenRec {
                 } else if (!recorder.is_recording && countdown.is_active_cd && !recorder.is_recording_in_progress) {
 
                     countdown.cancel ();
-                    right_button.set_label (_("Record Screen"));
-                    right_button.get_style_context ().remove_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-                    right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
-                    left_button.set_label (_("Close"));
+                    set_button_label(ButtonsLabelMode.SETTINGS);
+                    set_button_tooltip(ButtonsTooltipMode.EMPTY);
                     settings_views.set_sensitive (true);
                     capture_type_grid.set_sensitive (true);
                     send_notification.cancel_countdown();
@@ -225,14 +230,14 @@ namespace ScreenRec {
 
                     recorder.pause();
                     record_view.pause_count ();
-                    left_button.set_label (_("Resume"));
+                    set_button_label (ButtonsLabelMode.RECORDING_PAUSED);
                     send_notification.pause();
 
                 } else if (!recorder.is_recording && !countdown.is_active_cd && recorder.is_recording_in_progress) {
 
                     recorder.resume();
                     record_view.resume_count ();
-                    left_button.set_label (_("Pause"));
+                    set_button_label (ButtonsLabelMode.RECORDING);
                     send_notification.resume();
 
                 } else if (!recorder.is_recording && countdown.is_active_cd && !recorder.is_recording_in_progress) {
@@ -315,6 +320,39 @@ namespace ScreenRec {
             }
         }
 
+        public void set_button_label (int mode) {
+
+            switch (mode) {
+
+                case ButtonsLabelMode.COUNTDOWN:
+                    right_button.set_label (_("Cancel"));
+                    right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+                    left_button.set_label (_("Minimise"));
+                    break;
+
+                case ButtonsLabelMode.RECORDING:
+                    right_button.set_label (_("Stop Recording"));
+                    right_button.get_style_context ().remove_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+                    right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+                    left_button.set_label (_("Pause"));
+                    break;
+
+                case ButtonsLabelMode.RECORDING_PAUSED:
+                    right_button.set_label (_("Stop Recording"));
+                    right_button.get_style_context ().remove_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+                    right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+                    left_button.set_label (_("Resume"));
+                    break;
+
+                case ButtonsLabelMode.SETTINGS:
+                    right_button.set_label (_("Record Screen"));
+                    right_button.get_style_context ().remove_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+                    right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+                    left_button.set_label (_("Close"));
+                    break;
+            }
+        } 
+
         void capture_screen () {
 
             this.win = Gdk.get_default_root_window ();
@@ -390,10 +428,8 @@ namespace ScreenRec {
                 countdown = new Countdown (this, this.send_notification);
                 countdown.set_delay(settings_views.delay);
                 countdown.start(recorder, this, stack, record_view);
-                right_button.set_label (_("Cancel"));
-                right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-                left_button.set_label (_("Minimise"));
-                set_button_tooltip(ButtonsTooltipMode.COUNTDOWN);
+                set_button_label (ButtonsLabelMode.COUNTDOWN);
+                set_button_tooltip (ButtonsTooltipMode.COUNTDOWN);
 
             } else {
 
@@ -401,13 +437,9 @@ namespace ScreenRec {
                 record_view.init_count ();
                 stack.visible_child_name = "record";
                 send_notification.start();
-                right_button.set_label (_("Stop Recording"));
-                right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-                left_button.set_label (_("Pause"));
+                set_button_label (ButtonsLabelMode.RECORDING);
                 set_button_tooltip (ButtonsTooltipMode.RECORDING);
             }
-            right_button.get_style_context ().remove_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
-            right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
             settings_views.set_sensitive (false);
             capture_type_grid.set_sensitive (false);
@@ -416,10 +448,7 @@ namespace ScreenRec {
         void stop_recording () {
 
             // Update Buttons
-            right_button.set_label (_("Record Screen"));
-            right_button.get_style_context ().remove_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-            right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
-            left_button.set_label (_("Close"));
+            set_button_label (ButtonsLabelMode.SETTINGS);
             set_button_tooltip(ButtonsTooltipMode.EMPTY);
 
             // Stop Recording
