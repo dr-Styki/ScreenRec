@@ -33,9 +33,9 @@ namespace ScreenRec {
         }
 
         public enum ButtonsTooltipMode {
-            EMPTY,
             COUNTDOWN,
-            RECORDING
+            RECORDING,
+            SETTINGS
         }
 
         public enum ButtonsLabelMode {
@@ -217,7 +217,7 @@ namespace ScreenRec {
 
                     countdown.cancel ();
                     set_button_label(ButtonsLabelMode.SETTINGS);
-                    set_button_tooltip(ButtonsTooltipMode.EMPTY);
+                    set_button_tooltip(ButtonsTooltipMode.SETTINGS);
                     settings_views.set_sensitive (true);
                     capture_type_grid.set_sensitive (true);
                     send_notification.cancel_countdown();
@@ -303,17 +303,17 @@ namespace ScreenRec {
 
             switch (mode) {
 
-                        case 0: //Empty
+                        case ButtonsTooltipMode.SETTINGS:
                             right_button.tooltip_text = "";
                             left_button.tooltip_text = "";
                             break;
 
-                        case 1: //Countdown
+                        case ButtonsTooltipMode.COUNTDOWN:
                             right_button.tooltip_text = "Alt + S to cancel the recording";
                             left_button.tooltip_text = "";
                             break;
 
-                        case 2: //Recording
+                        case ButtonsTooltipMode.RECORDING:
                             right_button.tooltip_text = "Alt + S to stop the recording";
                             left_button.tooltip_text = "Alt + P to pause or resume the recording";
                             break;
@@ -449,7 +449,7 @@ namespace ScreenRec {
 
             // Update Buttons
             set_button_label (ButtonsLabelMode.SETTINGS);
-            set_button_tooltip(ButtonsTooltipMode.EMPTY);
+            set_button_tooltip(ButtonsTooltipMode.SETTINGS);
 
             // Stop Recording
             recorder.stop ();
