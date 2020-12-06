@@ -279,7 +279,7 @@ namespace ScreenRec {
 
             manager.bind("<Alt>S", () => {
 
-                if (recorder.is_recording && !countdown.is_active_cd && recorder.is_recording_in_progress) {
+                if (countdown.is_active_cd || recorder.is_recording_in_progress) {
 
                     right_button.clicked ();
                 }
