@@ -17,6 +17,17 @@
     </ul>
   </description>
   <releases>
+    <release version="2.3.0" date="2020-12-08">
+      <description>
+        <ul>
+          <li>Add keyboard shortcuts for pause/resume and stop buttons.</li>
+          <li>Add tooltip for pause/resume and stop buttons.</li>
+          <li>Add grab screen icon for elementary OS 6 dark mode.</li>
+          <li>Fix sound checkbox background for elementary OS 6.</li>
+          <li>Remove raw format.</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.2.1" date="2020-09-09">
       <description>
         <ul>

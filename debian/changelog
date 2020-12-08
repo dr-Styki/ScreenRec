@@ -1,5 +1,19 @@
 com.github.dr-styki.screenrec (2.2.1) bionic; urgency=medium
 
+ * Add keyboard shortcuts for pause/resume and stop buttons.
+
+ * Add tooltip for pause/resume and stop buttons.
+
+ * Add grab screen icon for elementary OS 6 dark mode.
+
+ * Fix sound checkbox background for elementary OS 6.
+
+ * Remove raw format.
+
+ -- dr_Styki <dr_styki@hack.i.ng>  Tue, 08 Dec 2020 21:31:00 +0200
+
+com.github.dr-styki.screenrec (2.2.1) bionic; urgency=medium
+
  * Twitter now accept videos recorded by ScreenRec
 
  * Add Dutch translation thanks to Heimen Stoffels (Vistaus)
