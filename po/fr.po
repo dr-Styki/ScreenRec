@@ -43,6 +43,18 @@ msgstr "Enregistrer l'écran"
 msgid "Close"
 msgstr "Fermer"
 
+#: src/ScreenrecorderWindow.vala:312
+msgid "Alt + S to cancel the recording"
+msgstr "Alt + S pour annuler l'enregistrement"
+
+#: src/ScreenrecorderWindow.vala:317
+msgid "Alt + S to stop the recording"
+msgstr "Alt + S pour arrêter l'enregistrement"
+
+#: src/ScreenrecorderWindow.vala:318
+msgid "Alt + P to pause or resume the recording"
+msgstr "Alt + P pour mettre en pause ou reprendre l'enregistrement"
+
 #: src/ScreenrecorderWindow.vala:217
 msgid "Resume"
 msgstr "Reprendre"
