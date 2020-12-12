@@ -289,6 +289,8 @@ namespace ScreenRec {
             gtk_settings.notify["gtk-application-prefer-dark-theme"].connect (() => {
                 update_icons (gtk_settings.gtk_application_prefer_dark_theme);
             });
+
+            update_icons (gtk_settings.gtk_application_prefer_dark_theme);
         }
 
         private void update_icons (bool prefers_dark) {
