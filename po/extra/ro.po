@@ -1,0 +1,90 @@
+# Romanian translations for extra package.
+# Copyright (C) 2020 THE extra'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# Tiberiu Frățilă (@tiberiufrat), 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-14 10:44+0200\n"
+"PO-Revision-Date: 2020-12-14 10:44+0200\n"
+"Last-Translator: Tiberiu Frățilă (@tiberiufrat)\n"
+"Language-Team: Tiberiu Frățilă\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#: data/com.github.dr-styki.screenrec.desktop.in:3
+#: data/com.github.dr-styki.screenrec.appdata.xml.in:8
+msgid "ScreenRec"
+msgstr "ScreenRec"
+
+#: data/com.github.dr-styki.screenrec.desktop.in:4
+#: data/com.github.dr-styki.screenrec.appdata.xml.in:9
+msgid "Record videos of the screen"
+msgstr "Înregistrează videoclipuri ale ecranului tău"
+
+#: data/com.github.dr-styki.screenrec.desktop.in:6
+msgid "com.github.dr-styki.screenrec"
+msgstr "com.github.dr-styki.screenrec"
+
+#: data/com.github.dr-styki.screenrec.desktop.in:10
+msgid "Screenshot;Screen;Record;Recording;"
+msgstr "Screenshot;Screen;Record;Recording;Înregistrare;Captură;Ecran;Video;"
+
+#: data/com.github.dr-styki.screenrec.appdata.xml.in:11
+msgid ""
+"A simple screen recording tool which was make to work like the elementary OS "
+"Screenshot tool."
+msgstr ""
+"Un utilitar simplu pentru înregistrarea ecranului care funcționează ca "
+"aplicația Captură de ecran din elementary OS."
+
+#: data/com.github.dr-styki.screenrec.appdata.xml.in:12
+msgid "Included features:"
+msgstr "Funcționalități incluse:"
+
+#: data/com.github.dr-styki.screenrec.appdata.xml.in:14
+msgid "Recording sound from computer"
+msgstr "Înregistrarea sunetului de la calculator"
+
+#: data/com.github.dr-styki.screenrec.appdata.xml.in:15
+msgid "Recording sound from microphone"
+msgstr "Înregistrarea sunetului de la microfon"
+
+#: data/com.github.dr-styki.screenrec.appdata.xml.in:16
+msgid "Available format: MP4, MKV and WEBM"
+msgstr "Formate disponibile: MP4, MKV și WEBM"
+
+#: data/com.github.dr-styki.screenrec.appdata.xml.in:22
+msgid ""
+"Fix unsensitive window if a record is cancelled. Name changed back to "
+"ScreenRec."
+msgstr ""
+"Ferestrele nu se mai blochează dacă înregistrarea este anulată. Numele "
+"schimbat înapoi în ScreenRec."
+
+#: data/com.github.dr-styki.screenrec.appdata.xml.in:27
+msgid "Application rewrite. Use GStreamer backend instead of FFmpeg etc."
+msgstr ""
+"Rescrierea aplicației. Folosirea platformei GStreamer în locul FFmpeg ș.a."
+
+#: data/com.github.dr-styki.screenrec.appdata.xml.in:32
+msgid "UI improvements"
+msgstr "Îmbunătățiri ale interfeței"
+
+#: data/com.github.dr-styki.screenrec.appdata.xml.in:37
+msgid ""
+"First release after the fork of the screenrecorder app by Mohammed ALMadhoun"
+msgstr ""
+"Prima publicare după replicarea aplicației screenrecoreder a lui Mohammed "
+"AlMadhoun"
+
+#: data/com.github.dr-styki.screenrec.appdata.xml.in:87
+msgid "Stevy THOMAS (dr_Styki)"
+msgstr "Stevy THOMAS (dr_Styki)"
