@@ -334,6 +334,7 @@ namespace ScreenRec {
 
                 case ButtonsLabelMode.COUNTDOWN:
                     right_button.set_label (_("Cancel"));
+                    right_button.get_style_context ().remove_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
                     right_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
                     left_button.set_label (_("Minimise"));
                     break;
