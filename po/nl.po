@@ -45,16 +45,16 @@ msgid "Close"
 msgstr "Sluiten"
 
 #: src/ScreenrecorderWindow.vala:312
-msgid "Alt + S to cancel the recording"
-msgstr "Alt + S om te stoppen"
+msgid "To cancel the recording"
+msgstr "Om te stoppen"
 
 #: src/ScreenrecorderWindow.vala:317
-msgid "Alt + S to stop the recording"
-msgstr "Druk op Alt + S om te stoppen"
+msgid "To stop the recording"
+msgstr "Om te stoppen"
 
 #: src/ScreenrecorderWindow.vala:318
-msgid "Alt + P to pause or resume the recording"
-msgstr "Alt + P om te onderbreken of hervatten"
+msgid "To pause or resume the recording"
+msgstr "Om te onderbreken of hervatten"
 
 #: src/ScreenrecorderWindow.vala:217
 msgid "Resume"

@@ -311,13 +311,19 @@ namespace ScreenRec {
                             break;
 
                         case ButtonsTooltipMode.COUNTDOWN:
-                            right_button.tooltip_text = _("Alt + S to cancel the recording");
+                            right_button.tooltip_markup = Granite.markup_accel_tooltip(
+                                {"<Alt>s"}, _("To cancel the recording")
+                            );
                             left_button.tooltip_text = "";
                             break;
 
                         case ButtonsTooltipMode.RECORDING:
-                            right_button.tooltip_text = _("Alt + S to stop the recording");
-                            left_button.tooltip_text = _("Alt + P to pause or resume the recording");
+                            right_button.tooltip_markup = Granite.markup_accel_tooltip(
+                                {"<Alt>s"}, _("To stop the recording")
+                            );
+                            left_button.tooltip_markup = Granite.markup_accel_tooltip(
+                                {"<Alt>p"}, _("To pause or resume the recording")
+                            );
                             break;
             }
         }

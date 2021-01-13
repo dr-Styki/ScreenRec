@@ -45,16 +45,16 @@ msgid "Close"
 msgstr "Închide"
 
 #: src/ScreenrecorderWindow.vala:312
-msgid "Alt + S to cancel the recording"
-msgstr "Alt + S pentru a anula înregistrarea"
+msgid "To cancel the recording"
+msgstr "Pentru a anula înregistrarea"
 
 #: src/ScreenrecorderWindow.vala:317
-msgid "Alt + S to stop the recording"
-msgstr "Alt + S pentru a opri înregistrarea"
+msgid "To stop the recording"
+msgstr "Pentru a opri înregistrarea"
 
 #: src/ScreenrecorderWindow.vala:318
-msgid "Alt + P to pause or resume the recording"
-msgstr "Alt + P pentru a pune pauză sau a relua înregistrarea"
+msgid "To pause or resume the recording"
+msgstr "Pentru a pune pauză sau a relua înregistrarea"
 
 #: src/ScreenrecorderWindow.vala:217
 msgid "Resume"

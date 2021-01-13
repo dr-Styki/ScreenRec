@@ -44,15 +44,15 @@ msgid "Close"
 msgstr "Fechar"
 
 #: src/ScreenrecorderWindow.vala:312
-msgid "Alt + S to cancel the recording"
+msgid "To cancel the recording"
 msgstr ""
 
 #: src/ScreenrecorderWindow.vala:317
-msgid "Alt + S to stop the recording"
+msgid "To stop the recording"
 msgstr ""
 
 #: src/ScreenrecorderWindow.vala:318
-msgid "Alt + P to pause or resume the recording"
+msgid "To pause or resume the recording"
 msgstr ""
 
 #: src/ScreenrecorderWindow.vala:217
