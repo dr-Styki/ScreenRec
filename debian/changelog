@@ -1,4 +1,18 @@
-com.github.dr-styki.screenrec (2.2.1) bionic; urgency=medium
+com.github.dr-styki.screenrec (2.3.1) bionic; urgency=medium
+
+ * Fix Cancel button color.
+
+ * Use the right widget for shortcut tooltip.
+
+ * Fix icon color in light/dark mode.
+
+ * Add Romanian translation thanks to tiberiufrat.
+
+ * Update Dutch translation by Vistaus.
+
+ -- dr_Styki <dr_styki@hack.i.ng>  Wed, 13 Jan 2021 07:30:00 +0200
+
+com.github.dr-styki.screenrec (2.3.0) bionic; urgency=medium
 
  * Add keyboard shortcuts for pause/resume and stop buttons.
 

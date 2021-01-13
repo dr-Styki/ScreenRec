@@ -17,6 +17,17 @@
     </ul>
   </description>
   <releases>
+    <release version="2.3.1" date="2021-01-13">
+      <description>
+        <ul>
+          <li>Fix Cancel button color.</li>
+          <li>Use the right widget for shortcut tooltip.</li>
+          <li>Fix icon color in light/dark mode.</li>
+          <li>Add Romanian translation thanks to tiberiufrat.</li>
+          <li>Update Dutch translation by Vistaus.</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.3.0" date="2020-12-08">
       <description>
         <ul>
