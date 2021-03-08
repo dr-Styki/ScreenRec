@@ -25,7 +25,7 @@
 
 namespace ScreenRec {
 
-    public class SaveDialog : Gtk.Dialog {
+    public class SaveDialog : Granite.Dialog {
 
         public string filepath { get; construct; }
         public int expected_width {get; construct;}

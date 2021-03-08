@@ -30,7 +30,7 @@ asresources = gnome.compile_resources (
 dependencies = [
     dependency ('glib-2.0'),
     dependency ('gee-0.8'),
-    dependency ('granite', version: '>=5.4.0'),
+    dependency ('granite', version: '>=6.0.0'),
     dependency ('gtk+-3.0'),
     dependency ('x11'),
     dependency ('gdk-x11-3.0'),

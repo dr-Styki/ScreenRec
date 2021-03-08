@@ -19,7 +19,7 @@
 
 namespace ScreenRec {
 
-    public class Countdown : Gtk.Dialog {
+    public class Countdown : Granite.Dialog {
         
         public Gtk.Label count;
         public int time = 0;
