@@ -1,4 +1,4 @@
-Source: com.github.dr-styki.screenrec
+Source: com.github.dr_styki.screenrec
 Section: x11
 Priority: extra
 Maintainer: Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng>
@@ -13,7 +13,7 @@ Build-Depends: meson,
                valac
 Standards-Version: 3.9.3
 
-Package: com.github.dr-styki.screenrec
+Package: com.github.dr_styki.screenrec
 Architecture: any
 Depends: ffmpeg, gstreamer1.0-plugins-ugly, gstreamer1.0-libav, gstreamer1.0-plugins-good, ${misc:Depends}, ${shlibs:Depends}
 Description: Record videos of the screen

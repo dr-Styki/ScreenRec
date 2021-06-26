@@ -1,11 +1,11 @@
-# Brazilian Portuguese translations for com.github.dr-styki.screenrec package.
-# Copyright (C) 2020 THE com.github.dr-styki.screenrec'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the com.github.dr-styki.screenrec package.
+# Brazilian Portuguese translations for com.github.dr_styki.screenrec package.
+# Copyright (C) 2020 THE com.github.dr_styki.screenrec'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.dr_styki.screenrec package.
 # Henrique Andrade <henrique.coelho@gmail.com>, 2020.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: com.github.dr-styki.screenrec\n"
+"Project-Id-Version: com.github.dr_styki.screenrec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-10 10:20+0200\n"
 "PO-Revision-Date: 2020-06-09 19:52+0200\n"
@@ -251,8 +251,8 @@ msgstr "Formato:"
 #~ msgid "Stevy THOMAS (dr_Styki)"
 #~ msgstr "Stevy THOMAS (dr_Styki)"
 
-#~ msgid "com.github.dr-styki.screenrec"
-#~ msgstr "com.github.dr-styki.screenrec"
+#~ msgid "com.github.dr_styki.screenrec"
+#~ msgstr "com.github.dr_styki.screenrec"
 
 #~ msgid "Screenshot;Screen;Record;Recording;"
 #~ msgstr "Captura de tela;Tela;Registro;Gravação;"

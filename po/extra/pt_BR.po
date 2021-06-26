@@ -17,25 +17,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: data/com.github.dr-styki.screenrec.desktop.in:3
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:8
+#: data/com.github.dr_styki.screenrec.desktop.in:3
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:8
 msgid "ScreenRec"
 msgstr "ScreenRec"
 
-#: data/com.github.dr-styki.screenrec.desktop.in:4
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:9
+#: data/com.github.dr_styki.screenrec.desktop.in:4
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:9
 msgid "Record videos of the screen"
 msgstr "Gravar vídeos da tela"
 
-#: data/com.github.dr-styki.screenrec.desktop.in:6
-msgid "com.github.dr-styki.screenrec"
-msgstr "com.github.dr-styki.screenrec"
+#: data/com.github.dr_styki.screenrec.desktop.in:6
+msgid "com.github.dr_styki.screenrec"
+msgstr "com.github.dr_styki.screenrec"
 
-#: data/com.github.dr-styki.screenrec.desktop.in:10
+#: data/com.github.dr_styki.screenrec.desktop.in:10
 msgid "Screenshot;Screen;Record;Recording;"
 msgstr "Captura de tela;Tela;Registro;Gravação;"
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:11
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:11
 msgid ""
 "A simple screen recording tool which was make to work like the elementary OS "
 "Screenshot tool."
@@ -43,39 +43,39 @@ msgstr ""
 "Ferramenta simples para gravação de tela feita para funcionar de forma "
 "semelhante à ferramenta Captura de Tela do elementary OS."
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:12
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:12
 msgid "Included features:"
 msgstr ""
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:14
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:14
 #, fuzzy
 msgid "Recording sound from computer"
 msgstr "Gravação de sons do microfone"
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:15
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:15
 msgid "Recording sound from microphone"
 msgstr "Gravação de sons do microfone"
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:16
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:16
 msgid "Available format: MP4, MKV and WEBM"
 msgstr "Formatos disponíveis: MP4, MKV e WEBVM"
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:22
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:22
 msgid ""
 "Fix unsensitive window if a record is cancelled. Name changed back to "
 "ScreenRec."
 msgstr ""
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:27
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:27
 msgid "Application rewrite. Use GStreamer backend instead of FFmpeg etc."
 msgstr ""
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:32
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:32
 #, fuzzy
 msgid "UI improvements"
 msgstr "Melhorias na interface do usuário"
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:37
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:37
 #, fuzzy
 msgid ""
 "First release after the fork of the screenrecorder app by Mohammed ALMadhoun"
@@ -83,7 +83,7 @@ msgstr ""
 "Primeiro lançamento após o fork do aplicativo screenrecorder de Mohammed "
 "ALMadhoun"
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:87
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:87
 msgid "Stevy THOMAS (dr_Styki)"
 msgstr "Stevy THOMAS (dr_Styki)"
 

@@ -2,7 +2,7 @@
 <!-- Copyright 2020 Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng> -->
 <!-- Copyright 2018 Mohammed ALMadhoun <mohelm97@gmail.com> -->
 <component type="desktop"> 
-  <id>com.github.dr-styki.screenrec</id>
+  <id>com.github.dr_styki.screenrec</id>
   <metadata_license>CC0</metadata_license>
   <project_license>GPL-3.0</project_license>
   <name>ScreenRec</name>
@@ -84,16 +84,16 @@
 
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/dr-Styki/ScreenRec/master/data/screenshots/screenshot_1.png</image>
+      <image>https://raw.githubusercontent.com/dr_styki/ScreenRec/master/data/screenshots/screenshot_1.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/dr-Styki/ScreenRec/master/data/screenshots/screenshot_2.png</image>
+      <image>https://raw.githubusercontent.com/dr_styki/ScreenRec/master/data/screenshots/screenshot_2.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/dr-Styki/ScreenRec/master/data/screenshots/screenshot_3.png</image>
+      <image>https://raw.githubusercontent.com/dr_styki/ScreenRec/master/data/screenshots/screenshot_3.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/dr-Styki/ScreenRec/master/data/screenshots/screenshot_4.png</image>
+      <image>https://raw.githubusercontent.com/dr_styki/ScreenRec/master/data/screenshots/screenshot_4.png</image>
     </screenshot>
   </screenshots>
 
@@ -128,7 +128,7 @@
   </content_rating>
 
   <developer_name>Stevy THOMAS (dr_Styki)</developer_name>
-  <url type="homepage">https://github.com/dr-Styki/ScreenRec</url>
-  <url type="bugtracker">https://github.com/dr-Styki/ScreenRec/issues</url>
-  <url type="help">https://github.com/dr-Styki/ScreenRec/issues</url>
+  <url type="homepage">https://github.com/dr_styki/ScreenRec</url>
+  <url type="bugtracker">https://github.com/dr_styki/ScreenRec/issues</url>
+  <url type="help">https://github.com/dr_styki/ScreenRec/issues</url>
 </component>

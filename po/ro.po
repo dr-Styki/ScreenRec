@@ -1,11 +1,11 @@
-# Romanian translations for com.github.dr-styki.screenrec package.
-# Copyright (C) 2020 THE com.github.dr-styki.screenrec'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the com.github.dr-styki.screenrec package.
+# Romanian translations for com.github.dr_styki.screenrec package.
+# Copyright (C) 2020 THE com.github.dr_styki.screenrec'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.dr_styki.screenrec package.
 # Tiberiu Frățilă (@tiberiufrat), 2020.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: com.github.dr-styki.screenrec\n"
+"Project-Id-Version: com.github.dr_styki.screenrec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-14 10:36+0200\n"
 "PO-Revision-Date: 2020-12-14 10:36+0200\n"

@@ -1,4 +1,4 @@
-com.github.dr-styki.screenrec (2.3.1) bionic; urgency=medium
+com.github.dr_styki.screenrec (2.3.1) bionic; urgency=medium
 
  * Fix Cancel button color.
 
@@ -12,7 +12,7 @@ com.github.dr-styki.screenrec (2.3.1) bionic; urgency=medium
 
  -- dr_Styki <dr_styki@hack.i.ng>  Wed, 13 Jan 2021 07:30:00 +0200
 
-com.github.dr-styki.screenrec (2.3.0) bionic; urgency=medium
+com.github.dr_styki.screenrec (2.3.0) bionic; urgency=medium
 
  * Add keyboard shortcuts for pause/resume and stop buttons.
 
@@ -26,7 +26,7 @@ com.github.dr-styki.screenrec (2.3.0) bionic; urgency=medium
 
  -- dr_Styki <dr_styki@hack.i.ng>  Tue, 08 Dec 2020 21:31:00 +0200
 
-com.github.dr-styki.screenrec (2.2.1) bionic; urgency=medium
+com.github.dr_styki.screenrec (2.2.1) bionic; urgency=medium
 
  * Twitter now accept videos recorded by ScreenRec
 
@@ -36,7 +36,7 @@ com.github.dr-styki.screenrec (2.2.1) bionic; urgency=medium
 
  -- dr_Styki <dr_styki@hack.i.ng>  Wed, 28 Oct 2020 09:00:00 +0200
 
-com.github.dr-styki.screenrec (2.2.0) bionic; urgency=medium
+com.github.dr_styki.screenrec (2.2.0) bionic; urgency=medium
 
  * Add Portuguese (Portugal) translation thanks to André Barata <andretiagob@protonmail.com>
 
@@ -52,25 +52,25 @@ com.github.dr-styki.screenrec (2.2.0) bionic; urgency=medium
 
  -- dr_Styki <dr_styki@hack.i.ng>  Wed, 09 Sep 2020 21:00:00 +0200
 
-com.github.dr-styki.screenrec (2.1.0) bionic; urgency=medium
+com.github.dr_styki.screenrec (2.1.0) bionic; urgency=medium
 
  * Fix unsensitive window if record are canceled. Name change back to ScreenRec.
 
  -- dr_Styki <dr_styki@hack.i.ng>  Thu, 04 Jun 2020 07:00:00 +0200
 
-com.github.dr-styki.screenrec (2.0.0) bionic; urgency=medium
+com.github.dr_styki.screenrec (2.0.0) bionic; urgency=medium
 
  * Application rewite. Use Gstreamer backend instead of FFmpeg. Etc.
 
  -- dr_Styki <dr_styki@hack.i.ng>  Fri, 01 May 2020 18:00:00 +0200
 
-com.github.dr-styki.screenrec (1.2.0) bionic; urgency=medium
+com.github.dr_styki.screenrec (1.2.0) bionic; urgency=medium
 
  * UI Improvements.
 
  -- dr_Styki <dr_styki@hack.i.ng>  Thu, 11 Apr 2020 16:00:36 +0200
 
-com.github.dr-styki.screenrec (1.1.1) bionic; urgency=medium
+com.github.dr_styki.screenrec (1.1.1) bionic; urgency=medium
 
  * Initial Release.
 

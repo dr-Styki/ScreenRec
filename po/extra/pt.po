@@ -1,6 +1,6 @@
-# Portuguese (Portugal) translations for com.github.dr-styki.screenrec package.
-# Copyright (C) 2020 THE com.github.dr-styki.screenrec'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the com.github.dr-styki.screenrec package.
+# Portuguese (Portugal) translations for com.github.dr_styki.screenrec package.
+# Copyright (C) 2020 THE com.github.dr_styki.screenrec'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.dr_styki.screenrec package.
 # André Barata <andretiagob@protonmail.com>, 2020.
 #
 msgid ""
@@ -18,25 +18,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: pt\n"
 
-#: data/com.github.dr-styki.screenrec.desktop.in:3
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:8
+#: data/com.github.dr_styki.screenrec.desktop.in:3
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:8
 msgid "ScreenRec"
 msgstr "ScreenRec"
 
-#: data/com.github.dr-styki.screenrec.desktop.in:4
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:9
+#: data/com.github.dr_styki.screenrec.desktop.in:4
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:9
 msgid "Record videos of the screen"
 msgstr "Grave vídeos a partir do ecrã"
 
-#: data/com.github.dr-styki.screenrec.desktop.in:6
-msgid "com.github.dr-styki.screenrec"
-msgstr "com.github.dr-styki.screenrec"
+#: data/com.github.dr_styki.screenrec.desktop.in:6
+msgid "com.github.dr_styki.screenrec"
+msgstr "com.github.dr_styki.screenrec"
 
-#: data/com.github.dr-styki.screenrec.desktop.in:10
+#: data/com.github.dr_styki.screenrec.desktop.in:10
 msgid "Screenshot;Screen;Record;Recording;"
 msgstr "Screenshot;Captura;Screen;Ecrã;Record;Gravar;Recording;Gravação;"
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:11
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:11
 msgid ""
 "A simple screen recording tool which was make to work like the elementary OS "
 "Screenshot tool."
@@ -44,23 +44,23 @@ msgstr ""
 "Uma ferramenta simples para gravar o ecrã que foi feita para funcionar como "
 "a ferramenta Captura de Ecrã do sistema operativo elementary."
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:12
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:12
 msgid "Included features:"
 msgstr "Funcionalidades incluídas:"
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:14
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:14
 msgid "Recording sound from computer"
 msgstr "Gravação de som do computador"
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:15
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:15
 msgid "Recording sound from microphone"
 msgstr "Gravação de som do microfone"
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:16
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:16
 msgid "Available format: MP4, MKV and WEBM"
 msgstr "Formatos disponíveis: MP4, MKV e WEBM"
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:22
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:22
 msgid ""
 "Fix unsensitive window if a record is cancelled. Name changed back to "
 "ScreenRec."
@@ -68,23 +68,23 @@ msgstr ""
 "Correção para a janela insensível se uma gravação for cancelada. Nome "
 "alterado novamente para ScreenRec."
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:27
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:27
 msgid "Application rewrite. Use GStreamer backend instead of FFmpeg etc."
 msgstr ""
 "Aplicação reescrita. Processo interno alterado para GStreamer em vez de "
 "FFmpeg etc."
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:32
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:32
 msgid "UI improvements"
 msgstr "Melhorias da Interface de Utilizador"
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:37
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:37
 msgid ""
 "First release after the fork of the screenrecorder app by Mohammed ALMadhoun"
 msgstr ""
 "Primeiro lançamento depois da bifurcação da aplicação Screen Recorder de "
 "Mohammed ALMadhoun"
 
-#: data/com.github.dr-styki.screenrec.appdata.xml.in:87
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:87
 msgid "Stevy THOMAS (dr_Styki)"
 msgstr "Stevy THOMAS (dr_Styki)"
