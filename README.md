@@ -28,10 +28,10 @@ Run `meson` to configure the build environment and then `ninja` to build and ins
     cd build
     ninja
 
-To install, use `ninja install`, then execute with `com.github.dr-styki.screenrec`
+To install, use `ninja install`, then execute with `com.github.dr_styki.screenrec`
 
     sudo ninja install
-    com.github.dr-styki.screenrec
+    com.github.dr_styki.screenrec
 
 ## Credits
 Originaly forked from [screenrecorder](https://github.com/Mohelm97/screenrecorder). Now greatly inspired by the code of [Screenshot](https://github.com/elementary/screenshot), [Kazam](https://github.com/hzbd/kazam) and [Screencast](https://github.com/artemanufrij/screencast).

@@ -24,7 +24,7 @@ namespace ScreenRec {
     public class SendNotification : GLib.Object {
 
         private Gtk.ApplicationWindow app;
-        private string app_id = "com.github.dr-styki.ScreenRec";
+        private string app_id = "com.github.dr_styki.ScreenRec";
 
         private Notification start_notification = new Notification (_("Recording started"));
         private Notification stop_notification = new Notification (_("Recording stopped"));

@@ -1,6 +1,6 @@
 # Project name, programming language and version
 project (
-    'com.github.dr-styki.screenrec',
+    'com.github.dr_styki.screenrec',
     'vala', 'c',
     version: '2.3.0',
     license: 'GPL-3.0'

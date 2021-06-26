@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=ScreenRec
 Comment=Record videos of the screen
-Exec=com.github.dr-styki.screenrec
-Icon=com.github.dr-styki.screenrec
+Exec=com.github.dr_styki.screenrec
+Icon=com.github.dr_styki.screenrec
 Terminal=false
 Type=Application
 Categories=GTK;GNOME;Utility;AudioVideo;Video;
@@ -12,12 +12,12 @@ X-GNOME-UsesNotifications=true
 
 [Desktop Action ScreenRecord]
 Name=Record the Whole Screen
-Exec=com.github.dr-styki.screenrec --screen
+Exec=com.github.dr_styki.screenrec --screen
 
 [Desktop Action WindowRecord]
 Name=Record the Current Window
-Exec=com.github.dr-styki.screenrec --window
+Exec=com.github.dr_styki.screenrec --window
 
 [Desktop Action AreaRecord]
 Name=Record a Selected Area
-Exec=com.github.dr-styki.screenrec --area
+Exec=com.github.dr_styki.screenrec --area

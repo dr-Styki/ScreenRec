@@ -39,7 +39,7 @@ namespace ScreenRec {
 
         public ScreenRecApp () {
             Object (
-                application_id: "com.github.dr-styki.screenrec",
+                application_id: "com.github.dr_styki.screenrec",
                 flags: ApplicationFlags.FLAGS_NONE
             );
         }
@@ -55,9 +55,9 @@ namespace ScreenRec {
 
             add_main_option_entries (options);
 
-            settings = new GLib.Settings ("com.github.dr-styki.screenrec");
+            settings = new GLib.Settings ("com.github.dr_styki.screenrec");
             weak Gtk.IconTheme default_theme = Gtk.IconTheme.get_default ();
-            default_theme.add_resource_path ("/com/github/dr-Styki/ScreenRec");
+            default_theme.add_resource_path ("/com/github/dr_Styki/ScreenRec");
 
             var quit_action = new SimpleAction ("quit", null);
             quit_action.activate.connect (() => {
@@ -111,7 +111,7 @@ namespace ScreenRec {
             } else {
 
                 var provider = new Gtk.CssProvider ();
-                provider.load_from_resource ("/com/github/dr-Styki/ScreenRec/stylesheet.css");
+                provider.load_from_resource ("/com/github/dr_Styki/ScreenRec/stylesheet.css");
                 Gtk.StyleContext.add_provider_for_screen (
                 Gdk.Screen.get_default (),
                 provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
