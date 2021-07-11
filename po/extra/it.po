@@ -1,0 +1,90 @@
+# French translations for extra package.
+# Copyright (C) 2020 THE extra'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# Nathan Bonnemains (@NathanBnm), 2020.
+# Saverio <saverio.morelli@outlook.it>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-10 10:11+0200\n"
+"PO-Revision-Date: 2021-07-10 22:19+0200\n"
+"Last-Translator: Saverio <saverio.morelli@outlook.it>\n"
+"Language-Team: Italian <saverio.morelli@outlook.it>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 40.0\n"
+
+#: data/com.github.dr_styki.screenrec.desktop.in:3
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:8
+msgid "ScreenRec"
+msgstr "ScreenRec"
+
+#: data/com.github.dr_styki.screenrec.desktop.in:4
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:9
+msgid "Record videos of the screen"
+msgstr "Registra video dello schermo"
+
+#: data/com.github.dr_styki.screenrec.desktop.in:6
+msgid "com.github.dr_styki.screenrec"
+msgstr "com.github.dr_styki.screenrec"
+
+#: data/com.github.dr_styki.screenrec.desktop.in:10
+msgid "Screenshot;Screen;Record;Recording;"
+msgstr "Screenshot;Schermo;Registra;Registrazione;"
+
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:11
+msgid ""
+"A simple screen recording tool which was make to work like the elementary OS "
+"Screenshot tool."
+msgstr ""
+"Un semplice strumento per la registrazione dello schermo realizzato per "
+"funzionare come lo strumento Cattura schermo di elementary OS."
+
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:12
+msgid "Included features:"
+msgstr "Funzionalità incluse:"
+
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:14
+msgid "Recording sound from computer"
+msgstr "Registrazione audio dal computer"
+
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:15
+msgid "Recording sound from microphone"
+msgstr "Registrazione audio dal microfono"
+
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:16
+msgid "Available format: MP4, MKV and WEBM"
+msgstr "Formati disponibili : MP4, MKV e WEBM"
+
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:22
+msgid ""
+"Fix unsensitive window if a record is cancelled. Name changed back to "
+"ScreenRec."
+msgstr ""
+"Correggi finestra unsensitive se una registrazione viene cancellata. Il nome "
+"è stato cambiano in ScreenRec."
+
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:27
+msgid "Application rewrite. Use GStreamer backend instead of FFmpeg etc."
+msgstr ""
+"Rewrite applicazione. Utilizza il backend di GStreamer invece di FFmpeg, ecc."
+
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:32
+msgid "UI improvements"
+msgstr "Miglioramenti interfaccia"
+
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:37
+msgid ""
+"First release after the fork of the screenrecorder app by Mohammed ALMadhoun"
+msgstr ""
+"Prima versione dopo il fork dell'applicazione registratore dello schermo di "
+"Mohammed ALMadhoun"
+
+#: data/com.github.dr_styki.screenrec.appdata.xml.in:87
+msgid "Stevy THOMAS (dr_Styki)"
+msgstr "Stevy THOMAS (dr_Styki)"
