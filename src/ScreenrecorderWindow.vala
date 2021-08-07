@@ -83,6 +83,7 @@ namespace ScreenRec {
             Hdy.init ();
 
             set_keep_above (true);
+            stick ();
             // Load Settings
             GLib.Settings settings = ScreenRecApp.settings;
 
