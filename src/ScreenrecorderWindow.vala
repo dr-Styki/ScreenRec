@@ -148,17 +148,6 @@ namespace ScreenRec {
             grid.attach (stack   , 0, 1, 2, 7);
             grid.attach (actions    , 0, 8, 2, 1);
 
-            // // TitleBar (HeaderBar) with capture_type_grid (Screen/Area selection) attach.
-            // var titlebar = new Gtk.HeaderBar ();
-            // titlebar.has_subtitle = false;
-            // titlebar.set_custom_title (capture_type_grid);
-
-            // var titlebar_style_context = titlebar.get_style_context ();
-            // titlebar_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
-            // titlebar_style_context.add_class ("default-decoration");
-
-            // grid.attach (titlebar, 0, 0);
-
             var handle = new Hdy.WindowHandle ();
             handle.add (grid);
 
