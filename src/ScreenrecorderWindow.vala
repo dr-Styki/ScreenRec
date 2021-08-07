@@ -23,7 +23,7 @@
 
 namespace ScreenRec {
 
-    public class ScreenrecorderWindow : Gtk.ApplicationWindow  {
+    public class ScreenrecorderWindow : Hdy.ApplicationWindow  {
 
         // Capture Type Buttons
         public enum CaptureType {
@@ -62,7 +62,7 @@ namespace ScreenRec {
         private RecordView record_view;
         private Gtk.Stack stack;
         private Gtk.Grid grid;
-  
+
         // Others
         public Gdk.Window win;
         private Recorder recorder;
@@ -80,12 +80,13 @@ namespace ScreenRec {
         }
 
         construct {
+            Hdy.init ();
 
             set_keep_above (true);
             // Load Settings
             GLib.Settings settings = ScreenRecApp.settings;
-            
-            // Init recorder and countdown objects for boolean test 
+
+            // Init recorder and countdown objects for boolean test
             send_notification = new SendNotification(this);
             recorder = new Recorder();
             countdown = new Countdown (this, this.send_notification);
@@ -105,9 +106,9 @@ namespace ScreenRec {
 
             capture_type_grid = new Gtk.Grid ();
             capture_type_grid.halign = Gtk.Align.CENTER;
-            capture_type_grid.column_spacing = 24;
-            capture_type_grid.margin_top = capture_type_grid.margin_bottom = 24;
-            capture_type_grid.margin_start = capture_type_grid.margin_end = 18;
+            capture_type_grid.column_spacing = 18;
+            // capture_type_grid.margin_top = capture_type_grid.margin_bottom = 24;
+            // capture_type_grid.margin_start = capture_type_grid.margin_end = 18;
             capture_type_grid.add (all);
             capture_type_grid.add (curr_window);
             capture_type_grid.add (selection);
@@ -139,24 +140,29 @@ namespace ScreenRec {
 
             // Main Grid
             grid = new Gtk.Grid ();
-            grid.margin = 6;
-            grid.margin_top = 0;
-            grid.row_spacing = 6;
+            grid.margin = 12;
+            grid.margin_top = 24;
+            grid.row_spacing = 24;
             grid.set_hexpand(true);
+            grid.attach (capture_type_grid, 0, 0);
             grid.attach (stack   , 0, 1, 2, 7);
             grid.attach (actions    , 0, 8, 2, 1);
 
-            // TitleBar (HeaderBar) with capture_type_grid (Screen/Area selection) attach.
-            var titlebar = new Gtk.HeaderBar ();
-            titlebar.has_subtitle = false;
-            titlebar.set_custom_title (capture_type_grid);
+            // // TitleBar (HeaderBar) with capture_type_grid (Screen/Area selection) attach.
+            // var titlebar = new Gtk.HeaderBar ();
+            // titlebar.has_subtitle = false;
+            // titlebar.set_custom_title (capture_type_grid);
 
-            var titlebar_style_context = titlebar.get_style_context ();
-            titlebar_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
-            titlebar_style_context.add_class ("default-decoration");
+            // var titlebar_style_context = titlebar.get_style_context ();
+            // titlebar_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
+            // titlebar_style_context.add_class ("default-decoration");
 
-            set_titlebar (titlebar);
-            add (grid);
+            // grid.attach (titlebar, 0, 0);
+
+            var handle = new Hdy.WindowHandle ();
+            handle.add (grid);
+
+            add (handle);
 
 
             // Bind Settings - Start
@@ -185,7 +191,7 @@ namespace ScreenRec {
             // Bind Settings - End
 
             // Connect Buttons
-            right_button.clicked.connect (() => { 
+            right_button.clicked.connect (() => {
 
                 if (!recorder.is_recording && !countdown.is_active_cd && !recorder.is_recording_in_progress) {
 
@@ -205,7 +211,7 @@ namespace ScreenRec {
 
                     stop_recording ();
                     send_notification.stop();
-                    
+
 
                 } else if (!recorder.is_recording && !countdown.is_active_cd && recorder.is_recording_in_progress) {
 
@@ -250,7 +256,7 @@ namespace ScreenRec {
                 }
             });
 
-            // Prevent delete event if record 
+            // Prevent delete event if record
             delete_event.connect (() => {
                 if (can_quit()) {
 
@@ -360,7 +366,7 @@ namespace ScreenRec {
                     left_button.set_label (_("Close"));
                     break;
             }
-        } 
+        }
 
         void capture_screen () {
 
@@ -423,9 +429,9 @@ namespace ScreenRec {
             // Init Recorder
             recorder = new Recorder();
             recorder.config(capture_mode,
-                            tmpfilepath, 
-                            settings_views.framerate, 
-                            settings_views.speakers_record, 
+                            tmpfilepath,
+                            settings_views.framerate,
+                            settings_views.speakers_record,
                             settings_views.mic_record,
                             settings_views.pointer_switch.get_state(),
                             settings_views.format,
@@ -484,7 +490,7 @@ namespace ScreenRec {
                 capture_type_grid.set_sensitive (true);
 
                 //if close after saving
-                if(settings_views.close_switch.get_state()) { 
+                if(settings_views.close_switch.get_state()) {
 
                     close();
                 }
