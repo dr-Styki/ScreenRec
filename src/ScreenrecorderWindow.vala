@@ -132,7 +132,6 @@ namespace ScreenRec {
 
             // Actions : [Close][Record]
             actions = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-            actions.margin_top = 24;
             actions.set_hexpand(true);
             actions.set_homogeneous(true);
             actions.add (left_button);
