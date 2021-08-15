@@ -32,6 +32,7 @@ dependencies = [
     dependency ('gee-0.8'),
     dependency ('granite', version: '>=6.0.0'),
     dependency ('gtk+-3.0'),
+    dependency ('libhandy-1'),
     dependency ('x11'),
     dependency ('gdk-x11-3.0'),
     dependency ('gstreamer-1.0'),
