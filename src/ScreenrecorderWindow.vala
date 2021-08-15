@@ -74,7 +74,6 @@ namespace ScreenRec {
         public ScreenrecorderWindow (Gtk.Application app){
             Object (
                 application: app,
-                border_width: 6,
                 resizable: false
             );
         }
@@ -153,7 +152,6 @@ namespace ScreenRec {
             handle.add (grid);
 
             add (handle);
-
 
             // Bind Settings - Start
             if (settings.get_enum ("last-capture-mode") == CaptureType.AREA){
