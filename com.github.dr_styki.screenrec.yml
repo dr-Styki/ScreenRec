@@ -1,0 +1,25 @@
+app-id: com.github.dr_styki.screenrec
+runtime: io.elementary.Platform
+runtime-version: '6'
+sdk: io.elementary.Sdk
+#runtime: org.gnome.Platform
+#runtime-version: '41'
+#sdk: org.gnome.Sdk
+command: com.github.dr_styki.screenrec
+finish-args:
+  - '--share=ipc'
+  - '--socket=x11'
+  - '--device=dri'
+  - '--socket=pulseaudio'
+
+  - '--system-talk-name=org.freedesktop.Accounts'
+
+  - '--filesystem=home'
+  - '--filesystem=/tmp'
+
+modules:
+  - name: ScreenRec
+    buildsystem: meson
+    sources:
+      - type: dir
+        path: .
