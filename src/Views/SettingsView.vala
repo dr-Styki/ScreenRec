@@ -49,9 +49,13 @@ namespace ScreenRec {
                 CODEC_USER,
                 CODEC_EXT
             }
-            public const string[] codec_user = {"mp4", "mkv", "webm"};
-            public const string[] codec_gsk = {"x264enc-mp4", "x264enc-mkv", "vp8enc"};
-            public const string[] codec_ext = {".mp4", ".mkv", ".webm"};
+            //public const string[] codec_user = {"mp4", "mkv", "webm"};
+            //public const string[] codec_gsk = {"x264enc-mp4", "x264enc-mkv", "vp8enc"};
+            //public const string[] codec_ext = {".mp4", ".mkv", ".webm"};
+
+            public const string[] codec_user = {"mp4", "webm"};
+            public const string[] codec_gsk = {"x264enc-mp4", "vp8enc"};
+            public const string[] codec_ext = {".mp4", ".webm"};
 
             private Gtk.ComboBox format_cmb;
             public string format;
