@@ -13,7 +13,7 @@
     <ul>
       <li>Recording sound from computer</li>
       <li>Recording sound from microphone</li>
-      <li>Available format: MP4, MKV and WEBM</li>
+      <li>Available format: MP4 and WEBM</li>
     </ul>
   </description>
   <releases>
@@ -81,7 +81,6 @@
       </description>
     </release>
   </releases>
-
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/dr_styki/ScreenRec/master/data/screenshots/screenshot_1.png</image>
@@ -96,7 +95,6 @@
       <image>https://raw.githubusercontent.com/dr_styki/ScreenRec/master/data/screenshots/screenshot_4.png</image>
     </screenshot>
   </screenshots>
-
   <content_rating type="oars-1.1">
     <content_attribute id="violence-cartoon">none</content_attribute>
     <content_attribute id="violence-fantasy">none</content_attribute>
@@ -126,9 +124,11 @@
     <content_attribute id="money-purchasing">none</content_attribute>
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
-
   <developer_name>Stevy THOMAS (dr_Styki)</developer_name>
   <url type="homepage">https://github.com/dr_styki/ScreenRec</url>
   <url type="bugtracker">https://github.com/dr_styki/ScreenRec/issues</url>
   <url type="help">https://github.com/dr_styki/ScreenRec/issues</url>
+  <custom>
+    <value key="x-appcenter-stripe">pk_live_5JaBVsaIMEY5rWllE5CkZ3Rl00OWs9lyrL</value>
+  </custom>
 </component>
