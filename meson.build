@@ -18,6 +18,11 @@ add_project_arguments (
     language: 'c'
 )
 
+add_project_arguments(
+    ['--vapidir', meson.current_source_dir() / 'vapi'],
+    language: 'vala'
+)
+
 # Compiling resources
 asresources = gnome.compile_resources (
     'as-resources',
@@ -37,7 +42,9 @@ dependencies = [
     dependency ('gdk-x11-3.0'),
     dependency ('gstreamer-1.0'),
     dependency ('clutter-gst-3.0'),
-    dependency ('clutter-gtk-1.0')
+    dependency ('clutter-gtk-1.0'),
+    dependency ('libpulse'),
+    dependency ('libpulse-mainloop-glib')
 ]
 
 subdir ('src')
