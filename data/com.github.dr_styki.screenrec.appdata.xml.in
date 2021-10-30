@@ -17,6 +17,13 @@
     </ul>
   </description>
   <releases>
+    <release version="3.0.0" date="2021-10-30">
+      <description>
+        <ul>
+          <li>Add Flatpak support !</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.3.1" date="2021-01-13">
       <description>
         <ul>

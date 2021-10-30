@@ -1,3 +1,9 @@
+com.github.dr_styki.screenrec (3.0.0) focal; urgency=medium
+
+ * Add Flatpak support !
+
+ -- dr_Styki <dr_styki@hack.i.ng>  Sat, 30 Oct 2021 16:55:00 +0200
+
 com.github.dr_styki.screenrec (2.3.1) bionic; urgency=medium
 
  * Fix Cancel button color.
