@@ -73,8 +73,11 @@ namespace ScreenRec {
         private bool crop_vid = false;
         private int cpu_cores;
 
+        private PulseAudioManager pam;
 
         public Recorder (){
+            pam = PulseAudioManager.get_default ();
+            pam.start ();
         }
 
         public void config (ScreenrecorderWindow.CaptureType capture_mode,
@@ -550,20 +553,10 @@ namespace ScreenRec {
             string default_output = "";
 
             try {
-                string sound_devices = "";
-                Process.spawn_command_line_sync ("pacmd list-sinks", out sound_devices);
-                var regex = new Regex ("(?<=\\*\\sindex:\\s\\d\\s\\sname:\\s<)[\\w\\.\\-]*");
-                MatchInfo match_info;
-
-                if (regex.match (sound_devices, 0, out match_info)) {
-                    default_output = match_info.fetch (0);
-                }
-
-                default_output += ".monitor";
+                default_output = pam.default_sink_name + ".monitor";
                 debug ("Detected system sound device: %s", default_output);
 
             } catch (Error e) {
-
                 warning (e.message);
             }
 
@@ -575,20 +568,11 @@ namespace ScreenRec {
             
             string default_input = "";
 
-            try {
-                string sound_devices = "";
-                Process.spawn_command_line_sync ("pacmd list-sources", out sound_devices);
-                var regex = new Regex ("(?<=\\*\\sindex:\\s\\d\\s\\sname:\\s<)[\\w\\.\\-]*");
-                MatchInfo match_info;
-            
-                if (regex.match (sound_devices, 0, out match_info)) {
-                    default_input = match_info.fetch (0);
-                }
-            
+            try {                
+                default_input = pam.default_source_name;
                 debug ("Detected microphone: %s", default_input);
 
             } catch (Error e) {
-
                 warning (e.message);
             }
 

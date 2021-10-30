@@ -2,7 +2,7 @@
 project (
     'com.github.dr_styki.screenrec',
     'vala', 'c',
-    version: '2.3.0',
+    version: '3.0.0',
     license: 'GPL-3.0'
 )
 
@@ -16,6 +16,11 @@ gnome = import ('gnome')
 add_project_arguments (
     '-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name ()),
     language: 'c'
+)
+
+add_project_arguments(
+    ['--vapidir', meson.current_source_dir() / 'vapi'],
+    language: 'vala'
 )
 
 # Compiling resources
@@ -37,7 +42,9 @@ dependencies = [
     dependency ('gdk-x11-3.0'),
     dependency ('gstreamer-1.0'),
     dependency ('clutter-gst-3.0'),
-    dependency ('clutter-gtk-1.0')
+    dependency ('clutter-gtk-1.0'),
+    dependency ('libpulse'),
+    dependency ('libpulse-mainloop-glib')
 ]
 
 subdir ('src')

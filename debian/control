@@ -15,6 +15,6 @@ Standards-Version: 3.9.3
 
 Package: com.github.dr_styki.screenrec
 Architecture: any
-Depends: ffmpeg, gstreamer1.0-plugins-ugly, gstreamer1.0-libav, gstreamer1.0-plugins-good, ${misc:Depends}, ${shlibs:Depends}
+Depends: ffmpeg, gstreamer1.0-plugins-ugly, gstreamer1.0-libav, gstreamer1.0-plugins-good, libpulse0, libpulse-mainloop-glib0, ${misc:Depends}, ${shlibs:Depends}
 Description: Record videos of the screen
  A simple screen recording tool which was make to work like the elementary OS Screenshot tool.

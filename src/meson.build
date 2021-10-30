@@ -3,6 +3,7 @@ sources = files (
     'Dialogs/SaveDialog.vala',
 
     'Tools/KeybindingManager.vala',
+    'Tools/PulseAudioManager.vala',
     'Tools/Recorder.vala',
     'Tools/SendNotification.vala',
 
