@@ -1,3 +1,13 @@
+com.github.dr_styki.screenrec (3.0.1) focal; urgency=medium
+
+ * Update screenshots
+
+ * Update screenshots URL
+
+ * Update dependencies
+
+ -- dr_Styki <dr_styki@hack.i.ng>  Sat, 06 Nov 2021 11:55:00 +0200
+
 com.github.dr_styki.screenrec (3.0.0) focal; urgency=medium
 
  * Add Flatpak support !

@@ -2,7 +2,7 @@
 project (
     'com.github.dr_styki.screenrec',
     'vala', 'c',
-    version: '3.0.0',
+    version: '3.0.1',
     license: 'GPL-3.0'
 )
 

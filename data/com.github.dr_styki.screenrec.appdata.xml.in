@@ -17,6 +17,15 @@
     </ul>
   </description>
   <releases>
+    <release version="3.0.1" date="2021-11-06">
+      <description>
+        <ul>
+          <li>Update screenshots</li>
+          <li>Update screenshots URL</li>
+          <li>Update dependencies</li>
+        </ul>
+      </description>
+    </release>
     <release version="3.0.0" date="2021-10-30">
       <description>
         <ul>
