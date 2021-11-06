@@ -5,7 +5,8 @@ A simple screen recording tool which was make to work like the elementary OS Scr
   <a href="https://appcenter.elementary.io/com.github.dr-styki.screenrec"><img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" /></a>
 </p>
 
-<p align="center"><img src="data/screenshots/screenshot_1.png"><img src="data/screenshots/screenshot_2.png"></p>
+<p align="center"><img src="data/screenshots/screenshot_1.png"></p>
+<p align="center"><img src="data/screenshots/screenshot_2.png"></p>
 <p align="center"><img src="data/screenshots/screenshot_3.png"></p>
 <p align="center"><img src="data/screenshots/screenshot_4.png"></p>
 
