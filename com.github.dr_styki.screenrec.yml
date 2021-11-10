@@ -9,10 +9,7 @@ finish-args:
   - '--device=dri'
   - '--socket=pulseaudio'
 
-  - '--system-talk-name=org.freedesktop.Accounts'
-
-  - '--filesystem=home'
-  - '--filesystem=/tmp'
+  - '--filesystem=xdg-videos'
   - '--env=GST_PLUGIN_PATH_1_0=/app/lib/gstreamer-1.0'
 
 modules:
