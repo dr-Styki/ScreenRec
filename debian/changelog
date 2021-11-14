@@ -1,3 +1,9 @@
+com.github.dr_styki.screenrec (3.0.2) focal; urgency=medium
+
+ * Remove unnecessary flatpak sandbox holes
+
+ -- dr_Styki <dr_styki@corsair.sh>  Sun, 14 Nov 2021 22:09:00 +0200
+
 com.github.dr_styki.screenrec (3.0.1) focal; urgency=medium
 
  * Update screenshots

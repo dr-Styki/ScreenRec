@@ -17,6 +17,13 @@
     </ul>
   </description>
   <releases>
+    <release version="3.0.2" date="2021-11-14">
+      <description>
+        <ul>
+          <li>Remove unnecessary flatpak sandbox holes</li>
+        </ul>
+      </description>
+    </release>
     <release version="3.0.1" date="2021-11-06">
       <description>
         <ul>
