@@ -13,10 +13,17 @@
     <ul>
       <li>Recording sound from computer</li>
       <li>Recording sound from microphone</li>
-      <li>Available format: MP4 and WEBM</li>
+      <li>Available format: WEBM</li>
     </ul>
   </description>
   <releases>
+    <release version="3.1.0" date="2021-12-08">
+      <description>
+        <ul>
+          <li>Remove mp4(h264) support because of a potential patent issue for elementary</li>
+        </ul>
+      </description>
+    </release>
     <release version="3.0.2" date="2021-11-14">
       <description>
         <ul>

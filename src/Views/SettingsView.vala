@@ -53,9 +53,9 @@ namespace ScreenRec {
             //public const string[] codec_gsk = {"x264enc-mp4", "x264enc-mkv", "vp8enc"};
             //public const string[] codec_ext = {".mp4", ".mkv", ".webm"};
 
-            public const string[] codec_user = {"mp4", "webm"};
-            public const string[] codec_gsk = {"x264enc-mp4", "vp8enc"};
-            public const string[] codec_ext = {".mp4", ".webm"};
+            public const string[] codec_user = {"webm"};
+            public const string[] codec_gsk = {"vp8enc"};
+            public const string[] codec_ext = {".webm"};
 
             private Gtk.ComboBox format_cmb;
             public string format;
@@ -170,16 +170,20 @@ namespace ScreenRec {
             format_cmb.pack_start (cell, false);
             format_cmb.set_attributes (cell, "text", Column.CODEC_USER);
             string saved_format = settings.get_string ("format");
-            for (int i = 0; i < codec_gsk.length; i++) {
-
-                if (saved_format == codec_gsk[i]) {
-
-                    this.format_cmb.set_active (i);
-                    this.format = codec_gsk[i];
-                    this.extension = codec_ext[i];
-                    break;
-                }
-            }
+            //for (int i = 0; i < codec_gsk.length; i++) {
+            //
+            //    if (saved_format == codec_gsk[i]) {
+            //
+            //        this.format_cmb.set_active (i);
+            //        this.format = codec_gsk[i];
+            //        this.extension = codec_ext[i];
+            //        break;
+            //    }
+            //}
+            //tmp
+            this.format_cmb.set_active (0);
+            this.format = codec_gsk[0];
+            this.extension = codec_ext[0];
             // Format Combo Box - End
 
             // Sub Grid, all switch/checkbox/combobox/spin
@@ -199,8 +203,8 @@ namespace ScreenRec {
             sub_grid.attach (delay_spin        , 1, 4, 1, 1);
             sub_grid.attach (framerate_label   , 0, 5, 1, 1);
             sub_grid.attach (framerate_spin    , 1, 5, 1, 1);
-            sub_grid.attach (format_label       , 0, 6, 1, 1);
-            sub_grid.attach (format_cmb    , 1, 6, 1, 1);
+            //sub_grid.attach (format_label       , 0, 6, 1, 1);
+            //sub_grid.attach (format_cmb    , 1, 6, 1, 1);
 
             add(sub_grid);
 
