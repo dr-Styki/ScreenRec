@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2020 Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng> -->
+<!-- Copyright 2020 Stevy THOMAS (dr-Styki) <dr_Styki@hack.i.ng> -->
 <!-- Copyright 2018 Mohammed ALMadhoun <mohelm97@gmail.com> -->
 <component type="desktop"> 
   <id>com.github.dr_styki.screenrec</id>
@@ -154,10 +154,10 @@
     <content_attribute id="money-purchasing">none</content_attribute>
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
-  <developer_name>Stevy THOMAS (dr_Styki)</developer_name>
-  <url type="homepage">https://github.com/dr_styki/ScreenRec</url>
-  <url type="bugtracker">https://github.com/dr_styki/ScreenRec/issues</url>
-  <url type="help">https://github.com/dr_styki/ScreenRec/issues</url>
+  <developer_name>Stevy THOMAS (dr-Styki)</developer_name>
+  <url type="homepage">https://github.com/dr-styki/ScreenRec</url>
+  <url type="bugtracker">https://github.com/dr-styki/ScreenRec/issues</url>
+  <url type="help">https://github.com/dr-styki/ScreenRec/issues</url>
   <custom>
     <value key="x-appcenter-stripe">pk_live_5JaBVsaIMEY5rWllE5CkZ3Rl00OWs9lyrL</value>
   </custom>
