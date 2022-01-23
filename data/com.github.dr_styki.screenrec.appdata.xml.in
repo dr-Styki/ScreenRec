@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2020 Stevy THOMAS (dr_Styki) <dr_Styki@hack.i.ng> -->
 <!-- Copyright 2018 Mohammed ALMadhoun <mohelm97@gmail.com> -->
-<component type="desktop"> 
+<component type="desktop">
   <id>com.github.dr_styki.screenrec</id>
   <metadata_license>CC0</metadata_license>
   <project_license>GPL-3.0</project_license>
@@ -16,6 +16,10 @@
       <li>Available format: WEBM</li>
     </ul>
   </description>
+  <provides>
+    <!-- legacy RDNN  -->
+    <id>com.github.dr-styki.screenrec</id>
+  </provides>
   <releases>
     <release version="3.1.0" date="2021-12-08">
       <description>
