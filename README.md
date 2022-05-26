@@ -1,4 +1,11 @@
 # ScreenRec
+
+-----------------------
+
+Due to many limitations coming from the Flatpak AppCenter of elementary OS. The project will not be able to evolve anymore. That's why this project is now archived. 😞
+
+-----------------------
+
 A simple screen recording tool which was make to work like the elementary OS Screenshot tool.
 
 <p align="left">
